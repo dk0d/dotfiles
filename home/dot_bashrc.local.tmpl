@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+{{ template "shell-env.sh" . }}
+
+{{ template "shell-cargo.sh" . }}
+
+{{ template "shell-aliases.sh" . }}
+
+{{ template "shell-functions.sh" . }}
+
+{{ template "shell-starship.sh" . }}
+
+{{ template "shell-nvm.sh" . }}
+
+{{ end -}}

@@ -1,0 +1,31 @@
+.cz.toml
+README.md
+install.sh
+.gitmodules
+
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+.hammerspoon
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
+{{ end }}
+
+{{ if .work -}}
+.ssh
+{{ end -}}
+
+
+{{ if .work -}}
+.zshrc
+.zprofile
+.zshrc.local
+.wezterm.lua
+.ideavimrc
+.config/zellij/zellij.yml
+.config/skhd/**
+.config/yabai/**
+{{ end -}}
+
+

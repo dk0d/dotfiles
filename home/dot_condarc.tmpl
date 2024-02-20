@@ -1,0 +1,16 @@
+changeps1: false
+
+envs_dirs: 
+{{ if contains "ufhpc" .chezmoi.fqdnHostname }}
+  - ~/blue/.conda/envs
+{{ else }}
+  - ~/.conda/envs
+{{ end }}
+
+
+pkgs_dirs: 
+{{ if contains "ufhpc" .chezmoi.fqdnHostname }}
+  - ~/blue/.conda/pkgs
+{{ else }}
+  - ~/.conda/pkgs
+{{ end }}

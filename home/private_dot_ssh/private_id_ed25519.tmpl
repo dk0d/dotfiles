@@ -1,0 +1,11 @@
+{{ if .work -}}
+
+{{  onepasswordRead "op://Personal/id_ed25519_work/private key?ssh-format=openssh" }}
+
+{{ else -}}
+
+{{    if ne .chezmoi.os "darwin" -}}
+{{        onepasswordRead "op://Personal/id_ed25519/private key?ssh-format=openssh" }}
+{{    end -}}
+
+{{ end -}}
