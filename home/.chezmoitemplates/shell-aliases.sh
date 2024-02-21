@@ -98,6 +98,17 @@ if command -v tectonic &>/dev/null; then
 	alias nextonic="tectonic -X"
 fi
 
+# Github CLI
+if command -v gh &>/dev/null; then
+
+	# create branch for issue and checkout
+	alias prc='gh pr create'
+
+	# create branch for issue and checkout
+	alias oissue='gh issue dev -c'
+
+fi
+
 if command -v zoxide &>/dev/null; then
 
 	if [ "$(basename $SHELL)" = "zsh" ]; then
