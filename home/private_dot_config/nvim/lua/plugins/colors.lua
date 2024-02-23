@@ -317,7 +317,28 @@ local cat_kan = {
 }
 
 return {
-  -- { 'sainnhe/sonokai' },
+  {
+    "AstroNvim/astrotheme",
+    opts = {
+      style = {
+        transparent = true, -- Bool value, toggles transparency.
+        inactive = false, -- Bool value, toggles inactive window color.
+        float = false, -- Bool value, toggles floating windows background colors.
+        neotree = true, -- Bool value, toggles neo-trees background color.
+        border = true, -- Bool value, toggles borders.
+        title_invert = false, -- Bool value, swaps text and background colors.
+        italic_comments = true, -- Bool value, toggles italic comments.
+        simple_syntax_colors = true, -- Bool value, simplifies the amounts of colors used for syntax highlighting.
+      },
+
+      termguicolors = true, -- Bool value, toggles if termguicolors are set by AstroTheme.
+      terminal_color = true, -- Bool value, toggles if terminal_colors are set by AstroTheme.
+      plugin_default = true, -- Sets how all plugins will be loaded
+      -- "auto": Uses lazy / packer enabled plugins to load highlights.
+      -- true: Enables all plugins highlights.
+      -- false: Disables all plugins.
+    },
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -326,13 +347,69 @@ return {
     config = function()
       require("catppuccin").setup {
         flavour = "mocha",
-        -- custom_highlights = function(colors)
-        -- return {
-        -- CursorLine = {
-        -- bg = "#333333",
-        -- },
-        -- }
-        -- end,
+        custom_highlights = function(colors)
+          local theme = require("catppuccin.palettes").get_palette "mocha"
+          return {
+
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+            FloatTitle = { bg = "none" },
+            -- Save an hlgroup with dark background and dimmed foreground
+            -- so that you can use it where your still want darker windows.
+            -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+            -- NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+
+            -- Popular plugins that open floats will link to NormalFloat by default;
+            -- set their background accordingly if you wish to keep them dark and borderless
+            -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+            -- MasonNormal = { bg = C.blue or C.mantle, fg = theme.ui.fg_dim },
+
+            -- TelescopeTitle = { fg = theme.red, bold = true },
+            -- TelescopeBorder = {
+            --   fg = theme.blue or theme.mantle,
+            --   bg = theme.none or theme.mantle,
+            -- },
+            -- TelescopeMatching = { fg = theme.blue },
+            -- TelescopeNormal = {
+            --   bg = theme.none or theme.mantle,
+            -- },
+            -- TelescopePromptBorder = {
+            --   fg = theme.blue or theme.surface0,
+            --   bg = theme.none or theme.surface0,
+            -- },
+            -- TelescopePromptNormal = {
+            --   fg = theme.text,
+            --   bg = theme.none or theme.surface0,
+            -- },
+            -- TelescopePromptPrefix = {
+            --   fg = theme.flamingo,
+            --   bg = theme.none or theme.surface0,
+            -- },
+            -- TelescopePreviewTitle = {
+            --   fg = theme.green or theme.base,
+            --   bg = theme.none or theme.green,
+            -- },
+            -- TelescopePromptTitle = {
+            --   fg = theme.red or theme.base,
+            --   bg = theme.none or theme.red,
+            -- },
+            -- TelescopeResultsTitle = {
+            --   fg = theme.lavender or theme.mantle,
+            --   bg = theme.none or theme.lavender,
+            -- },
+            -- TelescopeSelection = {
+            --   fg = theme.flamingo or theme.text,
+            --   bg = theme.none or theme.surface0,
+            --   style = { "bold" },
+            -- },
+            -- TelescopeSelectionthemearet = { fg = theme.flamingo },
+
+            -- Pmenu = { fg = theme., bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+            -- PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+            -- PmenuSbar = { bg = theme.ui.bg_m1 },
+            -- PmenuThumb = { bg = theme.ui.bg_p2 },
+          }
+        end,
         transparent_background = true,
         -- dim_inactive = {
         -- 	enabled = false, -- dims the background color of inactive window
@@ -358,6 +435,7 @@ return {
         },
         integrations = {
           alpha = true,
+          dashboard = true,
           dap = true,
           dap_ui = true,
           harpoon = true,
@@ -385,6 +463,13 @@ return {
               warnings = { "undercurl" },
               information = { "undercurl" },
             },
+            inlay_hints = {
+              background = true,
+            },
+          },
+          mini = {
+            enabled = true,
+            indentscope_color = "lavender",
           },
           neotree = true,
           neotest = true,
@@ -395,6 +480,7 @@ return {
             enabled = true,
             -- style = "nvchad",
           },
+          treesitter_context = true,
           treesitter = true,
           which_key = true,
         },

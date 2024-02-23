@@ -20,7 +20,8 @@ return {
             },
           },
           require "neotest-rust" {
-            dap_adapter = "rt_lldb",
+            -- dap_adapter = "rt_lldb",
+            args = { "--nocapture" },
           },
         },
         summary = {

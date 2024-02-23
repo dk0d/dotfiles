@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/AstroNvim/AstroNvim/blob/main/lua/astronvim/options.lua
 -- Add any additional options here
 
-vim.cmd [[colorscheme kanagawa]]
+vim.cmd [[colorscheme catppuccin-mocha]]
 
 vim.opt.relativenumber = true -- sets vim.opt.relativenumber
 vim.opt.number = true -- sets vim.opt.number

@@ -61,6 +61,8 @@ local mappings = {
   -- first key is the mode
   n = {
 
+    ["<C-q>"] = { "<cmd>xall<cr>", desc = "save and quit all" },
+
     -- disable tabline navigation
     -- ["<leader>b"] = false,
     ["<leader>bb"] = false,

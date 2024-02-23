@@ -68,8 +68,8 @@ config.show_new_tab_button_in_tab_bar = false
 config.native_macos_fullscreen_mode = true
 config.tab_max_width = 80
 config.cursor_thickness = "1pt"
--- config.default_cursor_style = "BlinkingBar"
-config.cursor_blink_rate = 900
+config.default_cursor_style = "BlinkingBar"
+config.cursor_blink_rate = 800
 
 -- config.foreground_text_hsb = {
 -- 	brightness = 1.0,

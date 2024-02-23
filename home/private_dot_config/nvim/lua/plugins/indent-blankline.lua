@@ -13,6 +13,11 @@ return {
       options = { try_as_border = true },
     },
     init = function()
+      require("mini.indentscope").gen_animation.quadratic {
+        duration = 10,
+        delay = 100,
+        easing = "in-out",
+      }
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
           "help",
