@@ -59,6 +59,16 @@ return {
         function() require("neotest").summary.toggle() end,
         desc = "Test Summary",
       },
+      {
+        "<leader>tP",
+        function() require("neotest").output_panel.toggle() end,
+        desc = "Test Output Panel",
+      },
+      {
+        "<leader>tO",
+        function() require("neotest").output.open { enter = true } end,
+        desc = "Test Output",
+      },
     },
   },
 }
