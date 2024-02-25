@@ -64,7 +64,7 @@ return {
   {
     "nvimdev/dashboard-nvim",
     opts = function()
-      local logo = string.rep("\n", 8) .. brain .. "\n\n"
+      local logo = string.rep("\n", 8) .. neural .. "\n\n"
       local get_icon = require("astroui").get_icon
       local opts = {
         theme = "doom",
