@@ -139,10 +139,21 @@ local mappings = {
       desc = "Search all files (and ignored)",
     },
 
+    ["<leader>fH"] = {
+      function() require("telescope.builtin").highlights() end,
+      desc = "Search Highlights",
+    },
+
     ["<leader>fo"] = {
       function() require("telescope.builtin").buffers() end,
       desc = "Search open buffers",
     },
+
+    ["<leader>fO"] = {
+      function() require("telescope.builtin").oldfiles() end,
+      desc = "Search old files",
+    },
+
     -- Vimtex
     ["<leader>fc"] = { "<cmd>Telescope bibtex<cr>", desc = "Search Citations" },
     ["<leader>vc"] = { "<cmd>update<cr><cmd>VimtexCompile<cr>", desc = "Vimtex Compile Continuous" },
@@ -191,10 +202,6 @@ local mappings = {
       -- "<cmd> lua vim.diagnostic.goto_next()<cr>",
       function() vim.diagnostic.goto_prev { wrap = true, float = true } end,
       desc = "Diagnostic goto previous",
-    },
-    ["<leader>lD"] = {
-      function() require("telescope.builtin").diagnostics { bufnr = 0 } end,
-      desc = "Search current buffer diagnostics",
     },
     ["<leader>lW"] = {
       function() require("telescope.builtin").diagnostics() end,

@@ -29,7 +29,6 @@ return {
         -- add more arguments for adding more null-ls sources
         "stylua",
         "ruff-lsp",
-        -- "ruff",
         "rust_analyzer",
         -- 'shellcheck',
         -- 'shfmt',
