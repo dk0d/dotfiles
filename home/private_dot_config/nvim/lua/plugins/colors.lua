@@ -340,6 +340,23 @@ return {
     },
   },
   {
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.moonflyCursorColor = true
+      vim.g.moonflyItalics = true
+      vim.g.moonflyNormalFloat = true
+      vim.g.moonflyTerminalColors = true
+      vim.g.moonflyTransparent = true
+      vim.g.moonflyUndercurls = true
+      vim.g.moonflyUnderlineMatchParen = false
+      vim.g.moonflyVirtualTextColor = false
+      vim.g.moonflyWinSeparator = 1
+    end,
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     event = "VeryLazy",
@@ -351,9 +368,9 @@ return {
           local theme = require("catppuccin.palettes").get_palette "mocha"
           return {
 
-            NormalFloat = { bg = "none" },
-            FloatBorder = { bg = "none" },
-            FloatTitle = { bg = "none" },
+            -- NormalFloat = { bg = "none" },
+            -- FloatBorder = { fg = "none" },
+            -- FloatTitle = { bg = "none" },
             -- Save an hlgroup with dark background and dimmed foreground
             -- so that you can use it where your still want darker windows.
             -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
@@ -364,50 +381,49 @@ return {
             -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
             -- MasonNormal = { bg = C.blue or C.mantle, fg = theme.ui.fg_dim },
 
-            -- TelescopeTitle = { fg = theme.red, bold = true },
-            -- TelescopeBorder = {
-            --   fg = theme.blue or theme.mantle,
-            --   bg = theme.none or theme.mantle,
-            -- },
-            -- TelescopeMatching = { fg = theme.blue },
-            -- TelescopeNormal = {
-            --   bg = theme.none or theme.mantle,
-            -- },
-            -- TelescopePromptBorder = {
-            --   fg = theme.blue or theme.surface0,
-            --   bg = theme.none or theme.surface0,
-            -- },
-            -- TelescopePromptNormal = {
-            --   fg = theme.text,
-            --   bg = theme.none or theme.surface0,
-            -- },
-            -- TelescopePromptPrefix = {
-            --   fg = theme.flamingo,
-            --   bg = theme.none or theme.surface0,
-            -- },
-            -- TelescopePreviewTitle = {
-            --   fg = theme.green or theme.base,
-            --   bg = theme.none or theme.green,
-            -- },
-            -- TelescopePromptTitle = {
-            --   fg = theme.red or theme.base,
-            --   bg = theme.none or theme.red,
-            -- },
-            -- TelescopeResultsTitle = {
-            --   fg = theme.lavender or theme.mantle,
-            --   bg = theme.none or theme.lavender,
-            -- },
-            -- TelescopeSelection = {
-            --   fg = theme.flamingo or theme.text,
-            --   bg = theme.none or theme.surface0,
-            --   style = { "bold" },
-            -- },
-            -- TelescopeSelectionthemearet = { fg = theme.flamingo },
+            TelescopeBorder = {
+              fg = theme.mantle,
+              bg = theme.mantle,
+            },
+            TelescopeMatching = { fg = theme.blue },
+            TelescopeNormal = {
+              bg = theme.mantle,
+            },
+            TelescopePromptBorder = {
+              fg = theme.surface0,
+              bg = theme.surface0,
+            },
+            TelescopePromptNormal = {
+              fg = theme.text,
+              bg = theme.surface0,
+            },
+            TelescopePromptPrefix = {
+              fg = theme.flamingo,
+              bg = theme.surface0,
+            },
+            TelescopePreviewTitle = {
+              fg = theme.base,
+              bg = theme.green,
+            },
+            TelescopePromptTitle = {
+              fg = theme.base,
+              bg = theme.red,
+            },
+            TelescopeResultsTitle = {
+              fg = theme.mantle,
+              bg = theme.lavender,
+            },
+            TelescopeSelection = {
+              fg = theme.flamingo,
+              bg = theme.surface0,
+              style = { "bold" },
+            },
+            TelescopeSelectionthemearet = { fg = theme.flamingo },
 
-            -- Pmenu = { fg = theme., bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-            -- PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-            -- PmenuSbar = { bg = theme.ui.bg_m1 },
-            -- PmenuThumb = { bg = theme.ui.bg_p2 },
+            Pmenu = { fg = theme.flamingo, bg = theme.base }, -- add `blend = vim.o.pumblend` to enable transparency
+            PmenuSel = { fg = "NONE", bg = theme.overlay0 },
+            PmenuSbar = { bg = theme.overlay0 },
+            PmenuThumb = { bg = theme.overlay1 },
           }
         end,
         transparent_background = true,
