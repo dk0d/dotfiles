@@ -15,6 +15,8 @@ vim.opt.hidden = false
 vim.opt.autowriteall = true
 vim.opt.showtabline = 0
 
+vim.opt.completeopt = "menu,menuone,noinsert"
+
 vim.g.resession_enabled = true -- use resession to save and load sessions - disables neovim-session-manager
 vim.g.sonokai_style = "shusia"
 vim.g.mapleader = " " -- sets vim.g.mapleader
