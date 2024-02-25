@@ -105,8 +105,12 @@ if command -v gh &>/dev/null; then
 	alias prc='gh pr create'
 
 	# create branch for issue and checkout
-	alias oissue='gh issue dev -c'
+	alias oissue='gh issue develop -c'
 
+fi
+
+if command -v pnpm &>/dev/null; then
+	alias pnp='pnpm'
 fi
 
 if command -v zoxide &>/dev/null; then
