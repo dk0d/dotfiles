@@ -98,6 +98,16 @@ return {
       desc = "Find themes",
     },
     {
+      "<leader>fH",
+      function() require("telescope.builtin").highlights() end,
+      desc = "Search Highlights",
+    },
+    {
+      "<leader>fo",
+      function() require("telescope.builtin").buffers() end,
+      desc = "Search open buffers",
+    },
+    {
       "<leader>fO",
       function() require("telescope.builtin").oldfiles() end,
       desc = "Find themes",

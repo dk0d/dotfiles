@@ -125,34 +125,6 @@ local mappings = {
       function() vim.lsp.buf.sort_imports() end,
       desc = "Sort Imports",
     },
-    -- Telescope
-    ["<leader>ff"] = {
-      function() require("user.utils.telescope").smart_find_files() end,
-      desc = "Search git tracked files (falls back to find_files without git repo)",
-    },
-    ["<leader>fa"] = {
-      function() require("telescope.builtin").find_files() end,
-      desc = "Search all files",
-    },
-    ["<leader>fi"] = {
-      function() require("telescope.builtin").find_files { no_ignore = true } end,
-      desc = "Search all files (and ignored)",
-    },
-
-    ["<leader>fH"] = {
-      function() require("telescope.builtin").highlights() end,
-      desc = "Search Highlights",
-    },
-
-    ["<leader>fo"] = {
-      function() require("telescope.builtin").buffers() end,
-      desc = "Search open buffers",
-    },
-
-    ["<leader>fO"] = {
-      function() require("telescope.builtin").oldfiles() end,
-      desc = "Search old files",
-    },
 
     -- Vimtex
     ["<leader>fc"] = { "<cmd>Telescope bibtex<cr>", desc = "Search Citations" },
