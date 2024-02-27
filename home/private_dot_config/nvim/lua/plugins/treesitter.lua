@@ -10,6 +10,10 @@ return {
       "rust",
       "swift",
       "markdown",
+      "typescript",
+      "javascript",
+      "svelte",
+      "sql",
       -- add more arguments for adding more treesitter parsers
     })
 
