@@ -1,6 +1,5 @@
 return {
   "rebelot/heirline.nvim",
-  disable = true,
   event = "BufEnter",
   opts = function(_, opts)
     local status = require "astroui.status"
@@ -21,11 +20,12 @@ return {
       status.component.cmd_info(),
       status.component.fill(),
       status.component.lsp(),
+      status.component.virtual_env(),
       status.component.treesitter(),
       status.component.nav(),
       status.component.mode { surround = { separator = "right" } },
     }
-    --
+
     -- opts.winbar = { -- winbar
     --   init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
     --   fallthrough = false,
