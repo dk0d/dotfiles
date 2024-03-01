@@ -155,4 +155,14 @@ fi
 
 {{ end -}}
 
+# pnpm
+if command -v pnpm &>/dev/null; then
+	export PNPM_HOME="$HOME/.pnpm-global"
+	case ":$PATH:" in
+  	*":$PNPM_HOME:"*) ;;
+  	*) export PATH="$PNPM_HOME:$PATH" ;;
+	esac
+	pnpm config set pnpm-prefix "$PNPM_HOME"
+fi
+# pnpm end
 
