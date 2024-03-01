@@ -56,6 +56,8 @@ end
 --
 --
 
+local get_icon = require("astroui").get_icon
+
 local mappings = {
 	v = {
 		["J"] = { "<cmd> m '>+1<cr>gv=gv", desc = "Move line down" },
@@ -144,6 +146,9 @@ local mappings = {
 			end,
 			desc = "get compiler status",
 		},
+
+		-- Override AstroNvim Neotree mappings
+		["<leader>e"] = { false, desc = get_icon("Session", 1, true) .. "Neotree" },
 
 		-- Override find themes
 		["<leader>fe"] = {

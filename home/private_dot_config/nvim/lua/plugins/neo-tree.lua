@@ -4,7 +4,7 @@ return {
 	event = "VeryLazy",
 	enabled = true,
 	keys = {
-		{ "<leader>e", desc = get_icon("Window", 1, true) .. "Neotree" },
+		{ "<leader>e", false, desc = get_icon("Window", 1, true) .. "Neotree" },
 		{ "<leader>ee", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
 		{
 			"<leader>ef",

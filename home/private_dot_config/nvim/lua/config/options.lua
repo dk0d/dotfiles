@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/AstroNvim/AstroNvim/blob/main/lua/astronvim/options.lua
 -- Add any additional options here
 
-vim.cmd [[colorscheme catppuccin-mocha]]
+vim.cmd([[colorscheme catppuccin-mocha]])
 
 vim.opt.relativenumber = true -- sets vim.opt.relativenumber
 vim.opt.number = true -- sets vim.opt.number
@@ -34,9 +34,9 @@ vim.g.use_colemak = false
 vim.g.mapleader = " " -- sets vim.g.mapleader
 -- vim.g.icons_enabled = false -- disable icons in the UI (disable if no nerd font is available)
 --
-vim.diagnostic.config {
-  underline = true,
-  virtual_text = true,
-  -- signs = true,
-  -- update_in_insert = false,
-}
+vim.diagnostic.config({
+	underline = true,
+	virtual_text = true,
+	-- signs = true,
+	-- update_in_insert = false,
+})
