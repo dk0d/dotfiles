@@ -58,6 +58,7 @@ return {
   dependencies = {
     "onsails/lspkind.nvim",
   },
+  event = "InsertEnter",
   opts = function(_, opts)
     local cmp = require "cmp"
     local lspkind = require "lspkind"
