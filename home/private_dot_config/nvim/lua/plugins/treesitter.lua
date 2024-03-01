@@ -9,7 +9,7 @@ return {
 			"vim",
 			"python",
 			"rust",
-			"swift",
+			-- "swift", -- remove on linux
 			"markdown",
 			"typescript",
 			"javascript",
