@@ -25,6 +25,5 @@ end
 -- bootstrap lazy.nvim, AstroNvim, and user plugins
 require("config.lazy")
 require("config.options")
-
 -- run polish file at the very end
-pcall(require, "config.polish")
+require("config.polish")

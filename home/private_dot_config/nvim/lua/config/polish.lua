@@ -3,8 +3,6 @@
 -- anything that doesn't fit in the normal config locations above can go here
 
 vim.filetype.add({
-	extension = { "mdx" },
+	extension = { mdx = "mdx" },
 })
-
-local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
-ft_to_parser.mdx = "markdown"
+vim.treesitter.language.register("mdx", "markdown")
