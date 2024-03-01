@@ -55,6 +55,7 @@ end
 -- nnoremap ]c :IPythonCellNextCell<CR>
 --
 --
+
 local mappings = {
 	v = {
 		["J"] = { "<cmd> m '>+1<cr>gv=gv", desc = "Move line down" },
@@ -72,19 +73,6 @@ local mappings = {
 		["<leader>b\\"] = false,
 		["<leader>b|"] = false,
 
-		-- Neotree
-		["<leader>e"] = { desc = "Neotree" },
-		["<leader>ee"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
-		["<leader>ef"] = {
-			function()
-				if vim.bo.filetype == "neo-tree" then
-					vim.cmd.wincmd("p")
-				else
-					vim.cmd.Neotree("focus")
-				end
-			end,
-			desc = "Toggle Explorer Focus",
-		},
 		-- Oil
 		["<leader>o"] = {
 			function()
