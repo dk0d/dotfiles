@@ -66,6 +66,8 @@ local mappings = {
 	-- first key is the mode
 	n = {
 
+		["<Esc>"] = { "<cmd>nohl<cr>", desc = "Clear search" },
+
 		["<C-q>"] = { "<cmd>xall<cr>", desc = "save and quit all" },
 
 		-- disable tabline navigation

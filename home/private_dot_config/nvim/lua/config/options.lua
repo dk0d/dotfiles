@@ -4,6 +4,11 @@
 
 vim.cmd([[colorscheme catppuccin-mocha]])
 
+vim.g.mapleader = " " -- sets vim.g.mapleader
+
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 400
+
 vim.opt.relativenumber = true -- sets vim.opt.relativenumber
 vim.opt.number = true -- sets vim.opt.number
 vim.opt.spell = false -- sets vim.opt.spell
@@ -18,8 +23,7 @@ vim.opt.showtabline = 0
 vim.opt.completeopt = "menu,menuone,noinsert"
 
 vim.g.resession_enabled = true -- use resession to save and load sessions - disables neovim-session-manager
-vim.g.sonokai_style = "shusia"
-vim.g.mapleader = " " -- sets vim.g.mapleader
+
 vim.g.autoformat_enabled = false -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
 vim.g.cmp_enabled = true -- enable completion at start
 vim.g.autopairs_enabled = true -- enable autopairs at start
@@ -31,7 +35,6 @@ vim.g.ipy_celldef = "^#\\s*%%"
 vim.g.python3_host_prog = require("utils").get_provider_python()
 
 vim.g.use_colemak = false
-vim.g.mapleader = " " -- sets vim.g.mapleader
 -- vim.g.icons_enabled = false -- disable icons in the UI (disable if no nerd font is available)
 --
 vim.diagnostic.config({

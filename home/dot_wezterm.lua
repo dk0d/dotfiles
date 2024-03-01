@@ -13,53 +13,57 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 config.disable_default_key_bindings = false
 
 -- >= % & <= .= :- |= /= -> => >= <= != == === !== $ a g r !~ @ %
-config.font = wezterm.font_with_fallback({
+local JETBRAINS_MONO = {
+	family = "Jetbrains Mono",
+	weight = "Regular",
+	harfbuzz_features = { "zero", "ss02", "cv05", "ss20", "cv15", "cv14" },
+}
 
-	-- {
-	-- 	family = "Jetbrains Mono",
-	-- 	weight = "Regular",
-	-- 	harfbuzz_features = { "zero", "ss02", "cv05", "ss20", "cv15", "cv14" },
-	-- },
-	-- {
-	-- 	family = "Monoid",
-	-- 	weight = "Regular",
-	-- 	harfbuzz_features = { "zero", "calt" },
-	-- },
-	-- { family = "Noto Sans Mono" },
-	-- { family = "Source Code Pro" },
-	-- { family = "Hack", weight = "Regular" },
-	{
-		family = "Fira Code",
-		weight = "Regular",
-		harfbuzz_features = {
-			"zero",
-			"ss01",
-			"ss02",
-			"ss03",
-			"ss04",
-			"ss05",
-			"ss07",
-			"ss09",
-			"cv02",
-			"cv18",
-			"cv25",
-			"cv28",
-			"cv32",
-			"cv26",
-		},
+local FIRA_CODE = {
+	family = "Fira Code",
+	-- weight = "Regular",
+	harfbuzz_features = {
+		"zero",
+		"ss01",
+		"ss02",
+		"ss03",
+		"ss04",
+		"ss05",
+		"ss07",
+		"ss09",
+		"cv02",
+		"cv18",
+		"cv25",
+		"cv28",
+		"cv32",
+		"cv26",
 	},
-	-- {
-	-- 	family = "Cascadia Code",
-	-- 	weight = "Light",
-	-- 	harfbuzz_features = { "zero", "ss01=0", "ss02", "ss03", "ss20" },
-	-- },
+}
 
-	"Symbols Nerd Font",
-	-- 'codicons',
+local CASCADIA_CODE = {
+	family = "Cascadia Code",
+	weight = "Light",
+	harfbuzz_features = { "zero", "ss01=0", "ss02", "ss03", "ss20" },
+}
+
+local TWILIO = {
+	family = "Twilio Sans Mono",
+	harfbuzz_features = { "zero" },
+}
+
+config.font = wezterm.font_with_fallback({
+	FIRA_CODE,
+	CASCADIA_CODE,
+	JETBRAINS_MONO,
+	TWILIO,
+	-- fallbacks
+	"Menlo",
+	-- symbols
+	"Symbols Nerd Font Mono",
 }, { weight = "Bold" })
 
 config.font_size = 10
-config.line_height = 1.0
+config.line_height = 1.2
 config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
