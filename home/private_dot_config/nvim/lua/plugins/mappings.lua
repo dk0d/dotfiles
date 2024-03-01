@@ -202,11 +202,6 @@ local mappings = {
 			desc = "Search workspace diagnostics",
 		},
 
-		["<leader>lL"] = {
-			"<cmd>LspRestart<cr>",
-			desc = "Restart LSP",
-		},
-
 		-- trigger dashboard
 		["<leader>ad"] = {
 			"<cmd>Alpha<cr>",
