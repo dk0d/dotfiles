@@ -44,8 +44,6 @@ formulae=(
 	zoxide                                                # cd
 	zplug                                                 # zsh plugin manager
 	jesseduffield/lazygit/lazygit                         # git gui
-	sondr3/taps/git-ignore                                # git ignore
-	thezoraiz/ascii-image-converter/ascii-image-converter # ascii image converter
 )
 
 brew update
@@ -54,6 +52,17 @@ brew install ${formulae[@]}
 
 {{ if eq .chezmoi.os "darwin" -}}
 
+formulae=(
+	thezoraiz/ascii-image-converter/ascii-image-converter # ascii image converter
+	sondr3/taps/git-ignore                                # git ignore
+)
+
+brew install ${formulae[@]}
+
+{{ end -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
+echo "Installing Casks...";
 casks=(
 	1password                                             # credentials
 	1password-cli                                         # credentials
