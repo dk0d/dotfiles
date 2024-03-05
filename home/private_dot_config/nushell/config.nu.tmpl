@@ -648,12 +648,12 @@ $env.config = {
   ]
 }
 
-{{ if eq .chezmoi.os "darwin" -}}
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
-{{ end -}}
-
-$env.PATH = ($env.PATH | split row (char esep) | prepend '~/.local/bin')
+# using fish completer
+let fish_completer = {|spans|
+    fish --command $'complete "--do-complete=($spans | str join " ")"'
+    | $"value(char tab)description(char newline)" + $in
+    | from tsv --flexible --no-infer
+}
 
 alias l = ls
 alias ll = ls -l 
@@ -677,17 +677,30 @@ alias nextonic = tectonic -X
 alias core-cat = ^cat
 alias cat = bat
 
-# eza
-alias lt = eza -T --git-ignore --level=2 --group-directories-first
-alias llt = eza -lT --git-ignore --level=2 --group-directories-first
-alias lT = eza -T --git-ignore --level=4 --group-directories-first
-alias li = eza -la --icons --group-directories-first --git
-alias lg = eza -la --git --icons --group-directories-first --git
-alias ld = eza -laD
+export alias b = bat
+export alias bn = bat --number
+export alias bnl = bat --number --line-range
+export alias bp = bat --plain
+export alias bpl = bat --plain --line-range
+export alias bl = bat --line-range
 
+# eza
+## alias lt = eza -T --git-ignore --level=2 --group-directories-first
+## alias llt = eza -lT --git-ignore --level=2 --group-directories-first
+## alias lT = eza -T --git-ignore --level=4 --group-directories-first
+## alias li = eza -la --icons --group-directories-first --git
+## alias lg = eza -la --git --icons --group-directories-first --git
+## alias ld = eza -laD
+
+export alias x = eza --icons
+export alias xa = eza --icons --all
+export alias xl	= eza --long
+export alias xla = eza --long --all
+export alias xt	= eza --icons --tree -L 1 
+export alias xtt	= eza --icons --tree 
+export alias xta = eza --icons --tree --all
 
 # alias cd = z # zoxide
-
 
 # Grep alias
 # if (which rg | length | $in == 1) {
