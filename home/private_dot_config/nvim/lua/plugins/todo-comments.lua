@@ -16,8 +16,14 @@ return {
 					-- alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" },
 					-- signs = false,
 				},
+				DONE = {
+					icon = " ",
+					color = "done",
+					alt = { "DONE", "COMPLETE" },
+					-- signs = false,
+				},
 				TODO = {
-					icon = " ",
+					icon = "󰦕 ",
 					color = "info",
 					alt = { "TODO" },
 					-- signs = false,
@@ -47,6 +53,10 @@ return {
 					-- signs = false,
 				},
 				TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+			},
+
+			colors = {
+				done = { "DiagnosticOk", "#10B981" },
 			},
 
 			-- error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
