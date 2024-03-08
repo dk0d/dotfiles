@@ -2,88 +2,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$localip\
-$conda\
-$hostname\
-$directory\
-$shlvl\
-$singularity\
-$kubernetes\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$cmd_duration\
-$hg_branch\
-$docker_context\
-$package\
-$c\
-$cmake\
-$cobol\
-$daml\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$guix_shell\
-$haskell\
-$haxe\
-$helm\
-$java\
-$julia\
-$kotlin\
-$lua\
-$nim\
-$nodejs\
-$ocaml\
-$opa\
-$perl\
-$php\
-$pulumi\
-$purescript\
-$raku\
-$rlang\
-$red\
-$ruby\
-$rust\
-$scala\
-$swift\
-$terraform\
-$vlang\
-$vagrant\
-$zig\
-$buf\
-$nix_shell\
-$meson\
-$spack\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$azure\
-$env_var\
-$crystal\
-$custom\
-$sudo\
-$jobs\
-$status\
-$container\
-$shell\
-$python\
-$line_break\
-$username\
+$all\
+$fill \
 $os\
+$username\
+$time\
+$line_break\
 $character"""
 
 command_timeout = 1000
 
 [time]
 disabled = false
-format = '󱑈 [[$time]($style)]($style) '
+format = ' [[$time]($style)]($style) '
 
 [character]
 # success_symbol = "[](green)"
@@ -94,12 +25,13 @@ vicmd_symbol = "[](bold green)"
 disabled = false
 
 [fill]
-symbol = ' '
+symbol = "—"
+style = 'bold dimmed'
 
 [conda]
 symbol = " "
 format = '\([$symbol$environment]($style)\) '
-ignore_base = false
+ignore_base = true
 
 [python]
 symbol = " "
@@ -128,7 +60,6 @@ format = "\uf07b [$path]($style)[$read_only]($read_only_style) "
 format = "[$user]($style) "
 disabled = false
 show_always = true
-
 
 [hostname]
 ssh_symbol = " "
@@ -162,66 +93,64 @@ disabled = false
 ########### Nerd-Font Symbols
 
 [aws]
-symbol = "  "
+symbol = "   "
 
 [buf]
-symbol = " "
+symbol = "  "
 
 [c]
-symbol = " "
+symbol = "  "
 
 [dart]
-symbol = " "
+symbol = "  "
 
 [docker_context]
-symbol = " "
+symbol = "  "
 
 [elixir]
-symbol = " "
+symbol = "  "
 
 [elm]
-symbol = " "
+symbol = "  "
 
 [fossil_branch]
-symbol = " "
+symbol = "  "
 
 [golang]
-symbol = " "
+symbol = "  "
 
 [guix_shell]
-symbol = " "
+symbol = "  "
 
 [haskell]
-symbol = " "
+symbol = "  "
 
 [haxe]
-symbol = " "
+symbol = "  "
 
 [hg_branch]
-symbol = " "
-
+symbol = "  "
 
 [java]
-symbol = " "
+symbol = "  "
 
 [julia]
-symbol = " "
-
+symbol = "  "
 
 [memory_usage]
-symbol = "󰍛 "
+symbol = " 󰍛 "
 
 [meson]
-symbol = "󰔷 "
+symbol = " 󰔷 "
 
 [nim]
-symbol = "󰆥 "
+symbol = " 󰆥 "
 
 [nix_shell]
-symbol = " "
+symbol = "  "
 
 [nodejs]
-symbol = " "
+symbol = "  "
 
 
 [os.symbols]
@@ -268,7 +197,6 @@ Windows = "󰍲  "
 
 [pijul_channel]
 symbol = " "
-
 
 [rlang]
 symbol = "󰟔 "
