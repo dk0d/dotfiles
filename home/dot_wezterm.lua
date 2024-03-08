@@ -80,15 +80,15 @@ config.cursor_blink_rate = 800
 -- 	-- saturation = 1.0,
 -- }
 
--- config.window_background_opacity = .7
--- config.macos_window_background_blur = 100
-config.background = {
-	-- { source = { Color = "black" }, opacity = 0.2 },
-	{
-		source = { File = os.getenv("HOME") .. "/.config/wezterm/background.jpg" },
-		hsb = { brightness = 0.02, saturation = 1 },
-	},
-}
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 80
+-- config.background = {
+-- { source = { Color = "black" }, opacity = 0.2 },
+-- {
+-- source = { File = os.getenv("HOME") .. "/.config/wezterm/background.jpg" },
+-- hsb = { brightness = 0.02, saturation = 1 },
+-- },
+-- }
 
 config.inactive_pane_hsb = {
 	saturation = 0.9,
@@ -173,7 +173,7 @@ config.window_frame = {
 config.colors = {
 
 	-- foreground = "#dcd7ba",
-	background = "#1f1f28",
+	-- background = "#1f1f28",
 	selection_fg = "none", -- use text color
 	selection_bg = "rgb(50%, 50%, 50%, 50%)",
 	scrollbar_thumb = "#16161d",
