@@ -69,6 +69,7 @@ ssh_only = true
 
 [swift]
 format = '[$symbol($version )]($style)'
+symbol = " "
 
 
 [git_branch]
@@ -93,64 +94,80 @@ disabled = false
 ########### Nerd-Font Symbols
 
 [aws]
-symbol = "   "
+symbol = "  "
 
 [buf]
-symbol = "  "
+symbol = " "
 
 [c]
-symbol = "  "
+symbol = " "
+
+
+[crystal]
+symbol = " "
 
 [dart]
-symbol = "  "
+symbol = " "
+
 
 [docker_context]
-symbol = "  "
+symbol = " "
 
 [elixir]
-symbol = "  "
+symbol = " "
 
 [elm]
-symbol = "  "
+symbol = " "
+
+[fennel]
+symbol = " "
 
 [fossil_branch]
-symbol = "  "
+symbol = " "
+
 
 [golang]
-symbol = "  "
+symbol = " "
 
 [guix_shell]
-symbol = "  "
+symbol = " "
 
 [haskell]
-symbol = "  "
+symbol = " "
 
 [haxe]
-symbol = "  "
+symbol = " "
 
 [hg_branch]
-symbol = "  "
+symbol = " "
+
 
 [java]
-symbol = "  "
+symbol = " "
 
 [julia]
-symbol = "  "
+symbol = " "
+
+[kotlin]
+symbol = " "
 
 [memory_usage]
-symbol = " 󰍛 "
+symbol = "󰍛 "
 
 [meson]
-symbol = " 󰔷 "
+symbol = "󰔷 "
 
 [nim]
-symbol = " 󰆥 "
+symbol = "󰆥 "
 
 [nix_shell]
-symbol = "  "
+symbol = " "
 
 [nodejs]
-symbol = "  "
+symbol = " "
+
+[ocaml]
+symbol = " "
 
 
 [os.symbols]
@@ -195,6 +212,12 @@ Unknown = "  "
 Windows = "󰍲  "
 
 
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
 [pijul_channel]
 symbol = " "
 
@@ -204,6 +227,8 @@ symbol = "󰟔 "
 [ruby]
 symbol = " "
 
-
 [scala]
 symbol = " "
+
+[zig]
+symbol = " "
