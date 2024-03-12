@@ -42,11 +42,26 @@
 [user]
 	name = Daniel Capecci
 	email = 5144601-dk0d@users.noreply.gitlab.com
+{{- if eq .chezmoi.os "darwin" }}
+  signingkey = {{ onepasswordRead "op://Personal/id_ed25519/public key" -}}
+{{ end }}
 	
 [includeIf "hasconfig:remote.*.url:*github.com**"]
 [user]
 	name = Daniel Capecci
 	email = 7775585+dk0d@users.noreply.github.com
+{{- if eq .chezmoi.os "darwin" }}
+  signingkey = {{ onepasswordRead "op://Personal/id_ed25519/public key" }}
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+{{ end }}
 	
 # [commit]
 # template = ~/.stCommitMsg
