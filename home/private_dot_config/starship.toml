@@ -19,14 +19,14 @@ format = ' [[$time]($style)]($style) '
 [character]
 # success_symbol = "[](green)"
 # error_symbol = "[](bold red)"
-vicmd_symbol = "[](bold green)"
+vicmd_symbol = "[](bold yellow)"
 
 [line_break]
 disabled = false
 
 [fill]
 symbol = "—"
-style = 'bold dimmed'
+style = 'dimmed'
 
 [conda]
 symbol = " "
