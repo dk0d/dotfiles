@@ -1,9 +1,5 @@
-
-
 alias cmoi='chezmoi'
 alias dotfiles='tmux-sessionizer $(chezmoi source-path)'
-
-
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
