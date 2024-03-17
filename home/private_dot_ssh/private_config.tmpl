@@ -4,9 +4,7 @@
 HashKnownHosts no
 
 {{- if eq .chezmoi.os "linux" }}
-    
 {{  onepasswordRead "op://Personal/SSH Config/text" | replaceAllRegex ".pub" "" -}}
-
 {{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}
