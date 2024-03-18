@@ -88,9 +88,9 @@ return {
 		"rcarriga/nvim-dap-ui",
 		event = "VeryLazy",
 		after = "nvim-dap",
-		-- dependencies = {
-		--   { 'ChristianChiarulli/neovim-codicons' },
-		-- },
+		dependencies = {
+			{ "nvim-neotest/nvim-nio" },
+		},
 		opts = dapuiconfig,
 		-- config = function(plugin, opts)
 		--   -- set config from above
