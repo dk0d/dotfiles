@@ -80,7 +80,7 @@ config.cursor_blink_rate = 800
 -- 	-- saturation = 1.0,
 -- }
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 80
 -- config.background = {
 -- { source = { Color = "black" }, opacity = 0.2 },
