@@ -22,6 +22,12 @@ return {
 					alt = { "DONE", "COMPLETE" },
 					-- signs = false,
 				},
+				MAYBE = {
+					icon = " ",
+					color = "warning",
+					alt = { "MAYBE", "PERHAPS", "POSSIBLY" },
+					-- signs = false,
+				},
 				TODO = {
 					icon = "󰦕 ",
 					color = "info",
