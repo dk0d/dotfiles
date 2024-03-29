@@ -35,6 +35,10 @@ else
 	alias ld='eza -laD'
 fi
 
+if command -v lazygit &>/dev/null; then
+	alias lz='lazygit'
+fi
+
 if command -v bat &>/dev/null; then
 	alias cat='bat'
 fi
