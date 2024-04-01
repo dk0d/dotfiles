@@ -1,10 +1,10 @@
 return {
   "nvim-pack/nvim-spectre",
+  event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
   },
-  event = "VeryLazy",
   build = false,
   cmd = "Spectre",
   opts = { open_cmd = "noswapfile vnew" },
