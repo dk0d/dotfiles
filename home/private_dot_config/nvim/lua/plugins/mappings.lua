@@ -68,6 +68,8 @@ local mappings = {
 
 		["<Esc>"] = { "<cmd>nohl<cr>", desc = "Clear search" },
 
+		["<leader>L"] = { "<cmd>Lazy<cr>", desc = "Lazy" },
+
 		["<C-q>"] = { "<cmd>xall<cr>", desc = "save and quit all" },
 
 		-- disable tabline navigation
