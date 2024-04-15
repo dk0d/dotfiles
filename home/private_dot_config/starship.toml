@@ -2,18 +2,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$all\
 $fill \
+$line_break\
 $os\
 $username\
-$time\
+$all\
 $line_break\
+$directory\
 $character"""
 
 command_timeout = 1500
 
 [time]
-disabled = false
+disabled = true
 format = ' [[$time]($style)]($style) '
 
 [character]
