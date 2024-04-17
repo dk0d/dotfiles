@@ -1,8 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """
-$fill \
+format = """\
+$fill\
 $line_break\
 $os\
 $username\
