@@ -58,7 +58,7 @@ end
 
 local get_icon = require("astroui").get_icon
 
-local mappings = {
+return {
 	v = {
 		["J"] = { "<cmd> m '>+1<cr>gv=gv", desc = "Move line down" },
 		["K"] = { "<cmd> m '<-2<cr>gv=gv", desc = "Move line up" },
@@ -69,6 +69,12 @@ local mappings = {
 		["<Esc>"] = { "<cmd>nohl<cr>", desc = "Clear search" },
 
 		["<leader>L"] = { "<cmd>Lazy<cr>", desc = "Lazy" },
+		["<leader>uh"] = {
+			function()
+				vim.lsp.inlay_hint.enable(nil, not vim.lsp.inlay_hint.is_enabled())
+			end,
+			desc = "Toggle inlay hints",
+		},
 
 		["<C-q>"] = { "<cmd>xall<cr>", desc = "save and quit all" },
 
@@ -223,13 +229,5 @@ local mappings = {
 	t = {
 		-- setting a mapping to false will disable it
 		-- ["<esc>"] = false,
-	},
-}
-
-return {
-	"AstroNvim/astrocore",
-	---@type AstroCoreOpts
-	opts = {
-		mappings = mappings,
 	},
 }

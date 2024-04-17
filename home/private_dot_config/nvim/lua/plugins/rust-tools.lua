@@ -1,3 +1,7 @@
+if true then
+	return {}
+end
+
 return {
 	"simrat39/rust-tools.nvim",
 	event = "VeryLazy",
