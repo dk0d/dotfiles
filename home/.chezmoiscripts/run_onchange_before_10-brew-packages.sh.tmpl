@@ -1,92 +1,14 @@
+{{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-set -eufo pipefail
-
-{{ if .personal -}}
-
 if [ command -v brew &> /dev/null ]; then
-
-formulae=(
-	act                                                   # run github actions locally
-	bat                                                   # https://github.com/sharkdp/bat
-	black                                                 # python formatting
-	bottom                                                # replaces top
-	cmake                                                 # https://cmake.org/
-	commitizen                                            # helper for git commits
-	choose-rust                                           # https://github.com/theryangeary/choose
-	curl                                                  # https://curl.se/
-	deno                                                  # https://deno.land/
-	eza                                                   # modern 'ls'
-	fd                                                    # better 'find'
-	fzf                                                   # fuzzy finder
-	dust                                                  # disk usage
-	gh                                                    # github cli
-	git                                                   # git
-	git-delta                                             # git diff
-	gitleaks                                              # git secrets
-	git-gui                                               # git gui
-	glab                                                  # gitlab cli
-	hatch                                                 # python venv
-	jq                                                    # json parser
-	less                                                  # pager
-	mosh                                                  # mobile shell
-	neovim                                                # vim
-	nvm                                                   # node version manager
-	nmap                                                  # network scanner
-	nushell                                               # shell
-	pandoc                                                # document converter
-	ripgrep                                               # better grep
-	starship                                              # prompt
-	tealdeer                                              # tldr
-	tmux                                                  # terminal multiplexer
-	topgrade                                              # update everything
-	wget                                                  # download
-	yarn                                                  # node package manager
-	zellij                                                # terminal multiplexer
-	zoxide                                                # cd
-	zplug                                                 # zsh plugin manager
-	jesseduffield/lazygit/lazygit                         # git gui
-)
-
-brew update
-
-brew install ${formulae[@]}
-
-{{ if eq .chezmoi.os "darwin" -}}
-
-formulae=(
-	thezoraiz/ascii-image-converter/ascii-image-converter # ascii image converter
-	sondr3/taps/git-ignore                                # git ignore
-)
-
-brew install ${formulae[@]}
-
+brew bundle --no-lock --file=/dev/stdin << EOF
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
 {{ end -}}
-
-{{ if eq .chezmoi.os "darwin" -}}
-echo "Installing Casks...";
-casks=(
-	1password                                             # credentials
-	1password-cli                                         # credentials
-	stats                                                 # system stats in the menu bar
-	hammerspoon                                           # automation with lua
-	signal                                                # messaging
-	wezterm                                               # terminal (rust by the way)
-	obsidian                                              # notes
-	hex-fiend                                             # hex editor
-	balenaetcher                                          # sd card writer
-	transmission                                          # fast downloads
-	visual-studio-code                                    # only when i have to
-	rectangle                                             # macos window manager
-)
-
-brew install --cask ${casks[@]}
-
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
 {{ end -}}
-
-brew cleanup
-
+EOF
 fi
-
 {{ end -}}
-
