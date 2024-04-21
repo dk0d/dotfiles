@@ -80,16 +80,6 @@ config.cursor_blink_rate = 800
 -- 	-- saturation = 1.0,
 -- }
 
-config.window_background_opacity = 0.8
-config.macos_window_background_blur = 80
--- config.background = {
--- { source = { Color = "black" }, opacity = 0.2 },
--- {
--- source = { File = os.getenv("HOME") .. "/.config/wezterm/background.jpg" },
--- hsb = { brightness = 0.02, saturation = 1 },
--- },
--- }
-
 config.inactive_pane_hsb = {
 	saturation = 0.9,
 	brightness = 0.8,
@@ -207,6 +197,17 @@ config.colors = {
 			fg_color = "silver",
 		},
 	},
+}
+
+config.window_background_opacity = 0.7
+config.macos_window_background_blur = 90
+config.background = {
+	-- { source = { Color = "black" }, opacity = 0.2 },
+	-- { source = { Color = "white" }, opacity = 0.9 },
+	-- {
+	-- 	source = { File = os.getenv("HOME") .. "/.config/wezterm/background.jpg" },
+	-- 	hsb = { brightness = 0.02, saturation = 1 },
+	-- },
 }
 
 return config
