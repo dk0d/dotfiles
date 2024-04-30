@@ -66,12 +66,31 @@ return {
 	-- first key is the mode
 	n = {
 
+		["<leader>rp"] = {
+			function()
+				-- local p = require("nio").ui.input({ prompt = "Package Name: " })
+				vim.ui.input({ prompt = "Package Name: " }, function(input)
+					if input then
+						require("lazy").reload({ plugins = { input } })
+					end
+				end)
+			end,
+			desc = "Reload a package",
+		},
+
+		["<leader>pt"] = {
+			"<Plug>PlenaryTestFile",
+			desc = "Plenary test file",
+		},
+
 		["<Esc>"] = { "<cmd>nohl<cr>", desc = "Clear search" },
 
 		["<leader>L"] = { "<cmd>Lazy<cr>", desc = "Lazy" },
 		["<leader>uh"] = {
 			function()
-				vim.lsp.inlay_hint.enable(nil, not vim.lsp.inlay_hint.is_enabled())
+				if vim.version.minor() >= 10 then
+					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+				end
 			end,
 			desc = "Toggle inlay hints",
 		},
