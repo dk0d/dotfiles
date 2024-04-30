@@ -199,7 +199,7 @@ config.colors = {
 	},
 }
 
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.95
 config.macos_window_background_blur = 90
 config.background = {
 	-- { source = { Color = "black" }, opacity = 0.2 },
