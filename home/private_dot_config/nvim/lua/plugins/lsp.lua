@@ -55,6 +55,7 @@ return {
 			ruff_lsp = require("lsp.ruff_lsp"),
 			sourcekit = require("lsp.sourcekit"),
 			texlab = require("lsp.texlab"),
+			clangd = require("lsp.clangd"),
 		},
 
 		-- customize how language servers are attached
