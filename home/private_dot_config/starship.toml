@@ -2,15 +2,15 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """\
-$fill\
-$line_break\
 $os\
 $username\
-$all\
-$line_break\
 $directory\
 $character"""
 
+# everything else to the right
+right_format = """\
+$all
+"""
 command_timeout = 1500
 
 [time]
@@ -26,8 +26,8 @@ vicmd_symbol = "[](bold yellow)"
 disabled = false
 
 [fill]
-symbol = "—"
-style = 'dimmed'
+symbol = " "
+style = ''
 
 [conda]
 symbol = " "
@@ -172,45 +172,45 @@ symbol = " "
 
 
 [os.symbols]
-Alpaquita = "  "
-Alpine = "  "
-Amazon = "  "
-Android = "  "
-Arch = "  "
-Artix = "  "
-CentOS = "  "
-Debian = "  "
-DragonFly = "  "
-Emscripten = "  "
-EndeavourOS = "  "
-Fedora = "  "
-FreeBSD = "  "
-Garuda = "󰛓  "
-Gentoo = "  "
-HardenedBSD = "󰞌  "
-Illumos = "󰈸  "
-Linux = "  "
-Mabox = "  "
-Macos = "  "            #" "# 
-Manjaro = "  "
-Mariner = "  "
-MidnightBSD = "  "
-Mint = "  "
-NetBSD = "  "
-NixOS = "  "
-OpenBSD = "󰈺  "
-openSUSE = "  "
-OracleLinux = "󰌷  "
-Pop = "  "
-Raspbian = "  "
-Redhat = "  "
-RedHatEnterprise = "  "
-Redox = "󰀘  "
-Solus = "󰠳  "
-SUSE = "  "
-Ubuntu = "  "
-Unknown = "  "
-Windows = "󰍲  "
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "            #" "# 
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
 
 
 [perl]
