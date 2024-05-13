@@ -163,7 +163,7 @@ config.window_frame = {
 config.colors = {
 
 	-- foreground = "#dcd7ba",
-	-- background = "#1f1f28",
+	background = "#050512",
 	selection_fg = "none", -- use text color
 	selection_bg = "rgb(50%, 50%, 50%, 50%)",
 	scrollbar_thumb = "#16161d",
@@ -199,15 +199,15 @@ config.colors = {
 	},
 }
 
-config.window_background_opacity = 0.95
-config.macos_window_background_blur = 90
-config.background = {
-	-- { source = { Color = "black" }, opacity = 0.2 },
-	-- { source = { Color = "white" }, opacity = 0.9 },
-	-- {
-	-- 	source = { File = os.getenv("HOME") .. "/.config/wezterm/background.jpg" },
-	-- 	hsb = { brightness = 0.02, saturation = 1 },
-	-- },
-}
+-- config.window_background_opacity = 1
+-- config.macos_window_background_blur = 0
+-- config.background = {
+-- { source = { Color = "black" }, opacity = 0.2 },
+-- { source = { Color = "#444444" }, opacity = 0.9 },
+-- {
+-- 	source = { File = os.getenv("HOME") .. "/.config/wezterm/background.jpg" },
+-- 	hsb = { brightness = 0.02, saturation = 0.7 },
+-- },
+-- }
 
 return config
