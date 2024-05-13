@@ -4,26 +4,27 @@
 
 vim.cmd([[colorscheme catppuccin-mocha]])
 
-vim.g.mapleader = " " -- sets vim.g.mapleader
+vim.g.mapleader = " "
 
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 400
 
-vim.opt.relativenumber = true -- sets vim.opt.relativenumber
-vim.opt.number = true -- sets vim.opt.number
-vim.opt.spell = false -- sets vim.opt.spell
-vim.opt.signcolumn = "auto" -- sets vim.opt.signcolumn to auto
-vim.opt.wrap = false -- sets vim.opt.wrap
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.spell = false
+vim.opt.signcolumn = "auto" --
+vim.opt.wrap = false
 vim.opt.winbar = "%=%m %f"
 vim.opt.foldcolumn = "0"
 vim.opt.hidden = false
 vim.opt.autowriteall = true
 vim.opt.showtabline = 0
-
+-- vim.opt.inccommand = "split"
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
 vim.opt.completeopt = "menu,menuone,noinsert"
 
 vim.g.resession_enabled = true -- use resession to save and load sessions - disables neovim-session-manager
-
 vim.g.autoformat_enabled = false -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
 vim.g.cmp_enabled = true -- enable completion at start
 vim.g.autopairs_enabled = true -- enable autopairs at start
