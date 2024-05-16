@@ -104,8 +104,8 @@ return {
 		["<leader>b\\"] = false,
 		["<leader>b|"] = false,
 
-		["<M-,>"] = { "<c-w>5<", desc = "Shift split left 5" },
-		["<M-.>"] = { "<c-w>5>", desc = "Shift split right 5" },
+		["<M-,>"] = { "<c-w>5>", desc = "Shift split left 5" },
+		["<M-.>"] = { "<c-w>5<", desc = "Shift split right 5" },
 		["<M-k>"] = { "<C-W>+", desc = "Shift split up" },
 		["<M-j>"] = { "<C-W>-", desc = "Shift split down" },
 
