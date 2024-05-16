@@ -9,7 +9,7 @@ return {
 				format = {
 					search_down = { view = "cmdline" },
 					search_up = { view = "cmdline" },
-					cmdline = { icon = " " }, -- icon seems to require FantasqueSansMono Nerd Font
+					cmdline = { icon = "  " }, -- icon seems to require FantasqueSansMono Nerd Font
 				},
 			},
 			lsp = {
@@ -27,13 +27,13 @@ return {
 				},
 			},
 			-- you can enable a preset for easier configuration
-			-- presets = {
-			-- bottom_search = false, -- use a classic bottom cmdline for search
-			-- command_palette = true, -- position the cmdline and popupmenu together
-			-- long_message_to_split = true, -- long messages will be sent to a split
-			-- inc_rename = false, -- enables an input dialog for inc-rename.nvim
-			-- lsp_doc_border = false, -- add a border to hover docs and signature help
-			-- },
+			presets = {
+				-- bottom_search = true, -- use a classic bottom cmdline for search
+				-- command_palette = true, -- position the cmdline and popupmenu together
+				-- long_message_to_split = true, -- long messages will be sent to a split
+				-- inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				-- lsp_doc_border = false, -- add a border to hover docs and signature help
+			},
 			views = {
 				cmdline_popup = {
 					border = {
@@ -41,8 +41,8 @@ return {
 						padding = { 2, 3 },
 					},
 					position = {
-						row = 5,
-						col = "50%",
+						row = "98%",
+						col = "0%",
 					},
 					size = {
 						width = 60,
@@ -53,18 +53,17 @@ return {
 					},
 				},
 				popupmenu = {
-					relative = "editor",
 					border = {
 						style = "none",
 						padding = { 2, 3 },
 					},
 					position = {
-						row = 8,
-						col = "50%",
+						row = "98%",
+						col = "0%",
 					},
 					size = {
 						width = 60,
-						height = 10,
+						height = "auto",
 					},
 					win_options = {
 						winblend = 20,
