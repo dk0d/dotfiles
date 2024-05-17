@@ -123,8 +123,8 @@ if has('ide')
   map <leader>su <Action>(StepOut)
 
   
-  map <leader>v <Action>(SplitVertically)
-  map <leader>h <Action>(SplitHorizontally)
+  map \| <Action>(SplitVertically)
+  map \\ <Action>(SplitHorizontally)
 
   if &ide =~? 'intellij idea'
     if &ide =~? 'community'
