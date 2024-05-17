@@ -33,5 +33,31 @@
       "</Card.Footer>",
       "</Card.Root>"
     ]
+  },
+  "Shadcn Table": {
+    "scope": "svelte",
+    "prefix": "shadTable",
+    "description": "Shadcn-Svelte-Table",
+    "body": [
+      "<Table.Root>",
+      "<Table.Caption>Table Caption</Table.Caption>",
+      "<Table.Header>",
+      "<Table.Row>",
+      "<Table.Head>Invoice</Table.Head>",
+      "<Table.Head>Status</Table.Head>",
+      "<Table.Head>Method</Table.Head>",
+      "<Table.Head>Amount</Table.Head>",
+      "</Table.Row>",
+      "</Table.Header>",
+      "<Table.Body>",
+      "<Table.Row>",
+      "<Table.Cell>INV001</Table.Cell>",
+      "<Table.Cell>Paid</Table.Cell>",
+      "<Table.Cell>Credit Card</Table.Cell>",
+      "<Table.Cell>$250.00</Table.Cell>",
+      "</Table.Row>",
+      "</Table.Body>",
+      "</Table.Root>"
+    ]
   }
 }
