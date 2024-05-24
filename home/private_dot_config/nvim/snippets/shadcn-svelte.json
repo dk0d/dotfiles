@@ -59,5 +59,30 @@
       "</Table.Body>",
       "</Table.Root>"
     ]
+  },
+  "Shadcn Popover": {
+    "scope": "svelte",
+    "prefix": "shadPopover",
+    "description": "Shadcn-Svelte-Popover",
+    "body": [
+      "<Popover.Root>",
+      "<Popover.Trigger>$1</Popover.Trigger>",
+      "<Popover.Content>$2</Popover.Content>",
+      "</Popover.Root>"
+    ]
+  },
+  "Shadcn Carousel": {
+    "scope": "svelte",
+    "prefix": "shadCaro",
+    "description": "Shadcn-Svelte-Carousel",
+    "body": [
+      "<Carousel.Root>",
+      "<Carousel.Content>",
+      "<Carousel.Item>item</Carousel.Item>",
+      "</Carousel.Content>",
+      "<Carousel.Previous />",
+      "<Carousel.Next />",
+      "</Carousel.Root>"
+    ]
   }
 }
