@@ -24,9 +24,9 @@ install.sh
 .zshrc
 .zprofile
 .zshrc.local
-.fish.zsh
+.fzf.zsh
 {{ else }}
-.fish.bash
+.fzf.bash
 {{ end -}}
 
 
