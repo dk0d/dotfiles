@@ -1,6 +1,8 @@
 {{/* boolean feature tags */}}
 {{- $personal_device := true -}}{{/* true if this machine should have personal setup */}}
 {{- $work_device := false -}}{{/* true if this machine should have work setup */}}
+{{- $active_shell := "" -}}
+{{- $shell_choices := list "zsh" "bash" -}}
 {{- "" -}}
 {{- $osid := .chezmoi.os -}}
 {{- $computer_name := "" -}}
@@ -15,8 +17,8 @@
 {{-   end -}}
 {{- end -}}
 
-{{- $personal_device = promptBool "personal_device" -}}
-
+{{- $personal_device := promptBool "Setup Personal Device?: " -}}
+{{- $active_shell := promptChoice "Shell Setup?: " $shell_choices -}}
 
 [onepassword]
   prompt = true
@@ -25,4 +27,5 @@
   personal = {{ $personal_device }}
   work = {{ not $personal_device }}
   osid = {{ $osid | quote }}
+  shell = {{ $active_shell | quote }}
   computer_name = {{ $computer_name | quote }}

@@ -2,6 +2,8 @@
 README.md
 install.sh
 .gitmodules
+.config/skhd/**
+.config/yabai/**
 
 {{ if ne .chezmoi.os "darwin" }}
 .chezmoiscripts/darwin/**
@@ -18,16 +20,20 @@ install.sh
 .config/nushell
 {{ end -}}
 
-
-{{ if .work -}}
+{{ if eq .shell "bash" }}
 .zshrc
 .zprofile
 .zshrc.local
+.fish.zsh
+{{ else }}
+.fish.bash
+{{ end -}}
+
+
+{{ if .work -}}
 .wezterm.lua
 .ideavimrc
 .config/zellij/zellij.yml
-.config/skhd/**
-.config/yabai/**
 {{ end -}}
 
 
