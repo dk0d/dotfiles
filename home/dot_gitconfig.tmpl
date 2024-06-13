@@ -5,6 +5,9 @@
 
 [core]
     pager = delta
+    {{ if .is_wsl }}
+    sshCommand = ssh.exe
+    {{ end }}
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
@@ -29,6 +32,11 @@
 
 [diff]
 	renames = copies
+	
+[includeIf "hasconfig:remote.*.url:*ucf.edu**"]
+[user]
+	name = Daniel Capecci
+	email = daniel.capecci@ucf.edu
 	
 [includeIf "hasconfig:remote.*.url:*gitlab.com**"]
 [user]
