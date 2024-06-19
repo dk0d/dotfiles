@@ -29,3 +29,4 @@
   osid = {{ $osid | quote }}
   shell = {{ $active_shell | quote }}
   computer_name = {{ $computer_name | quote }}
+  is_wsl = {{ .chezmoi.kernel.osrelease | lower | contains "microsoft" }} # if inside of windows subsystem linux
