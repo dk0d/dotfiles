@@ -3,11 +3,12 @@
 # Make fish shell default
 {{ if eq .shell "fish" }}
 if [[ -f "/opt/homebrew/bin/fish" ]]; then
+  # non standard shell
+  echo "/opt/homebrew/bin/fish" >> /etc/shells
   chsh -s /opt/homebrew/bin/fish $USER
 elif [[ -f "/bin/fish" ]]; then
   chsh -s /bin/fish $USER
 fi
-
 {{ else if eq .shell "zsh"}}
 if [[ -f "/bin/zsh" ]]; then
   chsh -s /bin/zsh $USER
