@@ -55,16 +55,18 @@ brews = [
   "atac",                   # cli postman
 ]
 casks = [
-  "1password",          # credentials
-  "1password-cli",      # credentials
-  "stats",              # system stats in the menu bar
-  "hammerspoon",        # automation with lua
-  "signal",             # messaging
-  "wezterm",            # terminal (rust by the way)
-  "obsidian",           # notes
-  "hex-fiend",          # hex editor
-  "balenaetcher",       # sd card writer
-  "transmission",       # fast downloads
-  "visual-studio-code", # only when i have to
-  "rectangle",          # macos window manager
+  "1password",                   # credentials
+  "1password-cli",               # credentials
+  "stats",                       # system stats in the menu bar
+  "hammerspoon",                 # automation with lua
+  "signal",                      # messaging
+  "wezterm",                     # terminal (rust by the way)
+  "obsidian",                    # notes
+  "hex-fiend",                   # hex editor
+  "balenaetcher",                # sd card writer
+  "transmission",                # fast downloads
+  "visual-studio-code",          # only when i have to
+  "rectangle",                   # macos window manager
+  "font-fira-code",              # fira code
+  "font-symbols-only-nerd-font", # nerd fonts
 ]
