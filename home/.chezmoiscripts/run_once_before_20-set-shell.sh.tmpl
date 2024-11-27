@@ -4,7 +4,7 @@
 {{ if eq .shell "fish" }}
 if [[ -f "/opt/homebrew/bin/fish" ]]; then
   chsh -s /opt/homebrew/bin/fish $USER
-else if [[ -f "/bin/fish" ]]; then
+elif [[ -f "/bin/fish" ]]; then
   chsh -s /bin/fish $USER
 fi
 
