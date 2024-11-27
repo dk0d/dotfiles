@@ -169,10 +169,5 @@ if [[ ! -d "${HOME}/projects" ]]; then
   ln -s "${HOME}/Developer" "${HOME}/projects"
 fi
 
-# Make fish shell default
-if [[ -f "/opt/homebrew/bin/fish" ]]; then
-  chsh -s /opt/homebrew/bin/fish $USER
-fi
-
 echo "Done. Note that some of these changes require a logout/restart to take effect."
 

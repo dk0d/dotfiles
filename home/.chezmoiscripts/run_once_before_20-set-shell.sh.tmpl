@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Make fish shell default
+{{ if eq .shell "fish" }}
+if [[ -f "/opt/homebrew/bin/fish" ]]; then
+  chsh -s /opt/homebrew/bin/fish $USER
+else if [[ -f "/bin/fish" ]]; then
+  chsh -s /bin/fish $USER
+fi
+
+{{ else if eq .shell "zsh"}}
+if [[ -f "/bin/zsh" ]]; then
+  chsh -s /bin/zsh $USER
+fi
+{{ end }}
+

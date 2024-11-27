@@ -5,11 +5,15 @@
 if ! command -v brew >/dev/null; then 
 	echo '🍺  Installing Homebrew';
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
+	if [[ -f "/opt/homebrew/bin/brew" ]]; then
+	  eval "$(/opt/homebrew/bin/brew shellenv)"
+	else if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+	  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	fi
 fi
 {{ end }}
 
 if [[ ! -d "$HOME/.miniforge" ]]; then
-  
   {{ if eq .chezmoi.os "darwin" -}}
     echo "🐍 Install Mambaforge-MacOSX-arm64"
     curl -fsLSo miniforge.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh
@@ -22,7 +26,6 @@ if [[ ! -d "$HOME/.miniforge" ]]; then
     /bin/bash miniforge.sh -b -p "$HOME/.miniforge"
     
   {{ end -}}
-  
   source "$HOME/.miniforge/etc/profile.d/mamba.sh"
 fi
 
