@@ -28,12 +28,18 @@ install.sh
 .chezmoiscripts/linux/**
 {{ end }}
 
-{{ if eq .shell "bash" }}
+{{ if ne .shell "fish"}}
+.config/fish/config.fish 
+{{ end }}
+
+{{ if ne .shell "zsh" }}
 .zshrc
 .zprofile
 .zshrc.local
 .fzf.zsh
-{{ else }}
+{{ end -}}
+
+{{ if ne .shell 'bash' }}
 .fzf.bash
 {{ end -}}
 
