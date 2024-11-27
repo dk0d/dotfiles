@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# from: https://gist.github.com/0xjac/85097472043b697ab57ba1b1c7530274
+
+set -e # halt script on error
+
+REPO_URL=${1}
+REPO_TARGET_NAME=${2}
+SOURCE_ACCOUNT=${3-"dk0d"}
+REPO_BASE_NAME="$(basename $REPO_URL)"
+REPO_NAME="$SOURCE_ACCOUNT/$REPO_TARGET_NAME"
+FLAGS="--private"
+
+# Bare clone of the repo
+git clone --bare "$REPO_URL" "$REPO_BASE_NAME"
+
+# if [[ "$SOURCE_ACCOUNT" != 'dk0d' ]]; then
+# 	# Mirror-push to the new repo
+# 	FLAGS=" --team $SOURCE_ACCOUNT"
+# fi
+
+# Create a new repo on github
+gh repo create $REPO_NAME $FLAGS
+
+# Mirror push repo to new github repo
+
+echo "Pushing to git@github.com:$REPO_NAME.git"
+cd "$REPO_BASE_NAME"
+git push --mirror "git@github.com:$REPO_NAME.git"
+
+# Clean up
+cd ..
+rm -rf "$(basename $REPO_URL)"
+
+# Clone new repo
+git clone "git@github.com:$REPO_NAME.git"
+
+# Set upstream to disable push
+cd "$REPO_TARGET_NAME"
+git remote add upstream "$REPO_URL"
+git remote set-url --push upstream DISABLE
+
+# Show remotes
+git remote -v
+
+#
+# When you push, do so on origin with git push origin.
+# When you want to pull changes from upstream you can just fetch the remote and rebase on top of your work.
+#  git fetch upstream
+#  git rebase upstream/master

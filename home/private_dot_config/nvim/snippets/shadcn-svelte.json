@@ -1,0 +1,138 @@
+{
+  "Shadcn Tabs": {
+    "scope": "svelte",
+    "prefix": "shadTabs",
+    "description": "Shadcn-Svelte Tabs",
+    "body": [
+      "<Tabs.Root>",
+      "<Tabs.List>",
+      "\t<Tabs.Trigger value=\"$1\">Tab1</Tabs.Trigger>",
+      "\t<Tabs.Trigger value=\"tab2\">Tab2</Tabs.Trigger>",
+      "</Tabs.List>",
+      "\t<Tabs.Content value=\"$1\">Tab 1 Yea</Tabs.Content>",
+      "\t<Tabs.Content value=\"tab2\">Tab 2 Yea</Tabs.Content>",
+      "</Tabs.Root>"
+    ]
+  },
+  "Shadcn Card": {
+    "scope": "svelte",
+    "prefix": "shadCard",
+    "description": "Shadcn-Svelte-Card",
+    "body": [
+      "<Card.Root>",
+      "<Card.Header>",
+      "<Card.Title>CardTitle</Card.Title>",
+      "<Card.Description>CardDescription</Card.Description>",
+      "</Card.Header>",
+      "<Card.Content>",
+      "$1",
+      "</Card.Content>",
+      "<Card.Footer>",
+      "<Button variant=\"outline\">Cancel</Button>",
+      "<Button>Deploy</Button>",
+      "</Card.Footer>",
+      "</Card.Root>"
+    ]
+  },
+  "Shadcn Table": {
+    "scope": "svelte",
+    "prefix": "shadTable",
+    "description": "Shadcn-Svelte-Table",
+    "body": [
+      "<Table.Root>",
+      "<Table.Caption>Table Caption</Table.Caption>",
+      "<Table.Header>",
+      "<Table.Row>",
+      "<Table.Head>Invoice</Table.Head>",
+      "<Table.Head>Status</Table.Head>",
+      "<Table.Head>Method</Table.Head>",
+      "<Table.Head>Amount</Table.Head>",
+      "</Table.Row>",
+      "</Table.Header>",
+      "<Table.Body>",
+      "<Table.Row>",
+      "<Table.Cell>INV001</Table.Cell>",
+      "<Table.Cell>Paid</Table.Cell>",
+      "<Table.Cell>Credit Card</Table.Cell>",
+      "<Table.Cell>$250.00</Table.Cell>",
+      "</Table.Row>",
+      "</Table.Body>",
+      "</Table.Root>"
+    ]
+  },
+  "Shadcn Popover": {
+    "scope": "svelte",
+    "prefix": "shadPopover",
+    "description": "Shadcn-Svelte-Popover",
+    "body": [
+      "<Popover.Root>",
+      "<Popover.Trigger>$1</Popover.Trigger>",
+      "<Popover.Content>$2</Popover.Content>",
+      "</Popover.Root>"
+    ]
+  },
+  "Shadcn Carousel": {
+    "scope": "svelte",
+    "prefix": "shadCaro",
+    "description": "Shadcn-Svelte-Carousel",
+    "body": [
+      "<Carousel.Root>",
+      "<Carousel.Content>",
+      "<Carousel.Item>item</Carousel.Item>",
+      "</Carousel.Content>",
+      "<Carousel.Previous />",
+      "<Carousel.Next />",
+      "</Carousel.Root>"
+    ]
+  },
+  "Shadcn Accordion": {
+    "scope": "svelte",
+    "prefix": "shadAccord",
+    "description": "Shadcn-Svelte-Accordion",
+    "body": [
+      "<Accordion.Root>",
+      "<Accordion.Item value=\"item-1\">",
+      "<Accordion.Trigger>Is it accessible?</Accordion.Trigger>",
+      "<Accordion.Content>",
+      "$1",
+      "</Accordion.Content>",
+      "</Accordion.Item>",
+      "</Accordion.Root>"
+    ]
+  },
+  "Shadcn Accordion Item": {
+    "scope": "svelte",
+    "prefix": "shadAccItem",
+    "description": "Shadcn-Svelte-Accordion-Item",
+    "body": [
+      "<Accordion.Item value=\"item\">",
+      "<Accordion.Trigger>Is it accessible?</Accordion.Trigger>",
+      "<Accordion.Content>",
+      "$1",
+      "</Accordion.Content>",
+      "</Accordion.Item>"
+    ]
+  },
+  "Shadcn Sheet": {
+    "scope": "svelte",
+    "prefix": "shadSheet",
+    "description": "Shadcn-Svelte-Sheet",
+    "body": [
+      "<Sheet.Root>",
+      "<Sheet.Trigger>Open</Sheet.Trigger>",
+      "<Sheet.Content>",
+      "<Sheet.Header>",
+      "<Sheet.Title>$1</Sheet.Title>",
+      "<Sheet.Description>$2</Sheet.Description>",
+      "</Sheet.Header>",
+      "$3",
+      "<Sheet.Footer>",
+      "<Sheet.Close asChild let:builder>",
+      "<Button builders={[builder]} type=\"submit\">Save changes</Button>",
+      "</Sheet.Close>",
+      "</Sheet.Footer>",
+      "</Sheet.Content>",
+      "</Sheet.Root>"
+    ]
+  }
+}

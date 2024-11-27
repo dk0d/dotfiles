@@ -1,0 +1,144 @@
+" options and mappings that are supported by both Vim and IdeaVim
+" Plug '<extension-github-reference>'
+" Plug 'tpope/vim-surround'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'michaeljsmith/vim-indent-object'
+
+set surround
+set nerdtree 
+set hlsearch
+set ignorecase
+set incsearch
+set wrapscan
+set multiple-cursors
+set commentary
+set ideajoin
+set number
+set relativenumber
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+let mapleader=" "
+" setlocal foldmethod=syntax
+
+if has('ide')
+  nnoremap \e :e ~/.ideavimrc<CR>
+  map \r :source ~/.ideavimrc<CR>
+  " mappings and options that exist only in IdeaVim
+  map <leader>ff <Action>(GotoFile)
+  map <leader>fs <Action>(GotoSymbol)
+  map <leader>g <Action>(FindInPath)
+  map <leader>b <Action>(Switcher)
+  
+  " nnoremap yy "+yy
+  " nnoremap y "+y
+  " nnoremap p "+p
+  " vmap p "+p
+  " map P "+P
+  " vnoremap P "+P
+  " nnoremap dd "+dd
+  " vnoremap d "+d
+
+  inoremap jk <esc>
+  map <leader>x <cmd>bd<cr>
+  map <leader>w <Action>(Save)
+  map <leader>h <Action>(ActivateTerminalToolWindow)
+  map <S-h> ^
+  map <S-l> $
+
+" Navigation 
+  map <c-=> <Action>(Unsplit)
+  map <c-m> <Action>(MoveEditorToOppositeTabGroup)
+  map <leader>h <Action>(SplitHorizontally)
+  sethandler <c-j> a:vim
+  sethandler <c-k> a:vim
+  map <c-h> <c-w>h
+  map <c-l> <c-w>l
+  map <c-j> <c-w>j
+  map <c-k> <c-w>k
+  map <c-d> <c-d>zz
+  map <c-u> <c-u>zz
+  map <TAB> <Action>(PreviousTab)
+  map <s-TAB> <Action>(NextTab)
+  map <Leader>en <Action>(EditSourceInNewWindow)
+  map <Leader>n <Action>(NextWindow)
+  map <Leader>q <Action>(CloseContent)
+  map <Leader>qa <Action>(CloseAllEditors)
+
+
+  set ideajoin
+  set idearefactormode=keep
+  vnoremap < <gv
+  vnoremap > >gv
+  map [[ <Action>(MethodUp)
+  map ]] <Action>(MethodDown)
+  map zc <Action>(CollapseRegion)
+  map zo <Action>(ExpandRegion)
+  map <leader>zc <Action>(CollapseAllRegions)
+  map <leader>zo <Action>(ExpandAllRegions)
+  map <leader>c <Action>(CommentByLineComment)
+  map <leader>r <Action>(Refactorings.QuickListPopupAction)
+  map <Leader>fd  <Action>(ReformatCode)
+  map <leader>o <Action>(OptimizeImports)
+  map <leader>fo <Action>(RecentFiles)
+  map <leader>l <Action>(RecentLocations)
+  map <leader>h  <Action>(LocalHistory.ShowHistory)
+  map ge <Action>(GotoNextError)
+  map gE <Action>(GotoPreviousError)
+  set incsearch
+  map <c-/> <Action>(FindInPath)
+  map <c-a> <Action>(GotoAction)
+  map <leader>u <Action>(FindUsages)
+  map <leader>s <Action>(GotoRelated)
+  map <leader>ch <Action>(CallHierarchy)
+  map <leader>nb <Action>(ShowNavBar)
+  map <c-s> <Action>(FileStructurePopup)
+  map gc <Action>(GotoClass)
+  " map gi <Action>(GotoImplementation)
+  " map gd <Action>(GotToDeclaration)
+  map gp <Action>(GotToSuperMethod)
+  map gt <Action>(GotoTest)
+  map gb <Action>(Back)
+  map gf <Action>(Forward)
+
+
+  map <leader>x <Action>(CloseContent)
+  map <leader>rr <Action>(ContextRun)
+  map <leader>rb <Action>(BuildMenu)
+  map <leader>c <Action>(RunClass)
+  map <leader>cr <Action>(ChooseRunConfiguration)
+  map <leader>t <Action>(ActivateRunToolWindow)
+  map <leader>u <Action>(Rerun)
+  map <leader>rn <Action>(RenameElement)
+
+  map <leader>b <Action>(ToggleLineBreakpoint)
+  map <leader>xd <Action>(Debug)
+  map <leader>n <Action>(ActivateDebugToolWindow)
+  map <leader>dr <Action>(Rerun)
+  map <leader>dt <Action>(RerunTests)
+  map <leader>xc <Action>(Resume)
+  map <leader>so <Action>(StepOver)
+  map <leader>si <Action>(StepInto)
+  map <leader>st <Action>(Stop)
+  map <leader>su <Action>(StepOut)
+
+  
+  map \| <Action>(SplitVertically)
+  map \\ <Action>(SplitHorizontally)
+
+  if &ide =~? 'intellij idea'
+    if &ide =~? 'community'
+      " some mappings and options for IntelliJ IDEA Community Edition
+    elseif &ide =~? 'ultimate'
+      " some mappings and options for IntelliJ IDEA Ultimate Edition
+    endif
+  elseif &ide =~? 'pycharm'
+    " PyCharm specific mappings and options
+  endif
+else
+  " some mappings for Vim/Neovim
+  nnoremap <leader>fo <cmd>Telescope find_files<cr>
+endif
+
+map H ^
+map L $

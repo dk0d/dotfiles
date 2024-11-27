@@ -1,0 +1,35 @@
+---
+# setup without sudo
+- hosts: localhost
+  connection: local
+  gather_facts: true
+  vars_files:
+    - "{{ ansible_env['HOME'] }}/.bootstrap/default.yml"
+  become: false
+  become_user: "ansible_env['USER']"
+
+  pre_tasks:
+    - name: Load OS Specific Variable Files
+      include_vars: "{{ item }}"
+      with_first_found:
+        - "{{ ansible_env['HOME'] }}/.bootstrap/variables_{{ ansible_os_family | lower }}.yml"
+
+  tasks:
+    - name: "🦀 Installing Rustup"
+      command: >
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --profile default -y;
+        creates="{{ ansible_env['HOME'] }}/.cargo/env"
+    - name: "Install HomeBrew"
+      when: can_become
+      command: >
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
+        creates="{{ homebrew_prefix }}/README.md"
+    - name: "🐍 Install Miniforge"
+      command: |
+        curl -fsLSo miniforge.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh;
+        /bin/bash miniforge.sh -b -p "$HOME/.miniforge";
+        source "$HOME/.miniforge/etc/profile.d/mamba.sh";
+        creates="{{ ansible_env['HOME'] }}/.miniforge/etc/profile.d/mamba.sh"
+    - name: "💰  Installing oh-my-zsh"
+	    command: | 
+        "yes | /bin/bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";"

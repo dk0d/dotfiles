@@ -1,0 +1,59 @@
+#!/bin/bash
+
+{{ if .can_sudo }}
+# Install Homebrew
+if ! command -v brew >/dev/null; then 
+	echo '🍺  Installing Homebrew';
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
+fi
+{{ end }}
+
+if [[ ! -d "$HOME/.miniforge" ]]; then
+  
+  {{ if eq .chezmoi.os "darwin" -}}
+    echo "🐍 Install Mambaforge-MacOSX-arm64"
+    curl -fsLSo miniforge.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh
+    /bin/bash miniforge.sh -b -p "$HOME/.miniforge"
+
+  {{ else if eq .chezmoi.os "linux" -}}
+
+    echo "🐍 Install Mambaforge-Linux-x86_64"
+    curl -fsLSo miniforge.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+    /bin/bash miniforge.sh -b -p "$HOME/.miniforge"
+    
+  {{ end -}}
+  
+  source "$HOME/.miniforge/etc/profile.d/mamba.sh"
+fi
+
+{{ if eq .shell "zsh" }}
+# Install Oh My Zsh
+if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+	echo '💰  Installing oh-my-zsh';
+	yes | /bin/bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+fi
+# Install ZSH plugins
+if [ $(basename $SHELL) = 'zsh' ] && [ ! -d ~/.zsh/zsh-autosuggestions ]; then 
+  echo "⚡️ zsh-autosuggestions";
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;
+fi
+
+if [ $(basename $SHELL) = 'zsh' ] && [ ! -d ~/.zsh/zsh-syntax-highlighting ]; then
+  echo "🌈 zsh-syntax-highlighting";
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting;
+fi
+{{ end }}
+
+if ! command -v cargo &>/dev/null; then 
+   echo "🦀 Installing Rustup"
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --profile default -y;
+fi;
+ 
+if [ ! -d ~/.tmux/plugins/tpm ]; then 
+ echo "🔌 Installing TPM"
+ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; 
+fi;
+
+if [ ! -f "$HOME/.local/bin/neowofetch" ]; then
+ P="$HOME/.local/bin/neowofetch" && curl -L nf.hydev.org -o "$P" && chmod +x "$P" && ln -s $HOME/.local/bin/neowofetch $HOME/.local/bin/neofetch
+fi;

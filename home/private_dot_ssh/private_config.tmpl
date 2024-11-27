@@ -1,0 +1,18 @@
+# Host *
+#   AddKeysToAgent yes
+#   UseKeychain yes
+HashKnownHosts no
+
+{{- if .has_op -}}
+{{-   if eq .chezmoi.os "linux" }}
+{{      onepasswordRead "op://Personal/SSH Config/text" .vault_name | replaceAllRegex ".pub" "" -}}
+{{-   end }}
+
+{{    if eq .chezmoi.os "darwin" -}}
+{{      onepasswordRead "op://Personal/SSH Config/text"  -}}
+
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  
+{{    end -}}
+{{ end -}}

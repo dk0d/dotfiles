@@ -1,0 +1,38 @@
+# Setup fzf
+# ---------
+
+if [[ -d $HOME/.fzf ]]; then
+	
+	if [[ ! "$PATH" = *$HOME/.fzf/bin* ]]; then
+		PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+	fi
+
+	# Auto-completion
+	#
+	[[ $- = *i* ]] && source "$HOME/.fzf/shell/completion.bash" 2>/dev/null
+
+	# Key bindings
+	#
+	source "$HOME/.fzf/shell/key-bindings.bash"
+	
+elif [[ -d /opt/homebrew/opt/fzf ]]; then
+	
+	if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+		PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+	fi
+
+	# Auto-completion
+	# ---------------
+	if [[ -f /opt/homebrew/opt/fzf/shell/completion.bash ]]; then
+		source "/opt/homebrew/opt/fzf/shell/completion.bash"
+	fi
+
+	# Key bindings
+	# ------------
+	if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.bash ]]; then
+		source "/opt/homebrew/opt/fzf/shell/key-bindings.bash"
+	fi
+	
+fi
+
+

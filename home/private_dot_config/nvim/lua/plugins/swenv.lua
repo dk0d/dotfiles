@@ -1,0 +1,13 @@
+return {}
+-- return {
+--   'AckslD/swenv.nvim',
+--   keys = {
+--     { '<leader>pE', function() require('swenv.api').pick_env() end, desc = 'Choose python environment' },
+--   },
+--   config = function()
+--     require('swenv').setup {
+--       get_venvs = function() return require('swenv.api').get_venvs() end,
+--       post_set_venv = function() vim.cmd 'LspRestart' end,
+--     }
+--   end,
+-- }

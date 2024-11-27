@@ -1,0 +1,12 @@
+.*.sw*
+*.pyc
+.DS_Store
+.Python
+__pycache__
+.envrc
+.idea
+.pc
+.svn
+.vscode
+node_modules
+/tmp

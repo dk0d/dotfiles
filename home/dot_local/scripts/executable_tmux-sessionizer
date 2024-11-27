@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+#
+# original script from: https://github.com/ThePrimeagen/.dotfiles
+
+if [[ $# -eq 1 ]]; then
+	selected=$1
+else
+	dirstring=$(cat $HOME/.local/scripts/.tmux-directories)
+	_dirs=($dirstring)
+	existing=()
+	for i in ${_dirs[@]}; do
+		path=${i/#\~/$HOME}
+		if [ -d $path ]; then
+			existing+=($path)
+		fi
+	done
+	# https://thevaluable.dev/practical-guide-fzf-example/
+	if command -v fd &>/dev/null; then
+		selected=$(fd . -p -H -L -d 1 -t d ${existing[@]} | fzf --layout reverse --multi --margin=30%,20%,30%,20% --info=inline --prompt="󰼇 " --pointer="󰳟" --border=rounded)	
+	else
+		selected=$(find -L ${existing[@]} -mindepth 1 -maxdepth 1 -type d | fzf --layout reverse --multi --margin=30%,20%,30%,20% --info=inline --prompt="󰼇 " --pointer="󰳟" --border=rounded)
+	fi
+fi
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+conda_command=""
+
+get_conda_command() {
+
+	# get conda env name and command
+	if [ -d "$selected/.venv" ]; then
+		conda_command="tmux-windowizer $selected_name conda activate $selected/.venv"
+	elif [ "$selected_name" != "" ]; then
+		if command -v rg &>/dev/null; then
+			selected_env="$(conda env list | grep -U "/$selected_name\$" | awk '{print $2}' | xargs)"
+		else
+			selected_env="$(conda env list | grep -G "$selected_name" | awk '{print $2}' | xargs)"
+		fi
+		if [ ! -z "$selected_env" ]; then
+			conda_command="tmux-windowizer $selected_name conda activate $selected_env"
+		fi
+	fi
+	# conda_command="$conda" # trim whitespace
+}
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+	if command -v conda &>/dev/null; then
+		get_conda_command
+	fi 
+	if [[ -z $conda_command ]] || [[ "$conda_command" == "" ]]; then
+		tmux new-session -s $selected_name -c $selected
+	else
+		tmux new-session -s $selected_name -c $selected "$conda_command"
+	fi
+	exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
+	if command -v conda &>/dev/null; then
+		get_conda_command
+	fi 
+	# create new session and run conda command if exists
+	if [[ -z $conda_command ]] || [[ "$conda_command" == "" ]]; then
+		tmux new-session -ds $selected_name -c $selected
+	else
+		tmux new-session -ds $selected_name -c $selected "$conda_command"
+	fi
+fi
+
+if [[ -z $TMUX ]]; then
+	tmux attach -t $selected_name
+else
+	tmux switch-client -t $selected_name
+fi

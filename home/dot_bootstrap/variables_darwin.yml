@@ -1,0 +1,2 @@
+homebrew_prefix: /opt/homebrew
+miniforge_url: https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh

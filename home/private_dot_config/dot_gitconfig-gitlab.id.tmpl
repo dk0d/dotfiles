@@ -1,0 +1,6 @@
+[user]
+	name = Daniel Capecci
+	email = 5144601-dk0d@users.noreply.gitlab.com
+{{- if .has_op }}
+  signingkey = {{ onepasswordRead "op://Personal/id_ed25519/public key" .vault_name -}}
+{{ end }}

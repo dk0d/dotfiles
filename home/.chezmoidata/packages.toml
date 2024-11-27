@@ -1,0 +1,70 @@
+[packages]
+brews = [
+  "act",                                                   # run github actions locally
+  "bat",                                                   # https://github.com/sharkdp/bat
+  "black",                                                 # python formatting
+  "bottom",                                                # replaces top
+  "cmake",                                                 # https://cmake.org/
+  "commitizen",                                            # helper for git commits
+  "choose-rust",                                           # https://github.com/theryangeary/choose
+  "curl",                                                  # https://curl.se/
+  "deno",                                                  # https://deno.land/
+  "eza",                                                   # modern 'ls'
+  "fd",                                                    # better 'find'
+  "fish",                                                  # fish shell
+  "fzf",                                                   # fuzzy finder
+  "dust",                                                  # disk usage
+  "gh",                                                    # github cli
+  "git",                                                   # git
+  "git-delta",                                             # git diff
+  "gitleaks",                                              # git secrets
+  "git-gui",                                               # git gui
+  "glab",                                                  # gitlab cli
+  "hatch",                                                 # python venv
+  "jq",                                                    # json parser
+  "less",                                                  # pager
+  "mosh",                                                  # mobile shell
+  "neovim",                                                # vim
+  "nvm",                                                   # node version manager
+  "nmap",                                                  # network scanner
+  "nushell",                                               # shell
+  "pandoc",                                                # document converter
+  "ripgrep",                                               # better grep
+  "starship",                                              # prompt
+  "tealdeer",                                              # tldr
+  "tmux",                                                  # terminal multiplexer
+  "topgrade",                                              # update everything
+  "wget",                                                  # download
+  "yarn",                                                  # node package manager
+  "zellij",                                                # terminal multiplexer
+  "zoxide",                                                # cd
+  "yazi",                                                  # cli fileexplorer
+  "poppler",                                               # pdf preview
+  "age",                                                   # file encryption
+  "termshark",                                             # CLI wrapper for tshark (wireshark)
+  "zplug",                                                 # zsh plugin manager
+  "jesseduffield/lazygit/lazygit",                         # git gui
+  "thezoraiz/ascii-image-converter/ascii-image-converter", # ascii image converter
+]
+
+
+[packages.darwin]
+taps = ["julien-cpsn/atac"]
+brews = [
+  "sondr3/taps/git-ignore", # git ignore
+  "atac",                   # cli postman
+]
+casks = [
+  "1password",          # credentials
+  "1password-cli",      # credentials
+  "stats",              # system stats in the menu bar
+  "hammerspoon",        # automation with lua
+  "signal",             # messaging
+  "wezterm",            # terminal (rust by the way)
+  "obsidian",           # notes
+  "hex-fiend",          # hex editor
+  "balenaetcher",       # sd card writer
+  "transmission",       # fast downloads
+  "visual-studio-code", # only when i have to
+  "rectangle",          # macos window manager
+]

@@ -1,0 +1,57 @@
+{{/* boolean feature tags */}}
+{{- $personal_device := true -}}{{/* true if this machine should have personal setup */}}
+{{- $active_shell := "" -}}
+{{- $shell_choices := list "zsh" "bash" -}}
+
+{{- $osid := .chezmoi.os -}}
+{{- $computer_name := "" -}}
+{{- $is_wsl := false -}}
+{{- $can_sudo := true -}}
+{{- $has_op := false -}}
+{{- $email := "" -}}
+{{- $vault_name := "" -}}
+
+{{- $personal_device := promptBool "Setup Personal Device?: " -}}
+{{- $active_shell := promptChoice "Shell Setup?: " $shell_choices -}}
+{{- $has_op = promptBool "Use op?" -}}
+
+{{ if $has_op }}
+{{ $vault_name = promptString "vault_name:" }}
+{{ end }}
+
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $computer_name = output "scutil" "--get" "ComputerName" | trim -}}
+{{- else -}}
+{{-   $computer_name = output "hostname" | trim -}}
+{{-   if eq .chezmoi.os "linux" -}}
+{{-     if hasKey .chezmoi.osRelease "id" -}}
+{{-       $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{-       $is_wsl = .chezmoi.osRelease.id | lower | contains "microsoft" -}}
+{{-     end -}}
+{{-   end -}}
+{{- end -}}
+
+{{- if not $personal_device -}}
+{{- $can_sudo = promptBool "Can sudo?" -}}
+{{- $email = promptString "Email?" -}}
+{{- end -}}
+
+
+[onepassword]
+  prompt = false
+
+[data]
+  has_op = {{ $has_op }}
+  vault_name = {{ $vault_name | quote }}
+  personal = {{ $personal_device }}
+  work = {{ not $personal_device }}
+  can_sudo = {{ $can_sudo }}
+  osid = {{ $osid | quote }}
+  shell = {{ $active_shell | quote }}
+  computer_name = {{ $computer_name | quote }}
+  email = {{ $email | quote }}
+  {{ if eq .chezmoi.os "linux" -}}
+  is_wsl = {{ .chezmoi.osRelease.id | lower | contains "microsoft" }} # if inside of windows subsystem linux
+  {{- else -}}
+  is_wsl = false
+  {{- end -}}

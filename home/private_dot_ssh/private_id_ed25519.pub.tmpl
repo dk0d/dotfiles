@@ -1,0 +1,3 @@
+{{- if .has_op -}}
+{{ onepasswordRead "op://Personal/id_ed25519/public key" .vault_name  -}}
+{{- end -}}

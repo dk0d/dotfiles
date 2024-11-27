@@ -1,0 +1,191 @@
+# ENV
+
+# set PATH ~/.local/scripts/fish $PATH
+set PATH ~/.local/scripts $PATH
+ 
+if test -e /opt/homebrew/bin/brew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else if test -e /home/linuxbrew/.linuxbrew/bin/brew
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+end
+
+# pnpm
+if command -q pnpm 
+	set -gx PNPM_HOME "$HOME/.pnpm-global"
+	switch ":$PATH:" 
+	case $PNPM_HOME
+  	echo ""
+  case "*"
+  	set PATH $PNPM_HOME $PATH 
+	end
+	pnpm config set pnpm-prefix "$PNPM_HOME"
+end
+# pnpm end
+
+# NVM
+if command -q brew; and test -e "$(brew --prefix nvm)"
+	set brewnvm "$(brew --prefix nvm)"
+	set -gx NVM_DIR "$brewnvm"
+	# if test -e $brewnvm/nvm.sh
+	# 	source $brewnvm/nvm.sh
+	# end
+	# if test -e $brewnvm/etc/bash_completion.d/nvm
+	# 	source $brewnvm/etc/bash_completion.d/nvm
+	# end
+else if test -e "$HOME/.nvm"
+	set -gx NVM_DIR "$HOME/.nvm"
+	if test -e /opt/homebrew/opt/nvm/nvm.sh
+		source /opt/homebrew/opt/nvm/nvm.sh
+	end
+	if test -e /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+		source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+	end
+end
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+## MAMBA
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f $HOME/.miniforge/bin/conda
+    eval $HOME/.miniforge/bin/conda "shell.fish" "hook" $argv | source
+  	# This is needed to ensure that python env takes priority over homebrew python installs
+		fish_add_path --global --move --path "$HOME/.miniforge/bin" "$HOME/.miniforge/sbin"
+else
+    if test -f "$HOME/.miniforge/etc/fish/conf.d/conda.fish"
+        . "$HOME/.miniforge/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "$HOME/.miniforge/bin" $PATH
+    end
+end
+
+if test -f "$HOME/.miniforge/etc/fish/conf.d/mamba.fish"
+    source "$HOME/.miniforge/etc/fish/conf.d/mamba.fish"
+end
+# <<< conda initialize <<<
+
+# Cargo
+if test -f "$HOME/.cargo/env.fish"
+	source "$HOME/.cargo/env.fish"
+end
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+if command -q starship 
+  starship init fish | source
+end
+
+if command -q fzf 
+	fzf --fish | source
+end
+
+# ALIASES
+alias cmoi='chezmoi'
+alias dotfiles='tmux-sessionizer $(chezmoi source-path)'
+
+{{ if eq .chezmoi.os "linux" }}
+alias linux_info='uname -m && cat /etc/*release'
+{{ end -}}
+
+if not command -q eza 
+	### Colored ls
+	if test -e /usr/bin/dircolors 
+		eval "$(dircolors -b)"
+		alias l='ls -lGah'
+		alias ls='ls --color=auto -lGah'
+		alias la='ls -lGAh'
+		alias ll='ls -lGh'
+	else 
+		alias l='ls -lGah'
+		alias ls='ls -G'
+		alias la='ls -lGAh'
+		alias ll='ls -lGh'
+	end
+else
+	alias l='eza -l --all --group-directories-first'
+	alias ll='eza -l --all --all --group-directories-first --git'
+	alias la='eza -l --all --group-directories-first --git'
+	alias ls='eza -l'
+	alias lt='eza -T --git-ignore --level=2 --group-directories-first'
+	alias llt='eza -lT --git-ignore --level=2 --group-directories-first'
+	alias lT='eza -T --git-ignore --level=4 --group-directories-first'
+	alias li='eza -la --icons --group-directories-first --git'
+	alias lg='eza -la --git --icons --group-directories-first --git'
+	alias ld='eza -laD'
+end
+
+if command -q lazygit
+	alias lz='lazygit'
+end
+
+if command -q supabase 
+	alias supa='supabase'
+end
+
+if command -q bat
+	alias cat='bat'
+end
+
+if command -q zellij 
+	alias zj='zellij'
+end
+
+if command -q rg 
+	alias grep='rg'
+else
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+end
+
+alias tmuxa="tmux attach"
+alias tmuxat="tmux attach -t"
+alias tmuxns="tmux new -s"
+alias tmuxls="tmux ls"
+alias tls="tmux ls"
+alias ts="tmux-sessionizer"
+
+# Conda
+alias ca='conda activate'
+alias condaenv='conda env export --no-builds --from-history'
+if command -q mamba
+	alias ma='mamba activate'
+	alias mambaenv='mamba env export --no-builds --from-history'
+end
+
+alias py='python'
+alias ipy='ipython'
+
+alias duh='du -h -d 1 .'
+alias duh_='du -h -d 1 . > foldersizes.txt &'
+
+if command -q tectonic
+	alias nextonic="tectonic -X"
+end
+
+# Github CLI
+if command -q gh
+	# create branch for issue and checkout
+	alias prc='gh pr create'
+
+	# create branch for issue and checkout
+	alias oissue='gh issue develop -c'
+end
+
+if command -q zoxide 
+		zoxide init fish | source
+end
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias cd.='cd ..'
+alias cd..='cd ..'
+# alias vi='nvim'
+alias nv='nvim'
+
+
