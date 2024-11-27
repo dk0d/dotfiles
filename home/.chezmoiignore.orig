@@ -1,0 +1,51 @@
+.cz.toml
+README.md
+install.sh
+.gitmodules
+.config/skhd/**
+.config/yabai/**
+
+{{ if not .has_op }}
+.ssh
+{{ end }}
+ 
+{{ if not .personal }}
+.config/.gitconfig-gitlab.id  
+.config/.gitconfig-github.id  
+.wezterm.lua
+.ideavimrc
+.config/zellij/zellij.yml
+{{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+.hammerspoon
+.config/fish
+.config/nushell
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
+{{ end }}
+
+{{ if ne .shell "fish"}}
+.config/fish/config.fish 
+{{ end }}
+
+{{ if ne .shell "zsh" }}
+.zshrc
+.zprofile
+.zshrc.local
+.fzf.zsh
+{{ end -}}
+
+<<<<<<< HEAD
+{{ if ne .shell "bash" }}
+=======
+{{ if ne .shell 'bash' }}
+>>>>>>> a406376e542e00536f1a97ae3fda600f9e84210c
+.fzf.bash
+{{ end -}}
+
+
+
