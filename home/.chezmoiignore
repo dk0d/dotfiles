@@ -12,7 +12,6 @@ install.sh
 {{ if not .personal }}
 .config/.gitconfig-gitlab.id  
 .config/.gitconfig-github.id  
-.wezterm.lua
 .ideavimrc
 .config/zellij/zellij.yml
 {{ end }}
