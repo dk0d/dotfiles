@@ -37,6 +37,11 @@
 {{- end -}}
 
 
+{{ if and $can_sudo $has_op }}
+[hooks.read-source-state.pre]
+command = ".local/share/chezmoi/.pre-install.sh"
+{{ end }}
+
 [onepassword]
   prompt = false
 
