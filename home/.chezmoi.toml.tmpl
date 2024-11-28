@@ -11,11 +11,13 @@
 {{- $email := "" -}}
 {{- $vault_name := "" -}}
 
-{{- $personal_device := promptBool "Setup Personal Device?: " -}}
-{{- $active_shell := promptChoice "Shell Setup?: " $shell_choices -}}
-{{- $has_op = promptBool "Use op?" -}}
+{{- $personal_device := promptBool "Setup Personal Device" -}}
+{{- $active_shell := promptChoice "Shell Setup" $shell_choices -}}
 
-{{ if $has_op }}
+{{- $has_op := false -}}
+
+{{ if lookPath "op" }}
+{{ $has_op = true }}
 {{ $vault_name = promptString "vault_name:" }}
 {{ end }}
 
@@ -32,8 +34,8 @@
 {{- end -}}
 
 {{- if not $personal_device -}}
-{{- $can_sudo = promptBool "Can sudo?" -}}
-{{- $email = promptString "Email?" -}}
+{{- $can_sudo = promptBool "Can sudo" -}}
+{{- $email = promptString "Email" -}}
 {{- end -}}
 
 [onepassword]

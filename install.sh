@@ -4,7 +4,15 @@ echo ""
 echo "🤚  This script will setup .dotfiles for you."
 read -n 1 -r -s -p $'    Press any key to continue or Ctrl+C to abort...\n\n'
 
-xcode-select --install || echo "XCode already installed"
+read -p "Install 1password & 1password-cli? (y/n): " ONE_PASS
+
+UNAME="$(uname -s)"
+
+if [[ $UNAME == "Darwin" ]]; then
+  softwareupdate -ia
+  xcode-select --install || echo "XCode already installed"
+fi
+
 
 # Install Homebrew if necessary
 if which -s brew; then
@@ -12,7 +20,7 @@ if which -s brew; then
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  case "$(uname -s)" in
+  case "$UNAME" in
   Darwin)
       # commands to install password-manager-binary on Darwin
       #
@@ -33,6 +41,11 @@ else
 fi
 
 brew install chezmoi
-brew install 1password-cli
+if [[ $ONE_PASS == [yY] || $ONE_PASS == [yY][eE][sS] ]]; then
+  if [[ "$UNAME" == "Darwin" ]]; then
+    brew instal --cask 1password
+  fi
+  brew install 1password-cli
+fi
 chezmoi init --apply dk0d
 
