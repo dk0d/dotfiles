@@ -26,12 +26,12 @@ end
 if command -q brew; and test -e "$(brew --prefix nvm)"
 	set brewnvm "$(brew --prefix nvm)"
 	set -gx NVM_DIR "$brewnvm"
-	# if test -e $brewnvm/nvm.sh
-	# 	source $brewnvm/nvm.sh
-	# end
-	# if test -e $brewnvm/etc/bash_completion.d/nvm
-	# 	source $brewnvm/etc/bash_completion.d/nvm
-	# end
+	if test -e $brewnvm/nvm.sh
+		source $brewnvm/nvm.sh
+	end
+	if test -e $brewnvm/etc/bash_completion.d/nvm
+		source $brewnvm/etc/bash_completion.d/nvm
+	end
 else if test -e "$HOME/.nvm"
 	set -gx NVM_DIR "$HOME/.nvm"
 	if test -e /opt/homebrew/opt/nvm/nvm.sh
