@@ -10,7 +10,7 @@ else if test -e /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # pnpm
-if command -q pnpm 
+if command -q pnpm
 	set -gx PNPM_HOME "$HOME/.pnpm-global"
 	switch ":$PATH:" 
 	case $PNPM_HOME
@@ -23,24 +23,29 @@ end
 # pnpm end
 
 # NVM
-if command -q brew; and test -e "$(brew --prefix nvm)"
-	set brewnvm "$(brew --prefix nvm)"
-	set -gx NVM_DIR "$brewnvm"
-	if test -e $brewnvm/nvm.sh
-		source $brewnvm/nvm.sh
-	end
-	if test -e $brewnvm/etc/bash_completion.d/nvm
-		source $brewnvm/etc/bash_completion.d/nvm
-	end
-else if test -e "$HOME/.nvm"
-	set -gx NVM_DIR "$HOME/.nvm"
-	if test -e /opt/homebrew/opt/nvm/nvm.sh
-		source /opt/homebrew/opt/nvm/nvm.sh
-	end
-	if test -e /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
-		source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
-	end
+# USE Fisher
+if ! type -q fisher
+	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+	fisher install jorgebucaran/nvm.fish
 end
+# if command -q brew; and test -e "$(brew --prefix nvm)"
+# 	set brewnvm "$(brew --prefix nvm)"
+# 	set -gx NVM_DIR "$brewnvm"
+# 	# if test -e $brewnvm/nvm.sh
+# 	# 	source $brewnvm/nvm.sh
+# 	# end
+# 	# if test -e $brewnvm/etc/bash_completion.d/nvm
+# 	# 	source $brewnvm/etc/bash_completion.d/nvm
+# 	# end
+# else if test -e "$HOME/.nvm"
+# 	set -gx NVM_DIR "$HOME/.nvm"
+# 	if test -e /opt/homebrew/opt/nvm/nvm.sh
+# 		source /opt/homebrew/opt/nvm/nvm.sh
+# 	end
+# 	if test -e /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+# 		source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+# 	end
+# end
 # [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
