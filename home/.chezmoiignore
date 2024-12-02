@@ -5,6 +5,8 @@ install.sh
 .config/skhd/**
 .config/yabai/**
 
+.local/scripts/fish
+
 {{ if not .has_op }}
 .ssh
 {{ end }}
