@@ -90,6 +90,13 @@ return {
 			desc = "Find all files",
 		},
 		{
+			"<leader>fp",
+			function()
+				require("utils.telescope").multigrep({ hidden = true })
+			end,
+			desc = "GREP & Glob",
+		},
+		{
 			"<leader>fA",
 			function()
 				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
