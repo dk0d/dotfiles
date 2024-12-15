@@ -15,7 +15,9 @@ fi
 
 
 # Install Homebrew if necessary
-if which -s brew; then
+if [[ -d /opt/homebrew/bin ]]; then
+  echo 'Homebrew is already installed'
+else if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
   echo 'Homebrew is already installed'
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
