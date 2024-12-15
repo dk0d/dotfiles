@@ -1,0 +1,41 @@
+---
+- name: Ensure Homebrew is installed
+  hosts: all
+  become: yes
+  vars:
+    is_macos: ansible_facts['os_family'] == 'Darwin'
+    is_linux: ansible_facts['os_family'] == 'Linux'
+
+  tasks:
+    - name: Check if Homebrew is installed (macOS)
+      stat:
+        path: /opt/homebrew/bin/brew
+      register: brew_macos
+      when: is_macos
+
+    - name: Install Homebrew (macOS)
+      shell: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when: is_macos and not brew_macos.stat.exists
+
+    - name: Check if Homebrew is installed (Linux)
+      stat:
+        path: /home/linuxbrew/.linuxbrew/bin/brew
+      register: brew_linux
+      when: is_linux
+
+    - name: Install dependencies for Homebrew (Linux)
+      apt:
+        name:
+          - build-essential
+          - curl
+          - file
+          - git
+      when: is_linux and not brew_linux.stat.exists
+
+    - name: Install Homebrew (Linux)
+      shell: |
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      environment:
+        CI: "true"
+      when: is_linux and not brew_linux.stat.exists

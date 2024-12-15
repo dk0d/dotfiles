@@ -1,5 +1,5 @@
 return {
-	-- enabled =
+	-- enabled
 	-- "dk0d/docster.nvim",
 	-- dir = "~/projects/docster.nvim",
 	-- -- name = "docster",
