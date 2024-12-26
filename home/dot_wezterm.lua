@@ -72,7 +72,7 @@ config.font = wezterm.font_with_fallback({
 }, { weight = "Bold" })
 
 config.font_size = 11
-config.line_height = 1.1
+config.line_height = 1.0
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
