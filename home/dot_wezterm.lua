@@ -9,7 +9,6 @@ end
 
 -- config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
-
 config.disable_default_key_bindings = false
 
 -- >= % & <= .= :- |= /= -> => >= <= != == === !== $ a g r !~ @ %
@@ -63,10 +62,10 @@ config.font = wezterm.font_with_fallback({
 }, { weight = "Bold" })
 
 config.font_size = 10
-config.line_height = 1.2
-config.enable_tab_bar = false
+config.line_height = 1.1
+config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 config.native_macos_fullscreen_mode = true
@@ -86,11 +85,14 @@ config.inactive_pane_hsb = {
 }
 
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 4.,
+	right = 4.,
+	top = 4.,
+	bottom = 4.,
 }
+
+-- removes the title bar
+config.window_decorations = "RESIZE"
 
 config.keys = {
 	{
@@ -179,7 +181,7 @@ config.colors = {
 	copy_mode_inactive_highlight_bg = { Color = "#52ad70" },
 	copy_mode_inactive_highlight_fg = { AnsiColor = "White" },
 	tab_bar = {
-		background = "rgb(0, 0, 0, 0%)",
+		background = "rgb(0, 0, 0, 90%)",
 		active_tab = {
 			bg_color = "#111111",
 			fg_color = "#bbbbbb",
@@ -199,8 +201,14 @@ config.colors = {
 	},
 }
 
--- config.window_background_opacity = 1
--- config.macos_window_background_blur = 0
+-- recommended settings for macos
+config.max_fps = 120
+config.prefer_egl = true
+
+-- Blurred background
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 80
+
 -- config.background = {
 -- { source = { Color = "black" }, opacity = 0.2 },
 -- { source = { Color = "#444444" }, opacity = 0.9 },
