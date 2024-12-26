@@ -26,6 +26,7 @@ return {
 			status.component.mode({ surround = { separator = "right" } }),
 		}
 
+		opts.winbar = nil
 		-- opts.winbar = { -- winbar
 		--   init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
 		--   fallthrough = false,
