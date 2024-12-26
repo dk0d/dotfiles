@@ -172,44 +172,55 @@ config.window_frame = {
 
 -- config.force_reverse_video_cursor = true
 
-config.colors = {
-
-	-- foreground = "#dcd7ba",
-	background = "#050512",
-	selection_fg = "none", -- use text color
-	selection_bg = "rgb(50%, 50%, 50%, 50%)",
-	scrollbar_thumb = "#16161d",
-	split = "#16161d",
-	ansi = { "#090618", "#c34043", "#76946a", "#c0a36e", "#7e9cd8", "#957fb8", "#6a9589", "#c8c093" },
-	brights = { "#727169", "#e82424", "#98bb6c", "#e6c384", "#7fb4ca", "#938aa9", "#7aa89f", "#dcd7ba" },
-	indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
-	cursor_bg = "#c34043",
-	cursor_fg = "black",
-	cursor_border = "#c8c093",
-	copy_mode_active_highlight_bg = { Color = "#000000" },
-	copy_mode_active_highlight_fg = { AnsiColor = "Black" },
-	copy_mode_inactive_highlight_bg = { Color = "#52ad70" },
-	copy_mode_inactive_highlight_fg = { AnsiColor = "White" },
-	tab_bar = {
-		background = "rgb(0, 0, 0, 90%)",
-		active_tab = {
-			bg_color = "#111111",
-			fg_color = "#bbbbbb",
-			underline = "None",
-		},
-		inactive_tab = {
-			bg_color = "#000000",
-			fg_color = "#444444",
-			italic = true,
-			strikethrough = false,
-			intensity = "Half",
-		},
-		new_tab = {
-			bg_color = "#223344",
-			fg_color = "silver",
-		},
-	},
+-- config.colors = {
+--
+-- 	-- foreground = "#dcd7ba",
+-- 	background = "#050512",
+-- 	selection_fg = "none", -- use text color
+-- 	selection_bg = "rgb(50%, 50%, 50%, 50%)",
+-- 	scrollbar_thumb = "#16161d",
+-- 	split = "#16161d",
+-- 	ansi = { "#090618", "#c34043", "#76946a", "#c0a36e", "#7e9cd8", "#957fb8", "#6a9589", "#c8c093" },
+-- 	brights = { "#727169", "#e82424", "#98bb6c", "#e6c384", "#7fb4ca", "#938aa9", "#7aa89f", "#dcd7ba" },
+-- 	indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
+-- 	cursor_bg = "#c34043",
+-- 	cursor_fg = "black",
+-- 	cursor_border = "#c8c093",
+-- 	copy_mode_active_highlight_bg = { Color = "#000000" },
+-- 	copy_mode_active_highlight_fg = { AnsiColor = "Black" },
+-- 	copy_mode_inactive_highlight_bg = { Color = "#52ad70" },
+-- 	copy_mode_inactive_highlight_fg = { AnsiColor = "White" },
+-- 	tab_bar = {
+-- 		background = "rgb(0, 0, 0, 90%)",
+-- 		active_tab = {
+-- 			bg_color = "#111111",
+-- 			fg_color = "#bbbbbb",
+-- 			underline = "None",
+-- 		},
+-- 		inactive_tab = {
+-- 			bg_color = "#000000",
+-- 			fg_color = "#444444",
+-- 			italic = true,
+-- 			strikethrough = false,
+-- 			intensity = "Half",
+-- 		},
+-- 		new_tab = {
+-- 			bg_color = "#223344",
+-- 			fg_color = "silver",
+-- 		},
+-- 	},
+-- }
+--
+local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+custom.background = "#000000"
+custom.tab_bar.background = "#040404"
+custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
+custom.tab_bar.new_tab.bg_color = "#080808"
+custom.tab_bar.active_tab.bg_color = "#74c7ec"
+config.color_schemes = {
+	["OLEDpuccin"] = custom,
 }
+config.color_scheme = "OLEDpuccin"
 
 -- recommended settings for macos
 config.max_fps = 120
