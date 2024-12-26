@@ -16,7 +16,16 @@ config.disable_default_key_bindings = false
 local JETBRAINS_MONO = {
 	family = "Jetbrains Mono",
 	weight = "Regular",
-	harfbuzz_features = { "zero", "ss02", "cv05", "ss20", "cv15", "cv14" },
+	-- l 0
+	harfbuzz_features = {
+		-- "calt=0",
+		-- "zero",
+		-- "ss02",
+		-- "cv05",
+		-- "ss20",
+		-- "cv15",
+		-- "cv14",
+	},
 }
 
 local FIRA_CODE = {
@@ -52,9 +61,9 @@ local TWILIO = {
 }
 
 config.font = wezterm.font_with_fallback({
+	JETBRAINS_MONO,
 	FIRA_CODE,
 	CASCADIA_CODE,
-	JETBRAINS_MONO,
 	TWILIO,
 	-- fallbacks
 	"Menlo",
@@ -62,7 +71,7 @@ config.font = wezterm.font_with_fallback({
 	"Symbols Nerd Font Mono",
 }, { weight = "Bold" })
 
-config.font_size = 10
+config.font_size = 11
 config.line_height = 1.1
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
