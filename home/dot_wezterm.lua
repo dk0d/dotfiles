@@ -227,7 +227,7 @@ config.max_fps = 120
 config.prefer_egl = true
 
 -- background
-config.window_background_opacity = 0.78
+config.window_background_opacity = 0.6
 config.macos_window_background_blur = 70
 -- config.background = {
 -- { source = { Color = "black" }, opacity = 0.2 },
