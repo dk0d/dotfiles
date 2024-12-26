@@ -12,9 +12,9 @@ vim.opt.timeoutlen = 400
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.spell = false
-vim.opt.signcolumn = "auto" --
+vim.opt.signcolumn = "yes:1" -- less jumping around
 vim.opt.wrap = false
-vim.opt.winbar = "%=%m %f"
+-- vim.opt.winbar = "%=%m %f"
 vim.opt.foldcolumn = "0"
 vim.opt.hidden = false
 vim.opt.autowriteall = true

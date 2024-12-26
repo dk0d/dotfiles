@@ -15,10 +15,10 @@ M.is_empty = function(s)
 end
 
 M.get_python = function()
-	if not M.is_empty(os.getenv("CONDA_PREFIX")) then
-		return os.getenv("CONDA_PREFIX") .. "/bin/python"
-	elseif not M.is_empty(os.getenv("VIRTUAL_ENV")) then
+	if not M.is_empty(os.getenv("VIRTUAL_ENV")) then
 		return os.getenv("VIRTUAL_ENV") .. "/bin/python"
+	elseif not M.is_empty(os.getenv("CONDA_PREFIX")) then
+		return os.getenv("CONDA_PREFIX") .. "/bin/python"
 	else
 		return "python"
 	end
