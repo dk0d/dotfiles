@@ -74,47 +74,47 @@ return {
 						MasonHeading = { fg = colors.lavender, bold = true },
 
 						-- even if background is transparent
-						TelescopeBorder = {
-							fg = colors.mantle,
-							bg = colors.mantle,
-						},
+						-- TelescopeBorder = {
+						-- 	fg = "none", -- colors.text,
+						-- 	bg = "none", -- colors.mantle,
+						-- },
 						TelescopeMatching = { fg = colors.blue },
-						TelescopeNormal = {
-							bg = colors.mantle,
-						},
-						TelescopePromptBorder = {
-							fg = colors.surface0,
-							bg = colors.surface0,
-						},
+						-- TelescopeNormal = {
+						-- 	bg = "none",
+						-- },
+						-- TelescopePromptBorder = {
+						-- 	fg = "none", -- colors.text,
+						-- 	bg = "none", -- colors.surface0,
+						-- },
 						TelescopePromptNormal = {
-							fg = colors.text,
-							bg = colors.surface0,
+							fg = colors.sky,
+							bg = "none", --colors.surface0,
 						},
 						TelescopePromptPrefix = {
 							fg = colors.flamingo,
-							bg = colors.surface0,
+							bg = "none", -- colors.surface0,
 						},
 						TelescopePreviewTitle = {
-							fg = colors.base,
-							bg = colors.green,
+							fg = colors.green,
+							bg = "none", -- colors.green,
 						},
 						TelescopePromptTitle = {
-							fg = colors.base,
-							bg = colors.red,
+							fg = colors.red,
+							bg = "none", -- colors.red,
 						},
-						TelescopeResultsTitle = {
-							fg = colors.mantle,
-							bg = colors.lavender,
-						},
+						-- TelescopeResultsTitle = {
+						-- 	fg = colors.lavender,
+						-- 	bg = "none", -- colors.lavender,
+						-- },
 						TelescopeSelection = {
 							fg = colors.flamingo,
-							bg = colors.surface0,
+							bg = colors.mantle, -- colors.surface0,
 							style = { "bold" },
 						},
-						TelescopeSelectioncolorsaret = { fg = colors.flamingo },
+						-- TelescopeSelectioncolorsaret = { fg = colors.flamingo },
 
 						Pmenu = { fg = colors.flamingo, bg = colors.base }, -- add `blend = vim.o.pumblend` to enable transparency
-						PmenuSel = { fg = "NONE", bg = colors.overlay0 },
+						PmenuSel = { fg = "none", bg = colors.overlay0 },
 						PmenuSbar = { bg = colors.overlay0 },
 						PmenuThumb = { bg = colors.overlay1 },
 					}
