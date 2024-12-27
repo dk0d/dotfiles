@@ -19,7 +19,7 @@ return {
 		require("telescope.themes")
 		opts = vim.tbl_deep_extend("force", opts, {
 			defaults = {
-				prompt_prefix = " ",
+				prompt_prefix = "  ",
 				selection_caret = "  ",
 				entry_prefix = " ",
 				mappings = {
