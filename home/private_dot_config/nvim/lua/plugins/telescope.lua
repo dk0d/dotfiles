@@ -16,6 +16,7 @@ return {
 	},
 
 	config = function(plugin, opts)
+		require("telescope.themes")
 		opts = vim.tbl_deep_extend("force", opts, {
 			defaults = {
 				prompt_prefix = " ",
@@ -26,13 +27,26 @@ return {
 						["<esc>"] = require("telescope.actions").close,
 					},
 				},
+				theme = "ivy",
+				sorting_strategy = "ascending",
+				layout_strategy = "bottom_pane",
 				layout_config = {
-					horizontal = { prompt_position = "top", preview_width = 0.52 },
-					vertical = { mirror = false },
-					width = 0.85,
-					height = 0.75,
-					preview_cutoff = 120,
+					horizontal = { prompt_position = "bottom" },
+					height = 0.3,
 				},
+				border = true,
+				borderchars = {
+					prompt = { "─", " ", "─", " ", " ", " ", "─", "─" },
+					results = { "─", " ", " ", " ", "─", "─", " ", " " },
+					preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+				},
+				-- layout_config = {
+				-- 	horizontal = { prompt_position = "bottom", preview_width = 0.52 },
+				-- vertical = { mirror = false },
+				-- width = 0.85,
+				-- height = 0.75,
+				-- preview_cutoff = 120,
+				-- },
 			},
 			extensions = {
 				bibtex = {
