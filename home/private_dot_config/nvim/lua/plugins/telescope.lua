@@ -32,7 +32,7 @@ return {
 				layout_strategy = "bottom_pane",
 				layout_config = {
 					horizontal = { prompt_position = "bottom" },
-					height = 0.3,
+					height = 0.5,
 				},
 				border = true,
 				borderchars = {
