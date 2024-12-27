@@ -28,17 +28,17 @@ return {
 					},
 				},
 				theme = "ivy",
-				sorting_strategy = "ascending",
+				sorting_strategy = "descending",
 				layout_strategy = "bottom_pane",
 				layout_config = {
-					horizontal = { prompt_position = "bottom" },
+					prompt_position = "bottom",
 					height = 0.5,
 				},
 				border = true,
 				borderchars = {
-					prompt = { "─", " ", "─", " ", " ", " ", "─", "─" },
+					prompt = { " ", " ", "─", " ", " ", " ", "─", "─" },
 					results = { "─", " ", " ", " ", "─", "─", " ", " " },
-					preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+					preview = { "─", " ", "─", "│", "┬", "─", "─", "╰" },
 				},
 				-- layout_config = {
 				-- 	horizontal = { prompt_position = "bottom", preview_width = 0.52 },
