@@ -1,0 +1,19 @@
+theme = catppuccin-mocha
+background = #000000
+background-opacity = 0.75
+background-blur-radius = 70
+
+window-decoration = false
+macos-titlebar-style = hidden
+
+font-family = JetBrains
+
+
+confirm-close-surface = false
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+
+auto-update = check
+
+
