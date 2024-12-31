@@ -69,10 +69,10 @@ config.font = wezterm.font_with_fallback({
 	"Menlo",
 	-- symbols
 	"Symbols Nerd Font Mono",
-}, { weight = "Bold" })
+})
 
-config.font_size = 11
-config.line_height = 1.0
+config.font_size = 12
+config.line_height = 1.1
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
@@ -223,7 +223,7 @@ config.color_schemes = {
 config.color_scheme = "OLEDpuccin"
 
 -- recommended settings for macos
-config.max_fps = 120
+config.max_fps = 244
 config.prefer_egl = true
 
 -- background
