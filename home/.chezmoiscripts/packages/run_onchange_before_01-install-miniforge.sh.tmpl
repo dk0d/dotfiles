@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [[ ! -d "$HOME/.miniforge" ]]; then
+  {{ if eq .chezmoi.os "darwin" -}}
+    echo "🐍 Install Mambaforge-MacOSX-arm64"
+    curl -fsLSo miniforge.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh
+    /bin/bash miniforge.sh -b -p "$HOME/.miniforge"
+
+  {{ else if eq .chezmoi.os "linux" -}}
+
+    echo "🐍 Install Mambaforge-Linux-x86_64"
+    curl -fsLSo miniforge.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+    /bin/bash miniforge.sh -b -p "$HOME/.miniforge"
+    
+  {{ end -}}
+  
+  source "$HOME/.miniforge/etc/profile.d/mamba.sh"
+fi
+
+
+
+
+

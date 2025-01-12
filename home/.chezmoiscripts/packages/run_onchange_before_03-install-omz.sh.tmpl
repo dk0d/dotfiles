@@ -1,0 +1,26 @@
+#!/bin/bash
+
+{{ if and .install_omz (eq .shell "zsh") }}
+
+# Install Oh My Zsh
+if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+	echo '💰  Installing oh-my-zsh';
+	yes | /bin/bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+fi
+
+if [ ! -d $HOME/.zsh ]; then
+  mkdir $HOME/.zsh;
+fi
+
+# Install ZSH plugins
+if [ ! -d ~/.zsh/zsh-autosuggestions ]; then 
+  echo "⚡️ zsh-autosuggestions";
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;
+fi
+
+if [ ! -d ~/.zsh/zsh-syntax-highlighting ]; then
+  echo "🌈 zsh-syntax-highlighting";
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting;
+fi
+
+{{ end }}

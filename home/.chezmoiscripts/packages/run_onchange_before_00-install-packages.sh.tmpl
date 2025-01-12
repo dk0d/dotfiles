@@ -1,0 +1,26 @@
+#!/bin/bash
+
+{{ if and .install_brew .can_sudo }}
+# Install Homebrew
+if ! command -v brew >/dev/null; then 
+	echo '🍺  Installing Homebrew';
+	
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
+	
+	if [[ -f "/opt/homebrew/bin/brew" ]]; then
+	  eval "$(/opt/homebrew/bin/brew shellenv)";
+	  export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH;
+	elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+	  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";
+	  export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH;
+	fi
+	
+fi
+{{ end }}
+
+
+# if [ ! -f "$HOME/.local/bin/neowofetch" ]; then
+#  P="$HOME/.local/bin/neowofetch" && curl -L nf.hydev.org -o "$P" && chmod +x "$P" && ln -s $HOME/.local/bin/neowofetch $HOME/.local/bin/neofetch
+# fi;
+
+

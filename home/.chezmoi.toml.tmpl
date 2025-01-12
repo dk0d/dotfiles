@@ -13,13 +13,26 @@
 
 {{- $personal_device := promptBool "Setup Personal Device" -}}
 {{- $active_shell := promptChoice "Shell Setup" $shell_choices -}}
+{{- $install_omz := false -}}
+{{- if eq $active_shell "zsh" -}}
+{{- $install_omz = promptBool "Install Oh My Zsh" -}}
+{{- end -}}
+
+{{- $setup_ssh := promptBool "Setup SSH" -}}
+
+{{- $install_brew := promptBool "Install Brew" -}}
+{{- $install_packages := false -}}
+{{- if $install_brew -}}
+{{- $install_packages = promptBool "Install Packages" -}}
+{{- end -}}
+
+{{- $install_rustup := promptBool "Install Rustup" -}}
 
 {{- $has_op := false -}}
-
-{{ if lookPath "op" }}
-{{ $has_op = true }}
-{{ $vault_name = promptString "vault_name:" }}
-{{ end }}
+{{- if and $setup_ssh (lookPath "op") -}}
+{{-  $has_op = true -}}
+{{-  $vault_name = promptString "vault_name:" -}}
+{{- end -}}
 
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computer_name = output "scutil" "--get" "ComputerName" | trim -}}
@@ -46,10 +59,15 @@ pager = 'delta'
   prompt = false
 
 [data]
-  has_op = {{ $has_op }}
-  vault_name = {{ $vault_name | quote }}
   personal = {{ $personal_device }}
   work = {{ not $personal_device }}
+  install_brew = {{ and $install_brew $can_sudo }}
+  install_packages = {{ $install_packages }}
+  install_omz = {{ $install_omz }}
+  install_rustup = {{ $install_rustup }}
+  setup_ssh = {{ $setup_ssh }}
+  has_op = {{ $has_op }}
+  vault_name = {{ $vault_name | quote }}
   can_sudo = {{ $can_sudo }}
   osid = {{ $osid | quote }}
   shell = {{ $active_shell | quote }}
