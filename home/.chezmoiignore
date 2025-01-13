@@ -7,9 +7,14 @@ install.sh
 
 .local/scripts/fish
 
-{{ if not .has_op }}
+{{ if or (not .set_ssh) (not .has_op) }}
 .ssh
+{{  end }}
+
+{{ if and .set_ssh .set_ssh_config }}
+!.ssh/config
 {{ end }}
+
  
 {{ if not .personal }}
 .config/.gitconfig-gitlab.id  

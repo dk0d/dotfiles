@@ -18,7 +18,16 @@
 {{- $install_omz = promptBool "Install Oh My Zsh" -}}
 {{- end -}}
 
-{{- $setup_ssh := promptBool "Setup SSH" -}}
+{{- $set_ssh := promptBool "Setup SSH" -}}
+{{- $set_ssh_config := false -}}
+{{- $has_op := false -}}
+{{- if $set_ssh -}}
+{{- $set_ssh_config = promptBool "Write SSH Config" -}}
+{{-   if lookPath "op" -}}
+{{-     $has_op = true -}}
+{{-     $vault_name = promptString "vault_name:" -}}
+{{-   end -}}
+{{- end -}}
 
 {{- $install_brew := promptBool "Install Brew" -}}
 {{- $install_packages := false -}}
@@ -28,11 +37,6 @@
 
 {{- $install_rustup := promptBool "Install Rustup" -}}
 
-{{- $has_op := false -}}
-{{- if and $setup_ssh (lookPath "op") -}}
-{{-  $has_op = true -}}
-{{-  $vault_name = promptString "vault_name:" -}}
-{{- end -}}
 
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computer_name = output "scutil" "--get" "ComputerName" | trim -}}
@@ -65,7 +69,8 @@ pager = 'delta'
   install_packages = {{ $install_packages }}
   install_omz = {{ $install_omz }}
   install_rustup = {{ $install_rustup }}
-  setup_ssh = {{ $setup_ssh }}
+  set_ssh = {{ $set_ssh }}
+  set_ssh_config = {{ $set_ssh_config }}
   has_op = {{ $has_op }}
   vault_name = {{ $vault_name | quote }}
   can_sudo = {{ $can_sudo }}
