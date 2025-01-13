@@ -4,51 +4,54 @@ install.sh
 .gitmodules
 .config/skhd/**
 .config/yabai/**
-
 .local/scripts/fish
 
-{{ if or (not .set_ssh) (not .has_op) }}
+{{- if .has_op }}
+{{ if eq .set_ssh "none" }}
 .ssh
-{{  end }}
-
-{{ if and .set_ssh .set_ssh_config }}
+{{ else if eq .set_ssh "config" }}
+.ssh/**
 !.ssh/config
-{{ end }}
-
+{{ else if eq .set_ssh "keys" -}}
+.ssh/config
+{{ end -}}
+{{ else }}
+.ssh
+{{- end -}}
  
-{{ if not .personal }}
+{{- if not .personal -}}
 .config/.gitconfig-gitlab.id  
 .config/.gitconfig-github.id  
 .ideavimrc
 .config/zellij/zellij.yml
-{{ end }}
+{{- end -}}
 
-{{ if ne .chezmoi.os "darwin" }}
+{{- if ne .chezmoi.os "darwin" -}}
 .chezmoiscripts/darwin/**
 .hammerspoon
 .config/fish
 .config/nushell
-{{ end }}
+{{- end -}}
 
-{{ if ne .chezmoi.os "linux" }}
+{{- if ne .chezmoi.os "linux" -}}
 .chezmoiscripts/linux/**
-{{ end }}
+{{- end -}}
 
-{{ if ne .shell "fish"}}
+{{- if ne .shell "fish" -}}
 .config/fish/config.fish 
-{{ end }}
+{{- end -}}
 
-{{ if ne .shell "zsh" }}
+{{- if ne .shell "zsh" -}}
 .zshrc
 .zprofile
 .zshrc.local
 .fzf.zsh
-{{ end -}}
+{{- end -}}
 
-{{ if ne .shell "bash" }}
+{{- if ne .shell "bash" -}}
 .fzf.bash
 .bashrc.local
-{{ end -}}
+{{- end -}}
 
 
 
