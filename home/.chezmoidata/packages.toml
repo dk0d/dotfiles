@@ -50,6 +50,7 @@ brews = [
 
 [packages.darwin]
 taps = ["julien-cpsn/atac"]
+# taps = ["julien-cpsn/atac"]
 brews = [
   "sondr3/taps/git-ignore", # git ignore
   "atac",                   # cli postman
