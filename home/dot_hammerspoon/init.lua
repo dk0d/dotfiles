@@ -12,6 +12,26 @@ local hyper2 = "⇧⌥⌃"
 
 local k = hs.hotkey.modal.new(hyper2, "h")
 
+hs.hotkey.bind(hyper2, "f6", function()
+	hs.application.launchOrFocus("Slack")
+end)
+
+hs.hotkey.bind(hyper2, "f7", function()
+	hs.application.launchOrFocus("Arc")
+end)
+
+hs.hotkey.bind(hyper2, "f8", function()
+	hs.application.launchOrFocus("Ghostty")
+end)
+
+hs.hotkey.bind(hyper2, "f9", function()
+	hs.application.launchOrFocus("Obsidian")
+end)
+
+hs.hotkey.bind(hyper2, "f10", function()
+	hs.application.launchOrFocus("Mail")
+end)
+
 local alertStyle = {
 	strokeWidth = 0,
 	strokeColor = { white = 0, alpha = 1 },
@@ -45,6 +65,16 @@ end)
 
 k:bind("", "w", "wezterm", function()
 	hs.application.launchOrFocus("Wezterm")
+	k:exit()
+end)
+
+k:bind("", "t", "ghostty", function()
+	hs.application.launchOrFocus("Ghostty")
+	k:exit()
+end)
+
+k:bind("", "s", "slack", function()
+	hs.application.launchOrFocus("Slack")
 	k:exit()
 end)
 
