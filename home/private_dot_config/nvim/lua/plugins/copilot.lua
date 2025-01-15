@@ -25,9 +25,9 @@
 -- }
 
 -- disable copilot
-if true then
-	return {}
-end
+-- if true then
+-- 	return {}
+-- end
 
 return {
 	"zbirenbaum/copilot.lua",
@@ -43,9 +43,9 @@ return {
 				auto_trigger = true,
 				enabled = true,
 				keymap = {
-					accept = "<M-l>",
-					prev = "<M-[>",
-					next = "<M-]>",
+					accept = "<A-l>",
+					prev = "<C-[>",
+					next = "<C-]>",
 					dismiss = "<C-]>",
 				},
 			},

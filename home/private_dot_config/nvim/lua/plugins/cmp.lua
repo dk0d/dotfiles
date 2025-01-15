@@ -87,9 +87,12 @@ return {
 				{ name = "buffer" },
 			},
 		})
-		-- opts.mapping = {
-		--   ['<C-i>'] = cmp.mapping(cmp.mapping.complete { reason = cmp.ContextReason.Auto }, { 'i', 'c' }),
-		-- }
+		opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
+			["<Tab>"] = {
+				c = cmp.config.disable,
+			},
+			["<A-i>"] = cmp.mapping(cmp.mapping.complete({ reason = cmp.ContextReason.Auto }), { "i", "c" }),
+		})
 		return opts
 		-- return {
 		--   completion = {
