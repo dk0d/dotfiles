@@ -29,7 +29,7 @@ hs.hotkey.bind(hyper2, "f9", function()
 end)
 
 hs.hotkey.bind(hyper2, "f10", function()
-	hs.application.launchOrFocus("Mail")
+	hs.application.launchOrFocus("Wezterm")
 end)
 
 local alertStyle = {
