@@ -1,5 +1,5 @@
 #!/bin/bash
-
+{{ if .install_packages }}
 if command -v brew &> /dev/null;  then
 brew bundle --no-lock --file=/dev/stdin << EOF
 {{ range .packages.brews -}}
@@ -18,3 +18,4 @@ cask {{ . | quote }}
 {{ end -}}
 EOF
 fi
+{{ end }}
