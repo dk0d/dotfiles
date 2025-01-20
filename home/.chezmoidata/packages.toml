@@ -56,6 +56,7 @@ brews = [
   "atac",                   # cli postman
 ]
 casks = [
+  "ghostty",                     # zig-based term
   "1password",                   # credentials
   "1password-cli",               # credentials
   "stats",                       # system stats in the menu bar

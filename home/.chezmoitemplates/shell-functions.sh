@@ -75,3 +75,12 @@ function nvims() {
 	fi
 	NVIM_APPNAME=$config nvim $@
 }
+
+# Send ghostty terminfo to a remote machine over ssh if
+# there are wierd errors
+# https://ghostty.org/docs/help/terminfo#ssh
+function ghostty-infocmp() {
+	infocmp -x | ssh $@ -- tic -x -;
+}
+
+
