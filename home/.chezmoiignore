@@ -7,19 +7,21 @@ install.sh
 .local/scripts/fish
 
 {{- if .has_op }}
-{{ if eq .set_ssh "none" }}
+
+{{- if eq .set_ssh "none" }}
 .ssh
 {{ else if eq .set_ssh "config" }}
 .ssh/**
 !.ssh/config
-{{ else if eq .set_ssh "keys" -}}
+{{ else if eq .set_ssh "keys" }}
 .ssh/config
 {{ end -}}
+
 {{ else }}
 .ssh
-{{- end -}}
+{{ end -}}
  
-{{- if not .personal -}}
+{{ if not .personal -}}
 .config/.gitconfig-gitlab.id  
 .config/.gitconfig-github.id  
 .ideavimrc
@@ -33,25 +35,25 @@ install.sh
 .config/nushell
 {{- end -}}
 
-{{- if ne .chezmoi.os "linux" -}}
+{{- if ne .chezmoi.os "linux" }}
 .chezmoiscripts/linux/**
-{{- end -}}
+{{ end -}}
 
-{{- if ne .shell "fish" -}}
+{{- if ne .shell "fish" }}
 .config/fish/config.fish 
-{{- end -}}
+{{ end -}}
 
-{{- if ne .shell "zsh" -}}
+{{- if ne .shell "zsh" }}
 .zshrc
 .zprofile
 .zshrc.local
 .fzf.zsh
-{{- end -}}
+{{ end -}}
 
-{{- if ne .shell "bash" -}}
+{{- if ne .shell "bash" }}
 .fzf.bash
 .bashrc.local
-{{- end -}}
+{{ end -}}
 
 
 
