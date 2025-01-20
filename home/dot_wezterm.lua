@@ -102,7 +102,7 @@ config.window_padding = {
 }
 
 -- removes the title bar
-config.window_decorations = "RESIZE"
+config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 
 config.keys = {
 	{
