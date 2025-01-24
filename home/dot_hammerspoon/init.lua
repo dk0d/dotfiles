@@ -17,7 +17,11 @@ hs.hotkey.bind(hyper2, "f6", function()
 end)
 
 hs.hotkey.bind(hyper2, "f7", function()
-	hs.application.launchOrFocus("Arc")
+	for _, browser in ipairs({ "Arc", "Google Chrome", "Firefox", "Safari" }) do
+		if hs.application.launchOrFocus(browser) then
+			break
+		end
+	end
 end)
 
 hs.hotkey.bind(hyper2, "f8", function()
