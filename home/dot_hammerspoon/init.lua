@@ -33,6 +33,10 @@ hs.hotkey.bind(hyper2, "f9", function()
 end)
 
 hs.hotkey.bind(hyper2, "f10", function()
+	hs.application.launchOrFocus("Dash")
+end)
+
+hs.hotkey.bind(hyper2, "f11", function()
 	hs.application.launchOrFocus("Wezterm")
 end)
 
