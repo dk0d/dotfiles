@@ -171,3 +171,9 @@ alias ipykernel="ipython kernel --ip=0.0.0.0"
 
 alias nvim-lazy="NVIM_APPNAME=lazyvim nvim"
 alias nvim-astro="NVIM_APPNAME=astronvim nvim"
+
+# JIRA
+
+alias jime="jira issue list -a$(jira me) -s~'Dev Complete' -s~Done --order-by due --reverse"
+
+
