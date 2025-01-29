@@ -178,4 +178,8 @@ if command -v jira &>/dev/null; then
 	alias jime="jira issue list -a$(jira me) -s~'Dev Complete' -s~Done --order-by due --reverse"
 fi
 
+if command -v lazydocker &>/dev/null; then
+	alias lad="lazydocker"
+fi
+
 
