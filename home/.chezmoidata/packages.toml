@@ -43,7 +43,8 @@ brews = [
   "age",                                                   # file encryption
   "termshark",                                             # CLI wrapper for tshark (wireshark)
   "zplug",                                                 # zsh plugin manager
-  "jesseduffield/lazygit/lazygit",                         # git gui
+  "jesseduffield/lazygit/lazygit",                         # git tui
+  "lazydocker",                                            # docker tui
   "thezoraiz/ascii-image-converter/ascii-image-converter", # ascii image converter
 ]
 
