@@ -17,7 +17,7 @@ hs.hotkey.bind(hyper2, "f6", function()
 end)
 
 hs.hotkey.bind(hyper2, "f7", function()
-	for _, browser in ipairs({ "Arc", "Google Chrome", "Firefox", "Safari" }) do
+	for _, browser in ipairs({ "Zen", "Arc", "Google Chrome", "Firefox", "Safari" }) do
 		if hs.application.launchOrFocus(browser) then
 			break
 		end
