@@ -61,8 +61,8 @@ local TWILIO = {
 }
 
 config.font = wezterm.font_with_fallback({
-	JETBRAINS_MONO,
 	FIRA_CODE,
+	JETBRAINS_MONO,
 	CASCADIA_CODE,
 	TWILIO,
 	-- fallbacks
