@@ -4,10 +4,12 @@ background-opacity = 0.90
 background-blur-radius = 70
 
 window-decoration = true
-macos-titlebar-style = hidden
+# Available values are: "native", "transparent", "tabs", and "hidden".
+macos-titlebar-style = tabs
 macos-window-shadow = false
+link-url = true
 
-font-family = JetBrains
+font-family = Fira Code
 font-size = 12
 confirm-close-surface = false
 window-padding-x = 2

@@ -25,7 +25,11 @@ hs.hotkey.bind(hyper2, "f7", function()
 end)
 
 hs.hotkey.bind(hyper2, "f8", function()
-	hs.application.launchOrFocus("Ghostty")
+	for _, terminal in ipairs({ "Wezterm", "Ghostty" }) do
+		if hs.application.launchOrFocus(terminal) then
+			break
+		end
+	end
 end)
 
 hs.hotkey.bind(hyper2, "f9", function()
@@ -37,7 +41,7 @@ hs.hotkey.bind(hyper2, "f10", function()
 end)
 
 hs.hotkey.bind(hyper2, "f11", function()
-	hs.application.launchOrFocus("Wezterm")
+	hs.application.launchOrFocus("Teams")
 end)
 
 local alertStyle = {
