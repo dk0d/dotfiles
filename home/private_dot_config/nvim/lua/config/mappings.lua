@@ -160,7 +160,7 @@ return {
 		},
 
 		-- Vimtex
-		["<leader>fc"] = { "<cmd>Telescope bibtex<cr>", desc = "Search Citations" },
+		-- ["<leader>fc"] = { "<cmd>Telescope bibtex<cr>", desc = "Search Citations" },
 		["<leader>vc"] = { "<cmd>update<cr><cmd>VimtexCompile<cr>", desc = "Vimtex Compile Continuous" },
 		["<leader>vs"] = { "<cmd>update<cr><cmd>VimtexCompileSS<cr>", desc = "Vimtex Compile Single Shot" },
 		["<leader>vx"] = {
@@ -186,12 +186,12 @@ return {
 		["<leader>e"] = { false, desc = get_icon("Session", 1, true) .. "Neotree" },
 
 		-- Override find themes
-		["<leader>fe"] = {
-			function()
-				require("telescope.builtin").colorscheme({ enable_preview = true })
-			end,
-			desc = "Find themes",
-		},
+		-- ["<leader>fe"] = {
+		-- 	function()
+		-- 		require("telescope.builtin").colorscheme({ enable_preview = true })
+		-- 	end,
+		-- 	desc = "Find themes",
+		-- },
 
 		-- Selection
 		["<leader>va"] = { "ggVG", desc = "Select all in buffer" },
@@ -234,18 +234,18 @@ return {
 		-- ['<leader>h'] = false, -- remove default
 
 		-- LSP
-		["<leader>lW"] = {
-			function()
-				require("telescope.builtin").diagnostics()
-			end,
-			desc = "Search workspace diagnostics",
-		},
-		["<leader>lD"] = {
-			function()
-				require("telescope.builtin").diagnostics({ bufnr = 0 })
-			end,
-			desc = "Search current buffer diagnostics",
-		},
+		-- ["<leader>lW"] = {
+		-- 	function()
+		-- 		require("telescope.builtin").diagnostics()
+		-- 	end,
+		-- 	desc = "Search workspace diagnostics",
+		-- },
+		-- ["<leader>lD"] = {
+		-- 	function()
+		-- 		require("telescope.builtin").diagnostics({ bufnr = 0 })
+		-- 	end,
+		-- 	desc = "Search current buffer diagnostics",
+		-- },
 		["<leader>lL"] = {
 			"<cmd>LspRestart<cr>",
 			desc = "Restart LSP",

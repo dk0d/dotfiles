@@ -134,5 +134,26 @@
       "</Sheet.Content>",
       "</Sheet.Root>"
     ]
+  },
+  "Shadcn Dialog": {
+    "scope": "svelte",
+    "prefix": "shadDialog",
+    "description": "Shadcn-Svelte-Dialog",
+    "body": [
+      "<Dialog.Root>",
+      "<Dialog.Trigger>Open</Dialog.Trigger>",
+      "<Dialog.Content>",
+      "<Dialog.Header>",
+      "<Dialog.Title>$1</Dialog.Title>",
+      "<Dialog.Description>$2</Dialog.Description>",
+      "</Dialog.Header>",
+      "$3",
+      "<Dialog.Footer>",
+      "<Button variant=\"outline\">Cancel</Button>",
+      "<Button>Deploy</Button>",
+      "</Dialog.Footer>",
+      "</Dialog.Content>",
+      "</Dialog.Root>"
+    ]
   }
 }

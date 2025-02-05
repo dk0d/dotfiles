@@ -13,7 +13,7 @@ return {
 				-- save_on_change = true,
 			},
 		})
-		require("telescope").load_extension("harpoon")
+		-- require("telescope").load_extension("harpoon")
 	end,
 	keys = {
 		{ "<leader>k", desc = "Harpoon" },
