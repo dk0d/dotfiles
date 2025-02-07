@@ -1,9 +1,8 @@
+local M = {}
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local make_entry = require("telescope.make_entry")
 local conf = require("telescope.config").values
-
-local M = {}
 
 M.is_git_dir = function()
 	vim.fn.system("git rev-parse --is-inside-work-tree")
@@ -20,7 +19,7 @@ M.smart_find_files = function(opts)
 	-- end
 end
 
-M.multigrep = function(opts)
+M.tele_multigrep = function(opts)
 	opts = opts or {}
 	opts.cwd = opts.cwd or vim.uv.cwd()
 	local finder = finders.new_async_job({

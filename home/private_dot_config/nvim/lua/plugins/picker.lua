@@ -92,13 +92,6 @@ return {
 			desc = "Buffers",
 		},
 		{
-			"<leader>/",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
 			"<leader>:",
 			function()
 				Snacks.picker.command_history()
@@ -232,8 +225,15 @@ return {
 			function()
 				Snacks.picker.grep_word()
 			end,
-			desc = "Visual selection or word",
+			desc = "Grep",
 			mode = { "n", "x" },
+		},
+		{
+			"<leader>fp",
+			function()
+				require("utils.snacks").snacks_multigrep()
+			end,
+			desc = "Grep",
 		},
 		-- search
 		{
@@ -314,7 +314,7 @@ return {
 			desc = "Jumps",
 		},
 		{
-			"<leader>sk",
+			"<leader>fk",
 			function()
 				Snacks.picker.keymaps()
 			end,

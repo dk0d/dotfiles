@@ -107,7 +107,7 @@ return {
 		{
 			"<leader>fp",
 			function()
-				require("utils.telescope").multigrep({ hidden = true })
+				require("utils.telescope").tele_multigrep({ hidden = true })
 			end,
 			desc = "GREP & Glob",
 		},
