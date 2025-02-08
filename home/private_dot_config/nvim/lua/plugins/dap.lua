@@ -113,19 +113,11 @@ return {
 			"theHamsta/nvim-dap-virtual-text",
 			"nvim-telescope/telescope-dap.nvim",
 			-- 'jbyuki/one-small-step-for-vimkind',
-			-- 'mfussenegger/nvim-dap-python',
+			"mfussenegger/nvim-dap-python",
 			"nvim-neotest/neotest",
 			"nvim-neotest/neotest-python",
 		},
 		keys = {
-			{
-				"<leader>dv",
-				function()
-					require("dap.ext.vscode").load_launchjs()
-					resolve_python()
-				end,
-				desc = "Load vscode launch.json",
-			},
 			{
 				"<leader>dd",
 				function()
@@ -280,11 +272,10 @@ return {
 			setup = {},
 		},
 		config = function(plugin, opts)
-			require("nvim-dap-virtual-text").setup({
-				commented = true,
-			})
-
-			require("dap.ext.vscode").load_launchjs()
+			-- require("nvim-dap-virtual-text").setup({
+			-- 	enabled = true,
+			-- 	commented = true,
+			-- })
 
 			local dap = require("dap")
 			local sign = vim.fn.sign_define
@@ -309,7 +300,7 @@ return {
 			dap.adapters = {
 				python = {
 					type = "executable",
-					command = require("utils").get_provider_python(),
+					command = mason_path,
 					args = { "-m", "debugpy.adapter" },
 				},
 				--   rt_lldb = {

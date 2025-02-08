@@ -342,7 +342,7 @@ return {
 			desc = "Man Pages",
 		},
 		{
-			"<leader>sp",
+			"<leader>sL",
 			function()
 				Snacks.picker.lazy()
 			end,
