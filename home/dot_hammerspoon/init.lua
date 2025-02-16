@@ -25,7 +25,7 @@ hs.hotkey.bind(hyper2, "f7", function()
 end)
 
 hs.hotkey.bind(hyper2, "f8", function()
-	for _, terminal in ipairs({ "Wezterm", "Ghostty" }) do
+	for _, terminal in ipairs({ "Ghostty", "Wezterm", "Terminal" }) do
 		if hs.application.launchOrFocus(terminal) then
 			break
 		end

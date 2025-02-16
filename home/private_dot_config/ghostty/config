@@ -5,12 +5,12 @@ background-blur-radius = 70
 
 window-decoration = true
 # Available values are: "native", "transparent", "tabs", and "hidden".
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 macos-window-shadow = false
 link-url = true
 
 font-family = Fira Code
-font-size = 12
+font-size = 11
 confirm-close-surface = false
 window-padding-x = 2
 window-padding-y = 2
@@ -21,3 +21,6 @@ window-new-tab-position = end
 # Global quick terminal
 keybind = global:cmd+shift+t=toggle_quick_terminal
 
+# remove so doesn't conflict with tmux
+unbind = alt+right
+unbind = alt+left
