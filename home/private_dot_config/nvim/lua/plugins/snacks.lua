@@ -98,6 +98,7 @@ return {
 		},
 		image = { enable = true },
 		notifier = { enable = true },
+		lazygit = { enable = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
