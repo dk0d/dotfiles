@@ -22,9 +22,11 @@ local neovim = [[
 ]]
 
 return {
+
 	{
 		"nvimdev/dashboard-nvim",
-		event="VimEnter",
+		enabled = false,
+		event = "VimEnter",
 		opts = function()
 			local logo = string.rep("\n", 16) .. neovim .. "\n\n"
 			local get_icon = require("astroui").get_icon

@@ -1,6 +1,19 @@
 -- lazy.nvim
+local neovim = [[
+      ████ ██████           █████      ██                    
+     ███████████             █████                            
+     █████████ ███████████████████ ███   ███████████  
+    █████████  ███    █████████████ █████ ██████████████  
+   █████████ ██████████ █████████ █████ █████ ████ █████  
+ ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+██████  █████████████████████ ████ █████ █████ ████ ██████
+
+[ d3c.ai ] 
+]]
 return {
 	"folke/snacks.nvim",
+	priority = 1000,
+	lazy = false,
 	---@type snacks.Config
 	opts = {
 		---@type snacks.picker.Config
@@ -8,7 +21,7 @@ return {
 			-- your picker configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
-			layout = { preset = "ivy", layout = { position = "bottom" } },
+			-- layout = { preset = "ivy", layout = { position = "bottom" } },
 			ui_select = true,
 			matcher = {
 				frecency = true,
@@ -74,6 +87,17 @@ return {
 				},
 			},
 		},
+		dashboard = {
+			enabled = true,
+			preset = {
+				header = neovim,
+				sections = {
+					{ section = "startup" },
+				},
+			},
+		},
+		image = { enable = true },
+		notifier = { enable = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
