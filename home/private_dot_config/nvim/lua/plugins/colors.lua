@@ -1,26 +1,4 @@
 return {
-	-- {
-	-- 	"AstroNvim/astrotheme",
-	-- 	opts = {
-	-- 		style = {
-	-- 			transparent = true, -- Bool value, toggles transparency.
-	-- 			inactive = false, -- Bool value, toggles inactive window color.
-	-- 			float = false, -- Bool value, toggles floating windows background colors.
-	-- 			neotree = true, -- Bool value, toggles neo-trees background color.
-	-- 			border = true, -- Bool value, toggles borders.
-	-- 			title_invert = false, -- Bool value, swaps text and background colors.
-	-- 			italic_comments = true, -- Bool value, toggles italic comments.
-	-- 			simple_syntax_colors = true, -- Bool value, simplifies the amounts of colors used for syntax highlighting.
-	-- 		},
-	--
-	-- 		termguicolors = true, -- Bool value, toggles if termguicolors are set by AstroTheme.
-	-- 		terminal_color = true, -- Bool value, toggles if terminal_colors are set by AstroTheme.
-	-- 		plugin_default = true, -- Sets how all plugins will be loaded
-	-- 		-- "auto": Uses lazy / packer enabled plugins to load highlights.
-	-- 		-- true: Enables all plugins highlights.
-	-- 		-- false: Disables all plugins.
-	-- 	},
-	-- },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -196,56 +174,4 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	"rebelot/kanagawa.nvim",
-	-- 	config = function()
-	-- 		require("kanagawa").setup({
-	-- 			compile = true,
-	-- 			transparent = true,
-	-- 			colors = {
-	-- 				theme = {
-	-- 					all = {
-	-- 						ui = {
-	-- 							fg = "#aaaaaa",
-	-- 							float = {
-	-- 								bg = "none",
-	-- 							},
-	-- 							bg_gutter = "none",
-	-- 						},
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 			overrides = function(colors)
-	-- 				local theme = colors.theme
-	-- 				return {
-	-- 					NormalFloat = { bg = "none" },
-	-- 					FloatBorder = { bg = "none" },
-	-- 					FloatTitle = { bg = "none" },
-	-- 					-- Save an hlgroup with dark background and dimmed foreground
-	-- 					-- so that you can use it where your still want darker windows.
-	-- 					-- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-	-- 					NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-	--
-	-- 					-- Popular plugins that open floats will link to NormalFloat by default;
-	-- 					-- set their background accordingly if you wish to keep them dark and borderless
-	-- 					LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-	-- 					MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-	--
-	-- 					TelescopeTitle = { fg = theme.ui.special, bold = true },
-	-- 					TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-	-- 					TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-	-- 					TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-	-- 					TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-	-- 					TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-	-- 					TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-	--
-	-- 					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-	-- 					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-	-- 					PmenuSbar = { bg = theme.ui.bg_m1 },
-	-- 					PmenuThumb = { bg = theme.ui.bg_p2 },
-	-- 				}
-	-- 			end,
-	-- 		})
-	-- 	end,
-	-- },
 }
