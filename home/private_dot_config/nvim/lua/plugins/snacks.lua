@@ -1,14 +1,14 @@
 -- lazy.nvim
 local neovim = [[
-      ████ ██████           █████      ██                    
-     ███████████             █████                            
-     █████████ ███████████████████ ███   ███████████  
-    █████████  ███    █████████████ █████ ██████████████  
-   █████████ ██████████ █████████ █████ █████ ████ █████  
- ███████████ ███    ███ █████████ █████ █████ ████ █████ 
-██████  █████████████████████ ████ █████ █████ ████ ██████
+          ████ ██████           █████      ██                        
+         ███████████             █████                                
+         █████████ ███████████████████ ███   ███████████      
+        █████████  ███    █████████████ █████ ██████████████      
+       █████████ ██████████ █████████ █████ █████ ████ █████      
+     ███████████ ███    ███ █████████ █████ █████ ████ █████     
+    ██████  █████████████████████ ████ █████ █████ ████ ██████    
 
-[ d3c.ai ] 
+[ d3c.ai ]
 ]]
 return {
 	"folke/snacks.nvim",
@@ -91,14 +91,54 @@ return {
 			enabled = true,
 			preset = {
 				header = neovim,
-				sections = {
-					{ section = "startup" },
+				keys = {
+					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "g",
+						desc = "Find Text",
+						action = ":lua Snacks.dashboard.pick('live_grep')",
+					},
+					{
+						icon = " ",
+						key = "r",
+						desc = "Recent Files",
+						action = ":lua Snacks.dashboard.pick('oldfiles')",
+					},
+					{
+						icon = " ",
+						key = "c",
+						desc = "Config",
+						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+					},
+					{
+						icon = " ",
+						key = "s",
+						desc = "Restore Session",
+						action = function()
+							require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
+						end,
+					},
+					{
+						icon = "󰒲 ",
+						key = "L",
+						desc = "Lazy",
+						action = ":Lazy",
+						enabled = package.loaded.lazy ~= nil,
+					},
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
 			},
 		},
 		image = { enable = true },
-		notifier = { enable = true },
+		notifier = {
+			enable = true,
+			margin = { top = 2, right = 2, bottom = 0 },
+			top_down = false,
+		},
 		lazygit = { enable = true },
+		animate = { enable = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
