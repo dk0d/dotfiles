@@ -1,12 +1,10 @@
 return {
-	"NvChad/nvim-colorizer.lua",
-	event = "VeryLazy",
+	"brenoprata10/nvim-highlight-colors",
 	opts = {
-		user_default_options = {
-			names = false,
-			tailwind = true,
-			hsl_fn = true,
-			rgb_fn = true,
-		},
+		render = "background",
+		enable_named_colors = true,
+		enable_tailwind_colors = true,
+		virtual_symbol = "",
+		virtual_symbol_position = "eol",
 	},
 }
