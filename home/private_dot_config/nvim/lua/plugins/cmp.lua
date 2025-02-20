@@ -29,25 +29,22 @@ local kind_icons = {
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
-		"onsails/lspkind.nvim",
+		"echasnovski/mini.icons",
 	},
 	event = "InsertEnter",
 	opts = function(_, opts)
 		local cmp = require("cmp")
-		local lspkind = require("lspkind")
+		local mini_icons = require("mini.icons")
 		opts.formatting = {
 			format = function(entry, item)
 				local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
-				item = lspkind.cmp_format({
-					mode = "symbol_text",
-					symbol_map = kind_icons,
-					menu = {
-						buffer = "[Buffer]",
-						nvim_lsp = "[LSP]",
-						luasnip = "[LuaSnip]",
-						path = "[Path]",
-					},
-				})(entry, item)
+				item.icon = mini_icons.get("lsp", item.kind or "")
+				-- 	menu = {
+				-- 		buffer = "[Buffer]",
+				-- 		nvim_lsp = "[LSP]",
+				-- 		luasnip = "[LuaSnip]",
+				-- 		path = "[Path]",
+				-- 	},
 				if color_item.abbr_hl_group then
 					item.kind_hl_group = color_item.abbr_hl_group
 					item.kind = color_item.abbr
