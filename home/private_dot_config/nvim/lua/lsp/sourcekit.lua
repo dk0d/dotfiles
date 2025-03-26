@@ -1,4 +1,7 @@
--- local lspconfig = require("lspconfig")
+-- TODO: Adjust this with blink.nvim
+if true then
+	return {}
+end
 
 local cmdPath = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
 

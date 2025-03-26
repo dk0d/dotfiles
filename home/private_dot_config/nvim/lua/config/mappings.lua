@@ -4,29 +4,29 @@
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
 
-local map = function(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
--- Vim for Colemak
-if vim.g.use_colemak then
-	map("", "n", "j", { desc = "Move cursor down" })
-	map("", "e", "k", { desc = "Move cursor up" })
-	map("", "i", "l", { desc = "Move cursor right" })
-	map("", "l", "i", {})
-	map("", "k", "n", {})
-	map("", "l", "i", {})
-	map("", "K", "N", {})
-	map("", "N", "5j", {})
-	map("", "E", "5k", {})
-	map("", "L", "I", {})
-	map("", "H", "0", {})
-	map("", "I", "$", {})
-end
+-- local map = function(mode, lhs, rhs, opts)
+-- 	local options = { noremap = true, silent = true }
+-- 	if opts then
+-- 		options = vim.tbl_extend("force", options, opts)
+-- 	end
+-- 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+-- end
+--
+-- -- Vim for Colemak
+-- if vim.g.use_colemak then
+-- 	map("", "n", "j", { desc = "Move cursor down" })
+-- 	map("", "e", "k", { desc = "Move cursor up" })
+-- 	map("", "i", "l", { desc = "Move cursor right" })
+-- 	map("", "l", "i", {})
+-- 	map("", "k", "n", {})
+-- 	map("", "l", "i", {})
+-- 	map("", "K", "N", {})
+-- 	map("", "N", "5j", {})
+-- 	map("", "E", "5k", {})
+-- 	map("", "L", "I", {})
+-- 	map("", "H", "0", {})
+-- 	map("", "I", "$", {})
+-- end
 
 -- " map <Leader>s to start IPython
 --
@@ -71,7 +71,7 @@ return {
 				-- local p = require("nio").ui.input({ prompt = "Package Name: " })
 				vim.ui.input({ prompt = "Package Name: " }, function(input)
 					if input then
-						require("lazy").reload({ plugins = { input } })
+						require("lazy_setup").reload({ plugins = { input } })
 					end
 				end)
 			end,
