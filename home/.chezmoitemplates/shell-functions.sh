@@ -84,3 +84,11 @@ function ghostty-infocmp() {
 }
 
 
+# JIRA
+if command -v jira &>/dev/null; then
+	jime() {
+		jira issue list -a$(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by rank --reverse $@
+	}
+fi
+
+
