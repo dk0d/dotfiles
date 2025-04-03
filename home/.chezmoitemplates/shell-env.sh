@@ -6,6 +6,7 @@ fi
 
 export PATH=$HOME/.local/bin:$HOME/.local/scripts:$PATH
 
+JJ_CONFIG=$HOME/.config/jj
 
 set -o vi 
 set editing-mode vi
