@@ -65,6 +65,15 @@ return {
 	},
 	-- first key is the mode
 	n = {
+		["<C-o>"] = {
+			"<C-o>zz",
+			desc = "Go to previous location and center",
+		},
+
+		["<C-i>"] = {
+			"<C-i>zz",
+			desc = "Go to next location and center",
+		},
 
 		["<leader>rp"] = {
 			function()

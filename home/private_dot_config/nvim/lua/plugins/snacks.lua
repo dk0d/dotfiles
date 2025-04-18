@@ -290,19 +290,12 @@ return {
 			function()
 				Snacks.picker.grep_word()
 			end,
-			desc = "Grep",
+			desc = "Grep Word",
 			mode = { "n", "x" },
-		},
-		{
-			"<leader>fp",
-			function()
-				require("utils.snacks").snacks_multigrep()
-			end,
-			desc = "Grep",
 		},
 		-- search
 		{
-			'<leader>s"',
+			'<leader>sr"',
 			function()
 				Snacks.picker.registers()
 			end,
