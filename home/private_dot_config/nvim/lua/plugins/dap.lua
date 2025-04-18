@@ -203,7 +203,7 @@ return {
 				desc = "Toggle REPL",
 			},
 			{
-				"<leader>db",
+				"<leader>ab",
 				function()
 					require("dap").toggle_breakpoint()
 				end,

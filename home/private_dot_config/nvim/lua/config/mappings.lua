@@ -65,6 +65,7 @@ return {
 	},
 	-- first key is the mode
 	n = {
+		["<leader>db"] = false, -- disable for dadbod
 		["<C-o>"] = {
 			"<C-o>zz",
 			desc = "Go to previous location and center",
