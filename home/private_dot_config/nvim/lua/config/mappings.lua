@@ -65,7 +65,8 @@ return {
 	},
 	-- first key is the mode
 	n = {
-		["<leader>db"] = false, -- disable for dadbod
+		-- ["<leader>db"] = false, -- disable for dadbod
+		["<leader>db"] = { "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
 		["<C-o>"] = {
 			"<C-o>zz",
 			desc = "Go to previous location and center",
