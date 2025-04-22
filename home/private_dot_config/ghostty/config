@@ -1,6 +1,7 @@
-theme = catppuccin-mocha
+# theme = catppuccin-mocha
+theme = Kanagawa Wave
 background = #000000
-background-opacity = 0.90
+background-opacity = 0.80
 background-blur-radius = 70
 
 window-decoration = true
