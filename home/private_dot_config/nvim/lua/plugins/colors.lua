@@ -85,7 +85,7 @@ return {
 						green = "#98c379",
 						teal = "#56b6c2",
 						blue = "#61afef",
-						mauve = "#c678dd",
+						-- mauve = "#c678dd",
 						flamingo = "#be5046",
 
 						-- now patching extra palettes
