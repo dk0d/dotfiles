@@ -1,5 +1,5 @@
-# theme = catppuccin-mocha
-theme = Kanagawa Wave
+theme = catppuccin-mocha
+# theme = Kanagawa Wave
 background = #000000
 background-opacity = 0.80
 background-blur-radius = 70
