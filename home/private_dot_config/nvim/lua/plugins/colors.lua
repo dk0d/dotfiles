@@ -31,16 +31,16 @@ return {
 						sky = "#d19a66",
 
 						-- extra colors not decided what to do
-						pink = "#F5C2E7",
-						sapphire = "#74C7EC",
+						pink = "#f5c2e7",
+						sapphire = "#74c7ec",
 
-						subtext1 = "#BAC2DE",
-						subtext0 = "#A6ADC8",
-						overlay2 = "#9399B2",
-						overlay1 = "#7F849C",
-						overlay0 = "#6C7086",
+						subtext1 = "#bac2de",
+						subtext0 = "#a6adc8",
+						overlay2 = "#9399b2",
+						overlay1 = "#7f849c",
+						overlay0 = "#6c7086",
 
-						crust = "#11111B",
+						crust = "#111111",
 					},
 				},
 				-- custom_highlights = function(colors)
