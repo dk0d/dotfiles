@@ -27,6 +27,8 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.completeopt = "menu,menuone,noinsert"
 
+vim.opt.conceallevel = 1
+
 vim.g.resession_enabled = true -- use resession to save and load sessions - disables neovim-session-manager
 vim.g.autoformat_enabled = false -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
 vim.g.cmp_enabled = true -- enable completion at start

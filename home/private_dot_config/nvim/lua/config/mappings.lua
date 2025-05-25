@@ -215,7 +215,7 @@ return {
 		["<leader>jqt"] = { "<cmd>JupyterConnect<cr>", desc = "Connect to QtConsole" },
 		["<leader>jf"] = { "<cmd>JupyterRunFile<cr>", desc = "Run Current File" },
 		["<leader>jc"] = { "<cmd>JupyterSendCell<cr>", desc = "Run Current Cell" },
-		["<leader>jd"] = { "<cmd>JupyterSendCell<cr>]czz", desc = "Run Current Cell and move to next cell" },
+		["<leader>jg"] = { "<cmd>JupyterSendCell<cr>]czz", desc = "Run Current Cell and move to next cell" },
 		["<leader>jo"] = { "<cmd><Plug>JupyterRunTextObj<cr>", desc = "Run Text Object" },
 		["<leader>jv"] = { "<cmd><Plug>JupyterRunVisual<cr>", desc = "Run Visual" },
 

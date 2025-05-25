@@ -295,35 +295,36 @@ return {
 			-- local liblldb_path = install_path .. "/extension/lldb/liblldb.dylib"
 			--
 
-			local mason_path = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python"
+			require("mason-registry").get_package("debugpy"):get_install_handle():map(function(handle)
+				local mason_path = handle.location:get_dir() .. "/venv/bin/python"
+				dap.adapters = {
+					python = {
+						type = "executable",
+						command = mason_path,
+						args = { "-m", "debugpy.adapter" },
+					},
+					--   rt_lldb = {
+					--     type = 'server',
+					--     port = '${port}',
+					--     host = '127.0.0.1',
+					--     attach = {
+					--       pidProperty = 'pid',
+					--       pidSelect = 'ask',
+					--     },
+					--     executable = {
+					--       command = codelldb_path,
+					--       args = { '--liblldb', liblldb_path, '--port', '${port}' },
+					--     },
+					--   },
+				}
 
-			dap.adapters = {
-				python = {
-					type = "executable",
-					command = mason_path,
-					args = { "-m", "debugpy.adapter" },
-				},
-				--   rt_lldb = {
-				--     type = 'server',
-				--     port = '${port}',
-				--     host = '127.0.0.1',
-				--     attach = {
-				--       pidProperty = 'pid',
-				--       pidSelect = 'ask',
-				--     },
-				--     executable = {
-				--       command = codelldb_path,
-				--       args = { '--liblldb', liblldb_path, '--port', '${port}' },
-				--     },
-				--   },
-			}
-
-			if pcall(require, "dap-python") then
-				local dp = require("dap-python")
-				dp.setup(mason_path)
-				dp.resolve_python = require("utils").get_python
-				dp.test_runner = "pytest"
-			end
+				if pcall(require, "dap-python") then
+					local dp = require("dap-python")
+					dp.setup(mason_path)
+					dp.resolve_python = require("utils").get_python
+					dp.test_runner = "pytest"
+				end
+			end)
 
 			resolve_python(dap)
 			return opts
