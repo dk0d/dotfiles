@@ -184,7 +184,7 @@ return {
 			{
 				"<leader>dp",
 				function()
-					require("dap").pause.toggle()
+					require("dap").pause()
 				end,
 				desc = "Pause",
 			},
@@ -294,37 +294,36 @@ return {
 			-- local codelldb_path = install_path .. "/extension/adapter/codelldb"
 			-- local liblldb_path = install_path .. "/extension/lldb/liblldb.dylib"
 			--
+			--   rt_lldb = {
+			--     type = 'server',
+			--     port = '${port}',
+			--     host = '127.0.0.1',
+			--     attach = {
+			--       pidProperty = 'pid',
+			--       pidSelect = 'ask',
+			--     },
+			--     executable = {
+			--       command = codelldb_path,
+			--       args = { '--liblldb', liblldb_path, '--port', '${port}' },
+			--     },
+			--   },
+			local debugpy_mason_path = vim.fn.expand("$MASON/bin/debugpy-adapter")
+			vim.notify(debugpy_mason_path)
+			dap.adapters.python = {
+				type = "executable",
+				command = debugpy_mason_path,
+				args = { "-m", "debugpy.adapter" },
+				options = {
+					source_filetype = "python",
+				},
+			}
 
-			require("mason-registry").get_package("debugpy"):get_install_handle():map(function(handle)
-				local mason_path = handle.location:get_dir() .. "/venv/bin/python"
-				dap.adapters = {
-					python = {
-						type = "executable",
-						command = mason_path,
-						args = { "-m", "debugpy.adapter" },
-					},
-					--   rt_lldb = {
-					--     type = 'server',
-					--     port = '${port}',
-					--     host = '127.0.0.1',
-					--     attach = {
-					--       pidProperty = 'pid',
-					--       pidSelect = 'ask',
-					--     },
-					--     executable = {
-					--       command = codelldb_path,
-					--       args = { '--liblldb', liblldb_path, '--port', '${port}' },
-					--     },
-					--   },
-				}
-
-				if pcall(require, "dap-python") then
-					local dp = require("dap-python")
-					dp.setup(mason_path)
-					dp.resolve_python = require("utils").get_python
-					dp.test_runner = "pytest"
-				end
-			end)
+			if pcall(require, "dap-python") then
+				local dp = require("dap-python")
+				dp.setup(debugpy_mason_path)
+				dp.resolve_python = require("utils").get_python
+				dp.test_runner = "pytest"
+			end
 
 			resolve_python(dap)
 			return opts
