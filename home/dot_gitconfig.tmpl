@@ -31,10 +31,17 @@
     hunk-header-style = file line-number syntax
 
 [diff]
-  renames = copies
+  algorithm = histogram
+  renames = true
+  mnemoicPrefix = true
+  colorMoved = plain
   
 [merge]
   tool = nvim
+  conflictStyle = zdiff3
+
+[tag]
+  sort = version:refname
   
 # relies on having diffview.nvim in plugins
 [mergetool "nvim"]
@@ -43,7 +50,6 @@
   
 [mergetool]
   prompt = false
-
 
 {{ if .personal -}}
 
@@ -85,6 +91,7 @@
 # smarter merge resolution fixes
 [rerere]
 enabled = true
+autoUpdate = true
 
 [branch]
   sort = "-committerdate"
@@ -208,7 +215,29 @@ enabled = true
   # patchit = "!f() { curl -L $1.patch | git am --whitespace=fix; }; f"
   patchit-please = "!f() { echo $1.patch | sed s_pull/[0-9]*/commits_commit_ | xargs curl -L | git am -3 --whitespace=fix; }; f"
   # patchit-please = "!f() { curl -L $1.patch | git am -3 --whitespace=fix; }; f"
+
 [pull]
-  rebase = false
+  rebase = true # rebase by default when pulling changes
+
 [push]
   autoSetupRemote = true
+  followTags = true # push tags by default
+  default = simple
+
+[fetch]
+  prune = true # prune deleted branches on fetch
+  # all = true
+  
+[help]
+  autocorrect = true # auto-correct mistyped commands after 1 second
+
+[commit]
+  # verbose = true # show diff of changes in commit message editor
+
+[rebase]
+  autoStash = true # automatically stash changes before rebasing
+  preserveMerges = true # preserve merge commits during rebase
+  updateRefs = true # update refs during rebase
+
+
+
