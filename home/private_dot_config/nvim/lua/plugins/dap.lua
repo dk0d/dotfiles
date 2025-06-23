@@ -308,7 +308,7 @@ return {
 			--     },
 			--   },
 			local debugpy_mason_path = vim.fn.expand("$MASON/bin/debugpy-adapter")
-			vim.notify(debugpy_mason_path)
+			-- vim.notify(debugpy_mason_path)
 			dap.adapters.python = {
 				type = "executable",
 				command = debugpy_mason_path,
