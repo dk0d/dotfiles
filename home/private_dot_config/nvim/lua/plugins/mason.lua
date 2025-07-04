@@ -1,22 +1,22 @@
 return {
-	{
-		"williamboman/mason-lspconfig.nvim",
-		version = "^2",
-		dependencies = { "williamboman/mason.nvim" },
-		cmd = { "LspInstall", "LspUninstall" },
-		opts_extend = { "ensure_installed" },
-		opts = {
-			ensure_installed = {},
-			handlers = {
-				function(server)
-					require("astrolsp").lsp_setup(server)
-				end,
-			},
-		},
-		config = function(...)
-			require("astronvim.plugins.configs.mason-lspconfig")(...)
-		end,
-	},
+	-- {
+	-- 	"williamboman/mason-lspconfig.nvim",
+	-- 	version = "^2",
+	-- 	dependencies = { "williamboman/mason.nvim" },
+	-- 	cmd = { "LspInstall", "LspUninstall" },
+	-- 	opts_extend = { "ensure_installed" },
+	-- 	opts = {
+	-- 		ensure_installed = {},
+	-- 		handlers = {
+	-- 			function(server)
+	-- 				require("astrolsp").lsp_setup(server)
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- 	config = function(...)
+	-- 		require("astronvim.plugins.configs.mason-lspconfig")(...)
+	-- 	end,
+	-- },
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
@@ -27,7 +27,7 @@ return {
 					"stylua",
 					"selene",
 					"ruff",
-					"pyright",
+					"basedpyright",
 					"biome",
 					"debugpy",
 					"codelldb",
