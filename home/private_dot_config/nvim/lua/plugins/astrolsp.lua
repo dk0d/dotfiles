@@ -56,6 +56,8 @@ return {
 			sourcekit = require("lsp.sourcekit"),
 			texlab = require("lsp.texlab"),
 			clangd = require("lsp.clangd"),
+			denols = require("lsp.denols"),
+			ts_ls = require("lsp.ts_ls"),
 			-- tsserver = require("lsp.tsserver"),
 			-- denols = require("lsp.denols"),
 		},
