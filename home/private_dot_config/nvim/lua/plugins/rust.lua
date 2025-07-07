@@ -1,12 +1,11 @@
 return {
 	"mrcjkb/rustaceanvim",
-	version = "^4", -- Recommended
+	version = "^6", -- Recommended
 	event = "VeryLazy",
 	config = function()
 		vim.g.rustaceanvim = function()
-			local install_path = require("mason-registry").get_package("codelldb"):get_install_path()
-			local codelldb_path = install_path .. "/codelldb"
-			-- local liblldb_path = install_path .. "/extension/lldb/liblldb.dylib"
+			local install_path = vim.fn.expand("$MASON/packages/codelldb")
+			local codelldb_path = vim.fn.expand("$MASON/bin/codelldb")
 			local liblldb_path = install_path .. "/extension/lldb/lib/liblldb"
 			local this_os = vim.loop.os_uname().sysname
 			liblldb_path = liblldb_path .. (this_os == "Darwin" and ".dylib" or ".so")
@@ -37,7 +36,7 @@ return {
 							},
 						},
 					},
-					on_attach = function(client, bufnr)
+					on_attach = function(_, bufnr)
 						vim.keymap.set("n", "<S-k>", function()
 							vim.cmd.RustLsp({ "hover", "actions" })
 						end, { desc = "Rust Hover Actions", buffer = bufnr })
@@ -56,6 +55,9 @@ return {
 							vim.lsp.buf.references,
 							{ desc = "Rust go to references", buffer = bufnr }
 						)
+
+						vim.keymap.set("n", "lr", vim.lsp.buf.rename, { desc = "Rust rename", buffer = bufnr })
+
 						-- or
 						-- vim.keymap.set(
 						-- 	"n",
