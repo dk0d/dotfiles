@@ -1,4 +1,8 @@
 [packages]
+taps = [
+  "jesseduffield/lazygit/lazygit",
+  "thezoraiz/ascii-image-converter/ascii-image-converter",
+]
 brews = [
   "act",                                                   # run github actions locally
   "bat",                                                   # https://github.com/sharkdp/bat
@@ -43,6 +47,7 @@ brews = [
   "age",                                                   # file encryption
   "termshark",                                             # CLI wrapper for tshark (wireshark)
   "zplug",                                                 # zsh plugin manager
+  'uv',                                                    # Better python jazz
   "jesseduffield/lazygit/lazygit",                         # git tui
   "lazydocker",                                            # docker tui
   "thezoraiz/ascii-image-converter/ascii-image-converter", # ascii image converter
@@ -53,20 +58,20 @@ brews = [
 taps = ["julien-cpsn/atac"]
 # taps = ["julien-cpsn/atac"]
 brews = [
-  "sondr3/taps/git-ignore", # git ignore
-  "atac",                   # cli postman
+  "git-ignore", # git ignore
+  "atac",       # cli postman
 ]
 casks = [
-  "ghostty",                     # zig-based term
-  "1password",                   # credentials
-  "1password-cli",               # credentials
-  "stats",                       # system stats in the menu bar
-  "hammerspoon",                 # automation with lua
-  "signal",                      # messaging
-  "wezterm",                     # terminal (rust by the way)
-  "obsidian",                    # notes
-  "hex-fiend",                   # hex editor
-  "balenaetcher",                # sd card writer
+  "ghostty",       # zig-based term
+  "1password",     # credentials
+  "1password-cli", # credentials
+  "stats",         # system stats in the menu bar
+  "hammerspoon",   # automation with lua
+  "signal",        # messaging
+  "wezterm",       # terminal (rust by the way)
+  "obsidian",      # notes
+  "hex-fiend",     # hex editor
+  # "balenaetcher",                # sd card writer
   "transmission",                # fast downloads
   "visual-studio-code",          # only when i have to
   "rectangle",                   # macos window manager
