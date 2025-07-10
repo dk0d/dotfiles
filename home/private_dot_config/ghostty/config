@@ -1,4 +1,6 @@
 theme = catppuccin-mocha
+cursor-invert-fg-bg = true
+
 # theme = Kanagawa Wave
 background = #000000
 background-opacity = 0.80
