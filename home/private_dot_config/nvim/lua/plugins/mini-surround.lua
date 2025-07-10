@@ -27,8 +27,6 @@ return {
 			delete = "md", -- Delete surrounding
 			find = "mf", -- Find surrounding (to the right)
 			find_left = "mF", -- Find surrounding (to the left)
-			find_next = "", -- Find surrounding (to the right)
-			find_next_left = "", -- Find surrounding (to the left)
 			highlight = "mh", -- Highlight surrounding
 			replace = "mr", -- Replace surrounding
 			update_n_lines = "mn", -- Update `n_lines`
