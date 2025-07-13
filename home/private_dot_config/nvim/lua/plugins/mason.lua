@@ -1,50 +1,54 @@
 return {
-	-- {
-	-- 	"williamboman/mason-lspconfig.nvim",
-	-- 	version = "^2",
-	-- 	dependencies = { "williamboman/mason.nvim" },
-	-- 	cmd = { "LspInstall", "LspUninstall" },
-	-- 	opts_extend = { "ensure_installed" },
-	-- 	opts = {
-	-- 		ensure_installed = {},
-	-- 		handlers = {
-	-- 			function(server)
-	-- 				require("astrolsp").lsp_setup(server)
-	-- 			end,
-	-- 		},
-	-- 	},
-	-- 	config = function(...)
-	-- 		require("astronvim.plugins.configs.mason-lspconfig")(...)
-	-- 	end,
-	-- },
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		config = function()
-			require("mason-tool-installer").setup({
-				ensure_installed = {
-					"lua-language-server",
-					"vim-language-server",
-					"stylua",
-					"selene",
-					"ruff",
-					"basedpyright",
-					"biome",
-					"debugpy",
-					"codelldb",
-					"taplo",
-					"tailwindcss-language-server",
-					"typescript-language-server",
-					"svelte-language-server",
-				},
-				run_on_start = true,
-				auto_update = true,
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   version = "^2",
+  --   dependencies = { "williamboman/mason.nvim" },
+  --   cmd = { "LspInstall", "LspUninstall" },
+  --   opts_extend = { "ensure_installed" },
+  --   opts = {
+  --     handlers = {
+  --       function(server)
+  --         require("astrolsp").lsp_setup(server)
+  --       end,
+  --     },
+  --   },
+  --   config = function(...)
+  --     require("astronvim.plugins.configs.mason-lspconfig")(...)
+  --   end,
+  -- },
+  {
+    "mason-org/mason.nvim",
+    version = "^1",
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "lua-language-server",
+          "vim-language-server",
+          "stylua",
+          "selene",
+          "ruff",
+          "pyright",
+          "biome",
+          "debugpy",
+          "codelldb",
+          "taplo",
+          "tailwindcss-language-server",
+          "typescript-language-server",
+          "denols",
+          "svelte-language-server",
+        },
+        run_on_start = true,
+        auto_update = true,
 
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	},
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  },
 }
 
 -- Example customization of mason plugins
