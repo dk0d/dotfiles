@@ -121,10 +121,11 @@ return {
     ["<M-k>"] = { "<C-W>+", desc = "Shift split up" },
     ["<M-j>"] = { "<C-W>-", desc = "Shift split down" },
 
-    -- Oil
+    -- Oil /
     ["<leader>o"] = {
       function()
-        require("oil").open()
+        MiniFiles.open(vim.fn.expand("%:p:h"))
+        -- require("oil").open()
       end,
       desc = "Open Oil",
     },
