@@ -62,9 +62,24 @@ return {
   v = {
     ["J"] = { "<cmd> m '>+1<cr>gv=gv", desc = "Move line down" },
     ["K"] = { "<cmd> m '<-2<cr>gv=gv", desc = "Move line up" },
+
+    -- Better indenting
+    ["<"] = { "<gv", desc = "Indent left" },
+    [">"] = { ">gv", desc = "Indent right" },
   },
   -- first key is the mode
   n = {
+
+    -- Center sreen when jumping
+    ["n"] = { "nzzzv", desc = "Search next and recenter" },
+    ["N"] = { "Nzzzv", desc = "Search previous and recenter" },
+    ["<C-d>"] = { "<C-d>zz", desc = "Scroll down and recenter" },
+    ["<C-u>"] = { "<C-u>zz", desc = "Scroll up and recenter" },
+
+    -- Resizing
+    ["<A-Left>"] = { "<cmd>vertical resize +2<cr>", desc = "Resize window left" },
+    ["<A-Right>"] = { "<cmd>vertical resize -2<cr>", desc = "Resize window right" },
+
     -- ["<leader>db"] = false, -- disable for dadbod
     ["<leader>db"] = { "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
     ["<C-o>"] = {
@@ -124,7 +139,7 @@ return {
     -- Oil /
     ["<leader>o"] = {
       function()
-        MiniFiles.open(vim.fn.expand("%:p:h"))
+        require("mini.files").open(vim.fn.expand("%:p:h"))
         -- require("oil").open()
       end,
       desc = "Open Oil",
