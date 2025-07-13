@@ -1,11 +1,14 @@
 ---@type LazySpec
 return {
   "echasnovski/mini.files",
-  event = "VeryLazy",
+  lazy = false,
   config = function(_, opts)
     require("mini.files").setup(opts)
   end,
   opts = {
+    options = {
+      use_as_default_explorer = true,
+    },
     windows = {
       width_focus = 50,
     },
