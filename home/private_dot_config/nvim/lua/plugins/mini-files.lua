@@ -7,7 +7,7 @@ return {
   end,
   opts = {
     windows = {
-      width_focus = 70,
+      width_focus = 50,
     },
     mappings = {
       close = "q",
