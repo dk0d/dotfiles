@@ -76,6 +76,12 @@ return {
     ["<C-d>"] = { "<C-d>zz", desc = "Scroll down and recenter" },
     ["<C-u>"] = { "<C-u>zz", desc = "Scroll up and recenter" },
 
+    ["gd"] = { "gdzz", desc = "Go to definition and recenter" },
+    ["gD"] = { "gDzz", desc = "Go to declaration and recenter" },
+    ["gi"] = { "gizz", desc = "Go to implementation and recenter" },
+    ["gr"] = { "grzz", desc = "Go to references and recenter" },
+    ["gy"] = { "gyzz", desc = "Go to type definition and recenter" },
+
     -- Resizing
     ["<A-Left>"] = { "<cmd>vertical resize +2<cr>", desc = "Resize window left" },
     ["<A-Right>"] = { "<cmd>vertical resize -2<cr>", desc = "Resize window right" },
@@ -139,10 +145,10 @@ return {
     -- Oil /
     ["<leader>o"] = {
       function()
-        require("mini.files").open(vim.fn.expand("%:p:h"))
+        require("mini.files").open(vim.fn.expand("%"))
         -- require("oil").open()
       end,
-      desc = "Open Oil",
+      desc = "Open Mini Files",
     },
 
     -- ipython
@@ -183,12 +189,13 @@ return {
       function()
         vim.lsp.buf.code_action({
           context = {
-            apply = true,
-            only = { "source.organizeImports" },
+            only = { "source.fixAll" },
+            diagnostics = {},
           },
+          apply = true,
         })
       end,
-      desc = "Sort Imports",
+      desc = "Fix all code actions",
     },
 
     -- Vimtex

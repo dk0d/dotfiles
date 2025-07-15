@@ -3,7 +3,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   event = "VeryLazy",
   lazy = true,
-  enabled = true,
+  enabled = false,
   keys = {
     { "<leader>e", false, desc = get_icon("Window", 1, true) .. "Neotree" },
     { "<leader>ee", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },

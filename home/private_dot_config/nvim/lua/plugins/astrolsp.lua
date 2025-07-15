@@ -58,8 +58,7 @@ return {
       clangd = require("lsp.clangd"),
       denols = require("lsp.denols"),
       ts_ls = require("lsp.ts_ls"),
-      -- tsserver = require("lsp.tsserver"),
-      -- denols = require("lsp.denols"),
+      biome = require("lsp.biome"),
     },
 
     -- customize how language servers are attached
