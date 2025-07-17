@@ -145,10 +145,9 @@ return {
     -- Oil /
     ["<leader>o"] = {
       function()
-        require("mini.files").open(vim.fn.expand("%"))
-        -- require("oil").open()
+        require("oil").open()
       end,
-      desc = "Open Mini Files",
+      desc = "Open oil.nvim ",
     },
 
     -- ipython
