@@ -1,6 +1,6 @@
 -- @type lspconfig.options.denols
 return {
-  workspace_required = true,
+  -- workspace_required = true,
   init_options = {
     lint = true,
     unstable = true,
