@@ -15,6 +15,16 @@ return {
       "javascript",
       "svelte",
       "sql",
+      "html",
+      "tsx",
+      "bash",
+      "css",
+      "jsdoc",
+      "json",
+      "toml",
+      "zig",
+      "csv",
+      "go",
       -- add more arguments for adding more treesitter parsers
     })
 
