@@ -54,17 +54,23 @@ return {
     },
     {
       "<leader>vx",
-      function() require("user.utils.vimtex").compiler_xelatex() end,
+      function()
+        require("user.utils.vimtex").compiler_xelatex()
+      end,
       desc = "Set VimTex Compiler to XeLaTex",
     },
     {
       "<leader>vl",
-      function() require("user.utils.vimtex").compiler_pdflatex() end,
+      function()
+        require("user.utils.vimtex").compiler_pdflatex()
+      end,
       desc = "Set VimTex Compiler to pdflatex",
     },
     {
       "<leader>vt",
-      function() require("user.utils.vimtex").status() end,
+      function()
+        require("user.utils.vimtex").status()
+      end,
       desc = "get compiler status",
     },
   },

@@ -1,7 +1,9 @@
 return {
   "folke/zen-mode.nvim",
   event = "VeryLazy",
-  config = function() require("zen-mode").setup {} end,
+  config = function()
+    require("zen-mode").setup({})
+  end,
   opts = {
     window = {
       width = 400,
@@ -16,7 +18,9 @@ return {
   keys = {
     {
       "<leader>zm",
-      function() require("zen-mode").toggle {} end,
+      function()
+        require("zen-mode").toggle({})
+      end,
       desc = "Zen Mode",
     },
   },

@@ -5,9 +5,9 @@
 
 --@type LazySpec
 return {
-	"AstroNvim/astrocore",
-	---@type AstroCoreOpts
-	opts = {
-		mappings = require("config.mappings"),
-	},
+  "AstroNvim/astrocore",
+  ---@type AstroCoreOpts
+  opts = {
+    mappings = require("config.mappings"),
+  },
 }

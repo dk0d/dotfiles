@@ -9,7 +9,7 @@ function M.compiler_xelatex()
     continuous = 1,
     executable = "latexmk",
   }
-  vim.notify "vimtex compiler set to xelatex"
+  vim.notify("vimtex compiler set to xelatex")
 end
 
 function M.compiler_pdflatex()
@@ -21,7 +21,7 @@ function M.compiler_pdflatex()
     continuous = 1,
     executable = "latexmk",
   }
-  vim.notify "vimtex compiler set to pdflatex"
+  vim.notify("vimtex compiler set to pdflatex")
 end
 
 function M.compiler_tectonic()
@@ -33,7 +33,7 @@ function M.compiler_tectonic()
     continuous = 1,
     executable = "tectonic",
   }
-  vim.notify "vimtex compiler set to tectonic"
+  vim.notify("vimtex compiler set to tectonic")
 end
 
 function M.status()

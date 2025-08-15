@@ -3,7 +3,7 @@ return {
   version = "*",
   event = "VeryLazy",
   config = function()
-    require("mini.align").setup {
+    require("mini.align").setup({
       -- Module mappings. Use `''` (empty string) to disable one.
       mappings = {
         start = "gm",
@@ -51,6 +51,6 @@ return {
 
       -- Whether to disable showing non-error feedback
       silent = false,
-    }
+    })
   end,
 }

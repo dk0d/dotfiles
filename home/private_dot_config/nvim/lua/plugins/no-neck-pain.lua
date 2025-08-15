@@ -7,7 +7,7 @@ return {
     { "<leader>zp", "<cmd>NoNeckPain<cr>", desc = "Toggle NoNeckPain" },
   },
   config = function()
-    require("no-neck-pain").setup {
+    require("no-neck-pain").setup({
       width = 220,
       colors = {
         blend = -0.1,
@@ -27,6 +27,6 @@ return {
           filetype = "md",
         },
       },
-    }
+    })
   end,
 }

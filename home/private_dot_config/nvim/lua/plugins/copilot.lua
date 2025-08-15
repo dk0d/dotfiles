@@ -25,32 +25,32 @@
 -- }
 
 -- disable copilot
--- if true then
--- 	return {}
--- end
+if true then
+  return {}
+end
 
 return {
-	"zbirenbaum/copilot.lua",
-	event = "InsertEnter",
-	cmd = "Copilot",
-	config = function()
-		require("copilot").setup({
-			panel = {
-				enabled = true,
-				accept = "<CR>",
-			},
-			suggestion = {
-				auto_trigger = true,
-				enabled = true,
-				keymap = {
-					accept = "<A-l>",
-					prev = "<C-[>",
-					next = "<C-]>",
-					dismiss = "<C-]>",
-				},
-			},
-		})
-	end,
+  "zbirenbaum/copilot.lua",
+  event = "InsertEnter",
+  cmd = "Copilot",
+  config = function()
+    require("copilot").setup({
+      panel = {
+        enabled = true,
+        accept = "<CR>",
+      },
+      suggestion = {
+        auto_trigger = true,
+        enabled = true,
+        keymap = {
+          accept = "<A-l>",
+          prev = "<C-[>",
+          next = "<C-]>",
+          dismiss = "<C-]>",
+        },
+      },
+    })
+  end,
 }
 
 -- return {

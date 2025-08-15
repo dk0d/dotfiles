@@ -44,8 +44,8 @@ vim.g.use_colemak = false
 -- vim.g.icons_enabled = false -- disable icons in the UI (disable if no nerd font is available)
 --
 vim.diagnostic.config({
-	underline = true,
-	virtual_text = true,
-	-- signs = true,
-	-- update_in_insert = false,
+  underline = true,
+  virtual_text = true,
+  -- signs = true,
+  -- update_in_insert = false,
 })

@@ -1,4 +1,6 @@
-if true then return {} end -- REMOVE THIS LINE TO ACTIVATE THIS FILE
+if true then
+  return {}
+end -- REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 ---@type LazySpec
 return {

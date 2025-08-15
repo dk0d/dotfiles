@@ -1,4 +1,4 @@
 return {
-	{ "goolord/alpha-nvim", enabled = false },
-	{ "onsails/lspkind.nvim", enabled = false },
+  { "goolord/alpha-nvim", enabled = false },
+  { "onsails/lspkind.nvim", enabled = false },
 }

@@ -1,6 +1,6 @@
 return {
-	"zadirion/Unreal.nvim",
-	dependencies = {
-		{ "tpope/vim-dispatch" },
-	},
+  "zadirion/Unreal.nvim",
+  dependencies = {
+    { "tpope/vim-dispatch" },
+  },
 }

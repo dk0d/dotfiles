@@ -3,16 +3,16 @@
 -- anything that doesn't fit in the normal config locations above can go here
 
 vim.filetype.add({
-	extension = {
-		-- PostCSS
-		pcss = "pcss",
-		-- MDX
-		mdx = "mdx",
-	},
-	pattern = {
-		-- .env.* files
-		["%.env%..*"] = "dotenv",
-	},
+  extension = {
+    -- PostCSS
+    pcss = "pcss",
+    -- MDX
+    mdx = "mdx",
+  },
+  pattern = {
+    -- .env.* files
+    ["%.env%..*"] = "dotenv",
+  },
 })
 
 vim.treesitter.language.register("css", "pcss")

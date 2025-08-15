@@ -18,8 +18,8 @@ if not pcall(require, "lazy") then
 	vim.api.nvim_echo(
 	{ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } },
 		true, {})
-	vim.fn.getchar()
-	vim.cmd.quit()
+  vim.fn.getchar()
+  vim.cmd.quit()
 end
 
 -- -----------------------------------------------
@@ -29,8 +29,8 @@ end
 -- bootstrap lazy.nvim, AstroNvim, and user plugins
 require("lazy_setup")
 if not vim.g.vscode then
-	require("config.options")
-	require("config.autocmds")
-	-- run polish file at the very end
-	require("polish")
+  require("config.options")
+  require("config.autocmds")
+  -- run polish file at the very end
+  require("polish")
 end
