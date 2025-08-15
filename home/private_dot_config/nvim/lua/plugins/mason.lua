@@ -39,6 +39,7 @@ return {
           "typescript-language-server",
           "denols",
           "svelte-language-server",
+          "prettierd",
         },
         run_on_start = true,
         auto_update = true,

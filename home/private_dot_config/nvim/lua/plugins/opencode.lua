@@ -1,6 +1,7 @@
 return {
   "NickvanDyke/opencode.nvim",
   dependencies = { "folke/snacks.nvim" },
+  lazy = true,
   ---@type opencode.Config
   opts = {
     -- Your configuration, if any

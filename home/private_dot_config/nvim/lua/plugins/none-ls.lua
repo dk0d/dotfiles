@@ -1,23 +1,57 @@
-if true then
-  return {}
-end -- REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Example customization of Null-LS sources
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
-  opts = function(_, config)
-    -- config variable is the default configuration table for the setup function call
-    -- local null_ls = require "null-ls"
-
-    -- Check supported formatters and linters
-    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-    config.sources = {
-      -- Set a formatter
-      -- null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
-    }
-    return config -- return final config table
-  end,
+  main = "null-ls",
+  specs = {
+    { "nvim-lua/plenary.nvim", lazy = true },
+    {
+      "AstroNvim/astrolsp",
+      opts = function(_, opts)
+        local maps = opts.mappings
+        maps.n["<Leader>lI"] = {
+          "<Cmd>NullLsInfo<CR>",
+          desc = "Null-ls information",
+          cond = function()
+            return vim.fn.exists(":NullLsInfo") > 0
+          end,
+        }
+      end,
+    },
+  },
+  dependencies = {
+    {
+      "jay-babu/mason-null-ls.nvim",
+      dependencies = { "williamboman/mason.nvim" },
+      cmd = { "NullLsInstall", "NullLsUninstall" },
+      opts_extend = { "ensure_installed" },
+      opts = {
+        ensure_installed = {},
+        handlers = {
+          biome = function(source, methods)
+            local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+            local has_biome = require("null-ls.utils").root_pattern("biome.json", "biome.jsonc")(cwd) ~= nil
+            if has_biome then
+              require("mason-null-ls").default_setup(source, methods)
+            end
+          end,
+          prettierd = function(source, methods)
+            local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+            local has_pkg = require("null-ls.utils").root_pattern("package.json", "tsconfig.json", "jsconfig.json")(cwd)
+              ~= nil
+            local has_biome = require("null-ls.utils").root_pattern("biome.json", "biome.jsonc")(cwd) ~= nil
+            local has_prettier = has_pkg and not has_biome
+            if has_prettier then
+              require("mason-null-ls").default_setup(source, methods)
+            end
+          end,
+        },
+        sources = {},
+      },
+      config = function(...)
+        require("astronvim.plugins.configs.mason-null-ls")(...)
+      end,
+    },
+  },
+  event = "User AstroFile",
 }
