@@ -2,7 +2,10 @@
 return {
   "nvim-telescope/telescope.nvim",
   enabled = false,
-  event = "VeryLazy",
+  cmd = "Telescope",
+  keys = {
+    { "<leader>f", desc = "+find" },
+  },
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",

@@ -1,7 +1,11 @@
 local get_icon = require("astroui").get_icon
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  event = "VeryLazy",
+  cmd = { "Neotree" },
+  keys = {
+    { "<leader>e", false, desc = get_icon("Window", 1, true) .. "Neotree" },
+    { "<leader>ee", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
+  },
   keys = {
     { "<leader>e", false, desc = get_icon("Window", 1, true) .. "Neotree" },
     { "<leader>ee", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },

@@ -19,9 +19,13 @@ return {
   {
     "mason-org/mason.nvim",
     version = "^1",
+    cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+    event = "VeryLazy",
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    event = "VeryLazy",
+    cmd = { "MasonToolsInstall", "MasonToolsUpdate" },
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {

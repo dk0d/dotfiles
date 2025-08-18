@@ -35,6 +35,7 @@ return {
     "echasnovski/mini.icons",
   },
   event = "InsertEnter",
+  lazy = true,
   opts = function(_, opts)
     local cmp = require("cmp")
     local mini_icons = require("mini.icons")

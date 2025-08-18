@@ -53,5 +53,5 @@ return {
       end,
     },
   },
-  event = "User AstroFile",
+  event = "VeryLazy",
 }
