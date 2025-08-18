@@ -10,6 +10,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
+      ---@diagnostic disable: missing-fields
       require("neotest").setup({
         adapters = {
           require("neotest-python")({

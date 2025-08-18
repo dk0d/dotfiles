@@ -3,10 +3,12 @@
 return {
   "nvimtools/none-ls.nvim",
   main = "null-ls",
+  event = "VeryLazy",
   specs = {
     { "nvim-lua/plenary.nvim", lazy = true },
     {
       "AstroNvim/astrolsp",
+      event = "VeryLazy",
       opts = function(_, opts)
         local maps = opts.mappings
         maps.n["<Leader>lI"] = {
@@ -25,6 +27,7 @@ return {
       dependencies = { "williamboman/mason.nvim" },
       cmd = { "NullLsInstall", "NullLsUninstall" },
       opts_extend = { "ensure_installed" },
+      event = "VeryLazy",
       opts = {
         ensure_installed = {},
         handlers = {
@@ -53,5 +56,4 @@ return {
       end,
     },
   },
-  event = "VeryLazy",
 }

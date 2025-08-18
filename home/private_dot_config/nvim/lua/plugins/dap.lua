@@ -85,27 +85,6 @@ local dapuiconfig = {
 
 return {
   {
-    "rcarriga/nvim-dap-ui",
-    event = "VeryLazy",
-    after = "nvim-dap",
-    dependencies = {
-      { "nvim-neotest/nvim-nio" },
-    },
-    opts = dapuiconfig,
-    -- config = function(plugin, opts)
-    --   -- set config from above
-    --   opts = vim.tbl_deep_extend('force', opts, dapuiconfig)
-    --
-    --   -- run default astronvim config function
-    --   -- require 'plugins.configs.nvim-dap-ui'(plugin, opts)
-    --
-    --   local dap = require 'dap'
-    --   -- dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open() end
-    --   dap.listeners.before.event_terminated['dapui_config'] = nil
-    --   dap.listeners.before.event_exited['dapui_config'] = nil
-    -- end,
-  },
-  {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
     dependencies = {
@@ -328,5 +307,26 @@ return {
       resolve_python(dap)
       return opts
     end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
+    after = "nvim-dap",
+    dependencies = {
+      { "nvim-neotest/nvim-nio" },
+    },
+    opts = dapuiconfig,
+    -- config = function(plugin, opts)
+    --   -- set config from above
+    --   opts = vim.tbl_deep_extend('force', opts, dapuiconfig)
+    --
+    --   -- run default astronvim config function
+    --   -- require 'plugins.configs.nvim-dap-ui'(plugin, opts)
+    --
+    --   local dap = require 'dap'
+    --   -- dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open() end
+    --   dap.listeners.before.event_terminated['dapui_config'] = nil
+    --   dap.listeners.before.event_exited['dapui_config'] = nil
+    -- end,
   },
 }

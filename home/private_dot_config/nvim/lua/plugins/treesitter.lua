@@ -22,6 +22,7 @@ return {
       "css",
       "jsdoc",
       "json",
+      "jsonc",
       "toml",
       "zig",
       "csv",

@@ -7,19 +7,25 @@ return {
   },
   build = false,
   cmd = "Spectre",
-  config = {
+  opts = {
+    open_cmd = "noswapfile vnew",
     replace_engine = {
-      ["sed"] = {
-        cmd = "sed",
-        args = {
-          "-i",
-          "",
-          "-E",
-        },
+      ["sd"] = {},
+      -- ["sed"] = {
+      --   cmd = "sed",
+      --   args = {
+      --     "-i",
+      --     "",
+      --     "-E",
+      --   },
+      -- },
+    },
+    default = {
+      replace = {
+        cmd = "sd",
       },
     },
   },
-  opts = { open_cmd = "noswapfile vnew" },
   keys = {
     {
       "<leader>sp",

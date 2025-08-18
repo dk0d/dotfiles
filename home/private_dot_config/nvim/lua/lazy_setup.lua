@@ -17,14 +17,26 @@ require("lazy").setup({
   -- Configure any other `lazy.nvim` configuration options here
   install = { colorscheme = { "astrotheme", "habamax" } },
   ui = { backdrop = 100 },
+  checker = { enabled = false },
+  diff = { cmd = "diffview.nvim" },
+  change_detection = { enabled = true, notify = false },
+  profiling = { loader = true, require = true },
   performance = {
+    cache = { enabled = true },
+    reset_packpath = true,
     rtp = {
+      reset = true,
+      reset_packpath = true,
       -- disable some rtp plugins, add more to your liking
       disabled_plugins = {
         "gzip",
         "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+
         "tarPlugin",
         "tohtml",
+        "tutor",
         "zipPlugin",
       },
     },

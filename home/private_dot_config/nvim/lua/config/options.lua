@@ -2,6 +2,13 @@
 -- Default options that are always set: https://github.com/AstroNvim/AstroNvim/blob/main/lua/astronvim/options.lua
 -- Add any additional options here
 
+-- Enable faster Lua module cache (Neovim >= 0.9)
+pcall(function()
+  if vim.loader and vim.loader.enable then
+    vim.loader.enable()
+  end
+end)
+
 vim.cmd([[colorscheme catppuccin-mocha]])
 -- vim.cmd([[colorscheme kanagawa]])
 

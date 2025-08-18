@@ -1,7 +1,8 @@
 return {
   "mrcjkb/rustaceanvim",
   version = "^6", -- Recommended
-  event = "VeryLazy",
+  ft = { "rust" },
+  event = { "BufReadPre *.rs", "BufNewFile *.rs" },
   config = function()
     vim.g.rustaceanvim = function()
       local install_path = vim.fn.expand("$MASON/packages/codelldb")
@@ -18,22 +19,12 @@ return {
           default_settings = {
             ["rust-analyzer"] = {
               imports = {
-                granularity = {
-                  group = "module",
-                },
+                granularity = { group = "module" },
                 prefix = "self",
               },
-              cargo = {
-                buildScripts = {
-                  enable = true,
-                },
-              },
-              procMacro = {
-                enable = true,
-              },
-              hint = {
-                enable = true,
-              },
+              cargo = { buildScripts = { enable = true } },
+              procMacro = { enable = true },
+              hint = { enable = true },
             },
           },
           on_attach = function(_, bufnr)
@@ -45,17 +36,7 @@ return {
             end, { desc = "Rust Code Actions", buffer = bufnr })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Rust go to definition", buffer = bufnr })
             vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Rust go to references", buffer = bufnr })
-
             vim.keymap.set("n", "lr", vim.lsp.buf.rename, { desc = "Rust rename", buffer = bufnr })
-
-            -- or
-            -- vim.keymap.set(
-            -- 	"n",
-            -- 	"<leader>lc",
-            -- 	rt.open_cargo_toml.open_cargo_toml,
-            -- 	{ desc = "Rust open cargo TOML", buffer = bufnr }
-            -- )
-            -- vim.keymap.set("n", "<leader>lr", rt.ssr.ssr, { desc = "Structural Search/Replace", buffer = bufnr })
           end,
         },
       }
