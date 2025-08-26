@@ -89,6 +89,20 @@ if command -v jira &>/dev/null; then
 	function jime() {
 		jira issue list -a$(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by status --reverse $@;
 	}
+
+	function jissue() {
+		jira issue view --raw $1 | jq -r '"\(.key) \(.fields.summary)"'
+	}
+
+	function jissuebranch() {
+		issue=$(jissue $1)
+		branch=$(echo $issue | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]-')
+		echo $branch
+	}
+
+	function jibranch() {
+		git checkout -b $(jissuebranch $1)
+	}
 fi
 
 
