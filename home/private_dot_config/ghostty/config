@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 cursor-invert-fg-bg = true
 
 custom-shader = ./shaders/cursor_smear_fade.glsl
