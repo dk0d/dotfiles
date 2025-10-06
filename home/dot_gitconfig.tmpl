@@ -183,7 +183,7 @@ autoUpdate = true
 
   # Remove branches that have already been merged with main
   # a.k.a. ‘delete merged’
-  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
+  dm = "!git branch --merged main | grep -v '^\\*|main|master' | xargs -n 1 git branch -d; git remote -v update -p"
 
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
