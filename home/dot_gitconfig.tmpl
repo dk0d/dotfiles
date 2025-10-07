@@ -181,9 +181,21 @@ autoUpdate = true
   # Find commits by commit message
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
+  # Preview delete branches that have already been merged with main
+  # a.k.a. ‘delete merged’
+  m = "!git branch --merged main | rg --invert-match '(main|master|develop|dev|HEAD)'"
+  
   # Remove branches that have already been merged with main
   # a.k.a. ‘delete merged’
-  dm = "!git branch --merged main | grep -v '^\\*|main|master' | xargs -n 1 git branch -d; git remote -v update -p"
+  md = "!git branch --merged main | rg --invert-match '(main|master|develop|dev|HEAD)' | xargs -n 1 git branch -d; git remote -v update -p"
+  
+  # Preview remove branches that have already been merged with main on remote
+  # a.k.a. ‘delete merged remote’
+  mr = "!git branch -r --merged origin/main | sed 's| *origin/||' | rg --invert-match '(main|master|develop|dev|HEAD)'"
+  
+  # Remove branches that have already been merged with main on remote
+  # a.k.a. ‘delete merged remote’
+  mrd = "!git branch -r --merged origin/main | sed 's| *origin/||' | rg --invert-match '(main|master|develop|dev|HEAD)' | xargs -n 1 -I{} git push origin --delete {}; git remote -v update -p"
 
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
