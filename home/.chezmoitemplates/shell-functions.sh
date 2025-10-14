@@ -86,6 +86,22 @@ function ghostty-infocmp() {
 
 # JIRA
 if command -v jira &>/dev/null; then
+	
+	
+	function jira_max_branch_name() {
+		local max_len=${JIRA_MAX_BRANCH_LENGTH:-32}
+		local input
+		if [ $# -gt 0 ]; then
+			input=$1
+		else   
+			input=$(cat)
+		fi
+		while [ "${input%$'\n'}" != "$input" ]; 
+			do input=${input%$'\n'};
+		done
+		printf '%.*s\n' "$max_len" "$input"
+	}
+	
 	function jime() {
 		jira issue list -a$(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by status --reverse $@;
 	}
@@ -96,7 +112,7 @@ if command -v jira &>/dev/null; then
 
 	function jissuebranch() {
 		issue=$(jissue $1)
-		branch=$(echo $issue | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]-')
+		branch=$(echo $issue | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]-' | jira_max_branch_name)
 		echo $branch
 	}
 
