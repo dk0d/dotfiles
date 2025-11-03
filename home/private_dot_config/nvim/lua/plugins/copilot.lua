@@ -24,6 +24,10 @@
 --   ft = { "python", "rust", "typescript", "javascript" },
 -- }
 
+-- if true then
+--   return {}
+-- end
+
 return {
   "zbirenbaum/copilot.lua",
   event = "InsertEnter",
@@ -41,7 +45,7 @@ return {
           accept = "<A-l>",
           prev = "<C-[>",
           next = "<C-]>",
-          dismiss = "<C-]>",
+          dismiss = "<esc>",
         },
       },
     })

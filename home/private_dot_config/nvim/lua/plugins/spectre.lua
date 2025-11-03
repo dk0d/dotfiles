@@ -10,19 +10,13 @@ return {
   opts = {
     open_cmd = "noswapfile vnew",
     replace_engine = {
-      ["sd"] = {},
-      -- ["sed"] = {
-      --   cmd = "sed",
-      --   args = {
-      --     "-i",
-      --     "",
-      --     "-E",
-      --   },
-      -- },
-    },
-    default = {
-      replace = {
-        cmd = "sd",
+      ["sed"] = {
+        cmd = "sed",
+        args = {
+          "-i",
+          "",
+          "-E",
+        },
       },
     },
   },

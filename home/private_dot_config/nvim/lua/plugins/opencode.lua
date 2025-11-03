@@ -4,7 +4,7 @@ return {
   lazy = true,
   -- stylua: ignore
   config = function()
-    ---@type opencode.Config
+  ---@type opencode.Config
     vim.g.opencode_opts = {
       -- Your configuration, if any — see `lua/opencode/config.lua`
     }
@@ -13,17 +13,28 @@ return {
     vim.opt.autoread = true
 
     -- Recommended keymaps
-    vim.keymap.set('n', '<leader>at', function() require('opencode').toggle() end, { desc = 'Toggle opencode' })
-    vim.keymap.set('n', '<leader>aA', function() require('opencode').ask() end, { desc = 'Ask opencode' })
-    vim.keymap.set('n', '<leader>aa', function() require('opencode').ask('@cursor: ') end, { desc = 'Ask opencode about this' })
-    vim.keymap.set('v', '<leader>aa', function() require('opencode').ask('@selection: ') end, { desc = 'Ask opencode about selection' })
-    vim.keymap.set('n', '<leader>an', function() require('opencode').command('session_new') end, { desc = 'New opencode session' })
-    vim.keymap.set('n', '<leader>ay', function() require('opencode').command('messages_copy') end, { desc = 'Copy last opencode response' })
-    vim.keymap.set('n', '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end, { desc = 'Messages half page up' })
-    vim.keymap.set('n', '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, { desc = 'Messages half page down' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>as', function() require('opencode').select() end, { desc = 'Select opencode prompt' })
+    -- vim.keymap.set('n', '<leader>at', function() require('opencode').toggle() end, { desc = 'Toggle opencode' })
+    -- vim.keymap.set('n', '<leader>aA', function() require('opencode').ask() end, { desc = 'Ask opencode' })
+    -- vim.keymap.set('n', '<leader>aa', function() require('opencode').ask('@cursor: ') end, { desc = 'Ask opencode about this' })
+    -- vim.keymap.set('v', '<leader>aa', function() require('opencode').ask('@selection: ') end, { desc = 'Ask opencode about selection' })
+    -- vim.keymap.set('n', '<leader>an', function() require('opencode').command('session_new') end, { desc = 'New opencode session' })
+    -- vim.keymap.set('n', '<leader>ay', function() require('opencode').command('messages_copy') end, { desc = 'Copy last opencode response' })
+    -- vim.keymap.set('n', '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end, { desc = 'Messages half page up' })
+    -- vim.keymap.set('n', '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, { desc = 'Messages half page down' })
+    -- vim.keymap.set({ 'n', 'v' }, '<leader>as', function() require('opencode').select() end, { desc = 'Select opencode prompt' })
 
     -- Example: keymap for custom prompt
     vim.keymap.set('n', '<leader>oe', function() require('opencode').prompt('Explain @cursor and its context') end, { desc = 'Explain this code' })
   end,
+  -- stylua: ignore
+  keys = {
+    { '<leader>at', function() require('opencode').toggle() end, desc = 'Toggle embedded opencode', },
+    { '<leader>aa', function() require('opencode').ask() end, desc = 'Ask opencode', mode = 'n', },
+    { '<leader>aa', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+    { '<leader>ap', function() require('opencode').select_prompt() end, desc = 'Select prompt', mode = { 'n', 'v', }, },
+    { '<leader>an', function() require('opencode').command('session_new') end, desc = 'New session', },
+    { '<leader>ay', function() require('opencode').command('messages_copy') end, desc = 'Copy last message', },
+    { '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end, desc = 'Scroll messages up', },
+    { '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, desc = 'Scroll messages down', },
+  },
 }

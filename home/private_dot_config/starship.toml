@@ -9,10 +9,16 @@ $all\
 $line_break\
 $character"""
 
+# format = """$os\
+# $all\
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_metrics\
+# $git_status\
+# $character"""
+
 # everything else to the right
-# right_format = """\
-# $all
-# """
 command_timeout = 2500
 
 
@@ -29,17 +35,20 @@ format = ' [[$time]($style)]($style) '
 
 [character]
 # success_symbol="[󰕏](green)"
-# success_symbol= "[ ](green)" 
+# success_symbol = "[ ](blue)"
 # success_symbol = "[ ](blue)"
 # error_symbol = "[ ](bold red)"
 # success_symbol = "[ ](blue)"
 # error_symbol = "[ ](bold red)"
 # success_symbol = "[](blue)"
 # error_symbol = "[](red)"
+# success_symbol = "[󰘳](bold blue)"
+# error_symbol = "[󰘳](bold red)"
 success_symbol = "[;](bold blue)"
-error_symbol = "[;](bold red)"
+# success_symbol = "[](blue)"
+# error_symbol = "[;](bold red)"
 # success_symbol = "[](green)"
-# error_symbol = "[](bold red)"
+error_symbol = "[](bold red)"
 vimcmd_symbol = "[ ](bold yellow)"
 
 [line_break]
@@ -80,7 +89,7 @@ format = "\uf07b [$path]($style)[$read_only]($read_only_style) "
 # format = "\uf007 [$user]($style) "
 format = "[$user]($style) "
 disabled = false
-show_always = true
+show_always = false
 
 [hostname]
 ssh_symbol = " "
@@ -109,7 +118,7 @@ renamed = "≫${count}"
 deleted = "✘${count}"
 
 [os]
-disabled = false
+disabled = true
 
 ########### Nerd-Font Symbols
 
@@ -184,6 +193,9 @@ symbol = " "
 
 [ocaml]
 symbol = " "
+
+[bun]
+symbol = " "
 
 [os.symbols]
 Alpaquita = " "

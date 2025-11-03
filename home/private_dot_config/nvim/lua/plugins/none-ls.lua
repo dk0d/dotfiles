@@ -40,8 +40,14 @@ return {
           end,
           prettierd = function(source, methods)
             local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
-            local has_pkg = require("null-ls.utils").root_pattern("package.json", "tsconfig.json", "jsconfig.json")(cwd)
-              ~= nil
+            local has_pkg = require("null-ls.utils").root_pattern(
+              "package.json",
+              "tsconfig.json",
+              "jsconfig.json",
+              ".prettierrc",
+              ".prettierrc.yaml",
+              ".prettierrc.yml"
+            )(cwd) ~= nil
             local has_biome = require("null-ls.utils").root_pattern("biome.json", "biome.jsonc")(cwd) ~= nil
             local has_prettier = has_pkg and not has_biome
             if has_prettier then

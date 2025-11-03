@@ -115,7 +115,7 @@ return {
       desc = "Plenary test file",
     },
 
-    ["<Esc>"] = { "<cmd>nohl<cr>", desc = "Clear search" },
+    ["<leader><leader>"] = { "<cmd>nohl<cr>", desc = "Clear search" },
 
     ["<leader>L"] = { "<cmd>Lazy<cr>", desc = "Lazy" },
     ["<leader>uh"] = {
