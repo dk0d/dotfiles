@@ -139,6 +139,7 @@ return {
     },
     lazygit = { enable = true },
     animate = { enable = true },
+    terminal = { enable = true },
   },
   keys = {
     -- Top Pickers & Explorer
