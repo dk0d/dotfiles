@@ -1,13 +1,13 @@
 theme = Catppuccin Mocha
 cursor-invert-fg-bg = true
 
-custom-shader = ./shaders/cursor_smear_fade.glsl
+custom-shader = ./shaders/cursor_blaze.glsl
 
 # theme = Kanagawa Wave
 
 background = #000000
-background-opacity = 0.80
-background-blur-radius = 70
+background-opacity = 1
+background-blur-radius = 0
 
 window-decoration = true
 # Available values are: "native", "transparent", "tabs", and "hidden".
