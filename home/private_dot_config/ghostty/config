@@ -3,28 +3,42 @@ cursor-invert-fg-bg = true
 
 custom-shader = ./shaders/cursor_blaze.glsl
 
-# theme = Kanagawa Wave
-
 background = #000000
 background-opacity = 1
 background-blur-radius = 0
 
-window-decoration = true
+
+macos-window-buttons = hidden
+# window-decoration = false
 # Available values are: "native", "transparent", "tabs", and "hidden".
-macos-titlebar-style = hidden
+# macos-titlebar-style = hidden
 macos-window-shadow = false
+macos-icon = glass
+macos-titlebar-proxy-icon = hidden
+macos-icon-frame = plastic
+macos-icon-ghost-color = FFFFFF
+macos-icon-screen-color = 000000
 macos-option-as-alt = true
 link-url = true
 
 font-family = Fira Code
 font-size = 12
+font-thicken = true
 confirm-close-surface = false
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 window-title-font-family = Fira Code
+window-inherit-working-directory = true
+window-theme = system
+mouse-hide-while-typing = true
+clipboard-trim-trailing-spaces = true
 auto-update = check
 window-new-tab-position = end
+
+
+quick-terminal-animation-duration = 0
+shell-integration-features = no-cursor
 
 # Global quick terminal
 keybind = global:cmd+shift+t=toggle_quick_terminal
