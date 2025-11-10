@@ -1,4 +1,120 @@
+local onedark_overrides = {
+  -- this 16 colors are changed to onedark
+  base = "#282c34",
+  mantle = "#353b45",
+  surface0 = "#3e4451",
+  surface1 = "#545862",
+  surface2 = "#565c64",
+  text = "#abb2bf",
+  rosewater = "#b6bdca",
+  lavender = "#c8ccd4",
+  red = "#e06c75",
+  peach = "#d19a66",
+  yellow = "#e5c07b",
+  green = "#98c379",
+  teal = "#56b6c2",
+  blue = "#61afef",
+  -- mauve = "#c678dd",
+  flamingo = "#be5046",
+
+  -- now patching extra palettes
+  maroon = "#e06c75",
+  sky = "#d19a66",
+
+  -- extra colors not decided what to do
+  pink = "#f5c2e7",
+  sapphire = "#74c7ec",
+
+  subtext1 = "#bac2de",
+  subtext0 = "#a6adc8",
+  overlay2 = "#9399b2",
+  overlay1 = "#7f849c",
+  overlay0 = "#6c7086",
+  crust = "#111111",
+}
+
+local tokyo = {
+  black = "#06080A",
+  bg0 = "#11121D",
+  bg1 = "#1A1B2A",
+  bg2 = "#212234",
+  bg3 = "#353945",
+  bg4 = "#4A5057",
+  bg5 = "#282C34",
+  bg_red = "#FE6D85",
+  bg_green = "#98C379",
+  bg_blue = "#9FBBF3",
+  diff_red = "#773440",
+  diff_green = "#587738",
+  diff_blue = "#2A3A5A",
+  diff_add = "#1E2326",
+  diff_change = "#262B3D",
+  diff_delete = "#281B27",
+  diff_text = "#1C4474",
+  fg = "#A0A8CD",
+  red = "#EE6D85",
+  orange = "#F6955B",
+  yellow = "#D7A65F",
+  green = "#95C561",
+  blue = "#7199EE",
+  cyan = "#38A89D",
+  purple = "#A485DD",
+  grey = "#4A5057",
+  none = "NONE",
+}
+
+local tokyo_overrides = {
+  -- this 16 colors are changed to onedark
+  crust = tokyo.black,
+  base = tokyo.bg0,
+  mantle = tokyo.bg1,
+  surface0 = tokyo.bg2,
+  surface1 = tokyo.bg3,
+  surface2 = tokyo.bg4,
+  text = tokyo.fg,
+  rosewater = "#b6bdca",
+  lavender = "#b4befe",
+  red = tokyo.red,
+  peach = "#d19a66",
+  yellow = tokyo.yellow,
+  green = "#98c379",
+  teal = "#56b6c2",
+  blue = tokyo.blue,
+  -- mauve = "#c678dd",
+  flamingo = "#be5046",
+
+  -- now patching extra palettes
+  maroon = "#e06c75",
+  sky = "#d19a66",
+
+  -- extra colors not decided what to do
+  pink = "#f5c2e7",
+  sapphire = "#74c7ec",
+
+  subtext1 = "#bac2de",
+  subtext0 = "#a6adc8",
+  overlay2 = "#9399b2",
+  overlay1 = "#7f849c",
+  overlay0 = "#6c7086",
+}
+
 return {
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     transparent = true,
+  --     styles = {
+  --       comments = { italic = true },
+  --       keywords = { italic = true },
+  --       functions = {},
+  --       variables = {},
+  --       sidebars = "dark",
+  --       floats = "transparent",
+  --     },
+  --   },
+  -- },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -11,133 +127,8 @@ return {
           solid = false,
         },
         color_overrides = {
-          all = {
-            -- this 16 colors are changed to onedark
-            base = "#282c34",
-            mantle = "#353b45",
-            surface0 = "#3e4451",
-            surface1 = "#545862",
-            surface2 = "#565c64",
-            text = "#abb2bf",
-            rosewater = "#b6bdca",
-            lavender = "#c8ccd4",
-            red = "#e06c75",
-            peach = "#d19a66",
-            yellow = "#e5c07b",
-            green = "#98c379",
-            teal = "#56b6c2",
-            blue = "#61afef",
-            -- mauve = "#c678dd",
-            flamingo = "#be5046",
-
-            -- now patching extra palettes
-            maroon = "#e06c75",
-            sky = "#d19a66",
-
-            -- extra colors not decided what to do
-            pink = "#f5c2e7",
-            sapphire = "#74c7ec",
-
-            subtext1 = "#bac2de",
-            subtext0 = "#a6adc8",
-            overlay2 = "#9399b2",
-            overlay1 = "#7f849c",
-            overlay0 = "#6c7086",
-
-            crust = "#111111",
-          },
+          -- all = onedark_overrides,
         },
-        -- custom_highlights = function(colors)
-        -- 	local bg = colors.lavender
-        -- 	local fg = colors.base
-        --
-        -- 	local secondary_bg = colors.blue
-        -- 	local secondary_fg = colors.base
-        --
-        -- 	local muted_bg = colors.overlay0
-        -- 	local muted_fg = colors.base
-        -- 	return {
-        --
-        -- 		-- NormalFloat = { bg = "none" },
-        -- 		-- FloatBorder = { fg = "none" },
-        -- 		-- FloatTitle = { bg = "none" },
-        -- 		-- Save an hlgroup with dark background and dimmed foreground
-        -- 		-- so that you can use it where your still want darker windows.
-        -- 		-- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-        -- 		-- NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-        --
-        -- 		-- Popular plugins that open floats will link to NormalFloat by default;
-        -- 		-- set their background accordingly if you wish to keep them dark and borderless
-        -- 		-- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-        --
-        -- 		MasonHeader = { fg = fg, bg = bg, style = { "bold" } },
-        -- 		MasonHeaderSecondary = { fg = secondary_fg, bg = secondary_bg, style = { "bold" } },
-        --
-        -- 		MasonHighlight = { fg = colors.green },
-        -- 		MasonHighlightBlock = {
-        -- 			bg = colors.green,
-        -- 			fg = colors.base,
-        -- 		},
-        -- 		MasonHighlightBlockBold = { bg = secondary_bg, fg = secondary_fg, bold = true },
-        --
-        -- 		MasonHighlightSecondary = { fg = colors.mauve },
-        -- 		MasonHighlightBlockSecondary = { fg = secondary_fg, bg = secondary_bg },
-        -- 		MasonHighlightBlockBoldSecondary = { fg = fg, bg = bg, bold = true },
-        --
-        -- 		MasonMuted = { fg = colors.overlay0 },
-        -- 		MasonMutedBlock = { bg = muted_bg, fg = muted_fg },
-        -- 		MasonMutedBlockBold = { bg = colors.yellow, fg = colors.base, bold = true },
-        --
-        -- 		MasonError = { fg = colors.red },
-        --
-        -- 		MasonHeading = { fg = colors.lavender, bold = true },
-        --
-        -- 		-- even if background is transparent
-        -- 		-- TelescopeBorder = {
-        -- 		-- 	fg = "none", -- colors.text,
-        -- 		-- 	bg = "none", -- colors.mantle,
-        -- 		-- },
-        -- 		TelescopeMatching = { fg = colors.blue },
-        -- 		-- TelescopeNormal = {
-        -- 		-- 	bg = "none",
-        -- 		-- },
-        -- 		-- TelescopePromptBorder = {
-        -- 		-- 	fg = "none", -- colors.text,
-        -- 		-- 	bg = "none", -- colors.surface0,
-        -- 		-- },
-        -- 		TelescopePromptNormal = {
-        -- 			fg = colors.sky,
-        -- 			bg = "none", --colors.surface0,
-        -- 		},
-        -- 		TelescopePromptPrefix = {
-        -- 			fg = colors.flamingo,
-        -- 			bg = "none", -- colors.surface0,
-        -- 		},
-        -- 		TelescopePreviewTitle = {
-        -- 			fg = colors.green,
-        -- 			bg = "none", -- colors.green,
-        -- 		},
-        -- 		TelescopePromptTitle = {
-        -- 			fg = colors.red,
-        -- 			bg = "none", -- colors.red,
-        -- 		},
-        -- 		-- TelescopeResultsTitle = {
-        -- 		-- 	fg = colors.lavender,
-        -- 		-- 	bg = "none", -- colors.lavender,
-        -- 		-- },
-        -- 		TelescopeSelection = {
-        -- 			fg = colors.flamingo,
-        -- 			bg = colors.mantle, -- colors.surface0,
-        -- 			style = { "bold" },
-        -- 		},
-        -- 		-- TelescopeSelectioncolorsaret = { fg = colors.flamingo },
-        --
-        -- 		Pmenu = { fg = colors.flamingo, bg = colors.base }, -- add `blend = vim.o.pumblend` to enable transparency
-        -- 		PmenuSel = { fg = "none", bg = colors.overlay0 },
-        -- 		PmenuSbar = { bg = colors.overlay0 },
-        -- 		PmenuThumb = { bg = colors.overlay1 },
-        -- 	}
-        -- end,
         transparent_background = true,
         -- dim_inactive = {
         -- 	enabled = false, -- dims the background color of inactive window
@@ -193,7 +184,7 @@ return {
           notify = true,
           snacks = {
             enabled = true,
-            indent_scope_color = "text",
+            indent_scope_color = "subtext0",
           },
           semantic_tokens = true,
           telescope = {
