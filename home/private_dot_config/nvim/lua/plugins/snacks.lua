@@ -10,12 +10,20 @@ local neovim = [[
 
 [ d3c.ai ]
 ]]
+
+-- if true then
+--   return {}
+-- end
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
   opts = {
+
+    ---@type snacks.gh.Config
+    gh = { enable = true },
+
     ---@type snacks.picker.Config
     picker = {
       -- your picker configuration comes here
@@ -31,7 +39,7 @@ return {
           keys = {
             -- to close the picker on ESC instead of going to normal mode,
             -- add the following keymap to your config
-            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<Esc>"] = { "close", mode = { "n" } },
             ["/"] = "toggle_focus",
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
@@ -82,7 +90,7 @@ return {
         },
         list = {
           keys = {
-            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<Esc>"] = { "close", mode = { "n" } },
           },
         },
       },
@@ -90,7 +98,7 @@ return {
     dashboard = {
       enabled = true,
       preset = {
-        header = neovim,
+        -- header = neovim,
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
@@ -129,6 +137,73 @@ return {
           },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
+      },
+      sections = {
+        -- { section = "terminal", cmd = "neofetch -L", height = 50, width = 50, padding = 2, gap = 1 },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
+        {
+          pane = 2,
+          icon = " ",
+          desc = "Browse Repo",
+          padding = 1,
+          key = "b",
+          action = function()
+            Snacks.gitbrowse()
+          end,
+        },
+        function()
+          local in_git = Snacks.git.get_root() ~= nil
+          local cmds = {
+            -- {
+            -- 	title = "Review Requests",
+            -- 	cmd = "gh search prs --review-requested @me --state open -L 5",
+            -- 	action = function()
+            -- 		vim.ui.open("https://github.com/notifications")
+            -- 	end,
+            -- 	key = "n",
+            -- 	icon = " ",
+            -- 	height = 5,
+            -- 	enabled = true,
+            -- },
+            {
+              icon = " ",
+              title = "Open PRs",
+              cmd = "gh pr list -L 5",
+              key = "P",
+              action = function()
+                vim.fn.jobstart("gh pr list --web", { detach = true })
+              end,
+              height = 10,
+            },
+            {
+              title = "Open Issues",
+              cmd = "gh issue list -L 5",
+              key = "i",
+              action = function()
+                vim.fn.jobstart("gh issue list --web", { detach = true })
+              end,
+              icon = " ",
+              height = 10,
+            },
+            -- {
+            -- 	icon = " ",
+            -- 	title = "Git Status",
+            -- 	cmd = "git --no-pager diff --stat -B -M -C",
+            -- 	height = 10,
+            -- },
+          }
+          return vim.tbl_map(function(cmd)
+            return vim.tbl_extend("force", {
+              pane = 2,
+              section = "terminal",
+              enabled = in_git,
+              padding = 1,
+              ttl = 5 * 60,
+              indent = 3,
+            }, cmd)
+          end, cmds)
+        end,
       },
     },
     image = { enable = true },
@@ -214,20 +289,27 @@ return {
       end,
       desc = "Recent",
     },
-    -- git
+    -- gh
     -- {
-    -- 	"<leader>gb",
-    -- 	function()
-    -- 		Snacks.picker.git_branches()
-    -- 	end,
-    -- 	desc = "Git Branches",
+    --   "<leader>gp",
+    --   function()
+    --     Snacks.picker.gh_pr()
+    --   end,
+    --   desc = "Git Branches",
     -- },
     -- {
-    -- 	"<leader>gl",
-    -- 	function()
-    -- 		Snacks.picker.git_log()
-    -- 	end,
-    -- 	desc = "Git Log",
+    --   "<leader>gpr",
+    --   function()
+    --     Snacks.picker.gh_pr({ state = "review_requested" })
+    --   end,
+    --   desc = "Git Branches",
+    -- },
+    -- {
+    --   "<leader>gi",
+    --   function()
+    --     Snacks.picker.gh_issue()
+    --   end,
+    --   desc = "Git Log",
     -- },
     -- {
     -- 	"<leader>gL",

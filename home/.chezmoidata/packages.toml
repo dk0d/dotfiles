@@ -8,6 +8,7 @@ brews = [
   "bat",                                                   # https://github.com/sharkdp/bat
   "black",                                                 # python formatting
   "bottom",                                                # replaces top
+  "chafa",                                                 # terminal image viewer
   "cmake",                                                 # https://cmake.org/
   "commitizen",                                            # helper for git commits
   "choose-rust",                                           # https://github.com/theryangeary/choose

@@ -103,7 +103,7 @@ if command -v jira &>/dev/null; then
 	}
 	
 	function jime() {
-		jira issue list -a$(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by status --reverse $@;
+		jira issue list -a$(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by updated --reverse $@;
 	}
 
 	function jissue() {

@@ -1,4 +1,4 @@
-theme = Nord Wave
+theme = Catppuccin Mocha
 cursor-invert-fg-bg = true
 
 custom-shader = ./shaders/cursor_blaze.glsl
