@@ -17,6 +17,7 @@ brews = [
   "eza",                                                   # modern 'ls'
   "fd",                                                    # better 'find'
   "fish",                                                  # fish shell
+  "volta",                                                 # javascript tool manager
   "fzf",                                                   # fuzzy finder
   "dust",                                                  # disk usage
   "gh",                                                    # github cli
