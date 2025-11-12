@@ -50,24 +50,12 @@ end
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 ## MAMBA
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f $HOME/.miniforge/bin/conda
-    eval $HOME/.miniforge/bin/conda "shell.fish" "hook" $argv | source
-  	# This is needed to ensure that python env takes priority over homebrew python installs
-		fish_add_path --global --move --path "$HOME/.miniforge/bin" "$HOME/.miniforge/sbin"
-else
-    if test -f "$HOME/.miniforge/etc/fish/conf.d/conda.fish"
-        . "$HOME/.miniforge/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "$HOME/.miniforge/bin" $PATH
-    end
-end
-
-if test -f "$HOME/.miniforge/etc/fish/conf.d/mamba.fish"
-    source "$HOME/.miniforge/etc/fish/conf.d/mamba.fish"
-end
-# <<< conda initialize <<<
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+set -gx MAMBA_EXE "$HOME/.miniforge/bin/mamba"
+set -gx MAMBA_ROOT_PREFIX "$HOME/.local/share/chezmoi/home/fish"
+$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+# <<< mamba initialize <<<
 
 # Cargo
 if test -f "$HOME/.cargo/env.fish"
