@@ -71,14 +71,6 @@ alias ts="tmux-sessionizer"
 alias pdmact='pdm venv activate in-project'
 alias pdma='eval $(pdm venv activate in-project)'
 
-# Conda
-alias ca='conda activate'
-alias condaenv='conda env export --no-builds --from-history'
-if command -v mamba &>/dev/null; then
-	alias ma='mamba activate'
-	alias mambaenv='mamba env export --no-builds --from-history'
-fi
-
 alias py='python'
 alias ipy='ipython'
 

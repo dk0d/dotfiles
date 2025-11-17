@@ -10,16 +10,16 @@ else if test -e /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # pnpm
-if command -q pnpm
-	set -gx PNPM_HOME "$HOME/.pnpm-global"
-	switch ":$PATH:" 
-	case $PNPM_HOME
-  	echo ""
-  case "*"
-  	set PATH $PNPM_HOME $PATH 
-	end
-	pnpm config set pnpm-prefix "$PNPM_HOME"
-end
+# if command -q pnpm
+# 	set -gx PNPM_HOME "$HOME/.pnpm-global"
+# 	switch ":$PATH:" 
+# 	case $PNPM_HOME
+#   	echo ""
+#   case "*"
+#   	set PATH $PNPM_HOME $PATH 
+# 	end
+# 	pnpm config set pnpm-prefix "$PNPM_HOME"
+# end
 # pnpm end
 
 # NVM
