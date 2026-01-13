@@ -4,6 +4,7 @@
 --       as this provides autocomplete and documentation while editing
 
 ---@type LazySpec
+
 return {
   "AstroNvim/astrolsp",
   lazy = true,
@@ -51,7 +52,7 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      pyright = require("lsp.pyright"),
+      -- pyright = require("lsp.pyright"),
       ruff_lsp = require("lsp.ruff_lsp"),
       sourcekit = require("lsp.sourcekit"),
       texlab = require("lsp.texlab"),
@@ -59,6 +60,7 @@ return {
       denols = require("lsp.denols"),
       ts_ls = require("lsp.ts_ls"),
       biome = require("lsp.biome"),
+      ty = require("lsp.ty"),
     },
 
     -- customize how language servers are attached

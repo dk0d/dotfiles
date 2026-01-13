@@ -31,7 +31,7 @@ return {
           "stylua",
           "selene",
           "ruff",
-          "pyright",
+          "ty",
           "biome",
           "debugpy",
           "codelldb",
