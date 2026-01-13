@@ -127,7 +127,7 @@ return {
           solid = false,
         },
         color_overrides = {
-          -- all = onedark_overrides,
+          -- all = tokyo_overrides,
         },
         transparent_background = true,
         -- dim_inactive = {

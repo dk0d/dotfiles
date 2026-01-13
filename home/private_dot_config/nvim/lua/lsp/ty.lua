@@ -3,7 +3,7 @@ local config = {
   cmd = { "ty", "server" },
   settings = {
     ty = {
-      diagnosticsMode = "workspace",
+      diagnosticMode = "workspace",
     },
   },
   root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
