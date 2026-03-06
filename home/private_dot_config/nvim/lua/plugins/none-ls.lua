@@ -1,3 +1,21 @@
+local Has = {
+  package = function(cwd)
+    return require("null-ls.utils").root_pattern("package.json", "tsconfig.json", "jsconfig.json")(cwd) ~= nil
+  end,
+  oxlint = function(cwd)
+    return require("null-ls.utils").root_pattern(".oxlintrc.json")(cwd) ~= nil
+  end,
+  oxlintfmt = function(cwd)
+    return require("null-ls.utils").root_pattern(".oxfmtrc.json")(cwd) ~= nil
+  end,
+  biome = function(cwd)
+    return require("null-ls.utils").root_pattern("biome.json", "biome.jsonc")(cwd) ~= nil
+  end,
+  prettier = function(cwd)
+    return require("null-ls.utils").root_pattern(".prettierrc", ".prettierrc.yaml", ".prettierrc.yml")(cwd) ~= nil
+  end,
+}
+
 -- Example customization of Null-LS sources
 ---@type LazySpec
 return {
@@ -31,25 +49,24 @@ return {
       opts = {
         ensure_installed = {},
         handlers = {
+          oxlint = function(source, methods)
+            local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+            local has_oxlint = Has.oxlint(cwd)
+            if has_oxlint then
+              require("mason-null-ls").default_setup(source, methods)
+            end
+          end,
           biome = function(source, methods)
             local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
-            local has_biome = require("null-ls.utils").root_pattern("biome.json", "biome.jsonc")(cwd) ~= nil
+            local has_biome = Has.biome(cwd)
             if has_biome then
               require("mason-null-ls").default_setup(source, methods)
             end
           end,
           prettierd = function(source, methods)
             local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
-            local has_pkg = require("null-ls.utils").root_pattern(
-              "package.json",
-              "tsconfig.json",
-              "jsconfig.json",
-              ".prettierrc",
-              ".prettierrc.yaml",
-              ".prettierrc.yml"
-            )(cwd) ~= nil
-            local has_biome = require("null-ls.utils").root_pattern("biome.json", "biome.jsonc")(cwd) ~= nil
-            local has_prettier = has_pkg and not has_biome
+            local has_prettier = (Has.package(cwd) or Has.prettier(cwd))
+              and (not Has.biome(cwd) and not Has.oxlintfmt(cwd))
             if has_prettier then
               require("mason-null-ls").default_setup(source, methods)
             end
