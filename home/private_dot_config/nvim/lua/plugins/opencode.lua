@@ -1,6 +1,30 @@
 return {
   "NickvanDyke/opencode.nvim",
-  dependencies = { "folke/snacks.nvim", opts = { input = { enabled = true } } },
+  dependencies = {
+    {
+      -- `snacks.nvim` integration is recommended, but optional
+      ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
+      "folke/snacks.nvim",
+      optional = true,
+      opts = {
+        input = { enabled = true }, -- Enhances `ask()`
+        picker = { -- Enhances `select()`
+          actions = {
+            opencode_send = function(...)
+              return require("opencode").snacks_picker_send(...)
+            end,
+          },
+          win = {
+            input = {
+              keys = {
+                ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   lazy = true,
   -- stylua: ignore
   config = function()
@@ -30,8 +54,8 @@ return {
   keys = {
     { '<leader>at', function() require('opencode').toggle() end, desc = 'Toggle embedded opencode', },
     { '<leader>aA', function() require('opencode').ask() end, desc = 'Ask opencode', mode='n' },
-    { '<leader>aa', function() require('opencode').ask('@cursor: ') end,  desc = 'Ask opencode about this', mode='n' },
-    { '<leader>aa', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+    { '<leader>aa', function() require('opencode').ask('@this: ') end,  desc = 'Ask opencode about this', mode='n' },
+    { '<leader>aa', function() require('opencode').ask('@this: ') end, desc = 'Ask opencode about selection', mode = 'v', },
     { '<leader>ap', function() require('opencode').select_prompt() end, desc = 'Select prompt', mode = { 'n', 'v', }, },
     { '<leader>an', function() require('opencode').command('session_new') end, desc = 'New session', },
     { '<leader>ay', function() require('opencode').command('messages_copy') end, desc = 'Copy last message', },
