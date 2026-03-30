@@ -27,6 +27,9 @@ return {
       "zig",
       "csv",
       "go",
+      "fish",
+      "yaml",
+      "dockerfile",
       -- add more arguments for adding more treesitter parsers
     })
 
