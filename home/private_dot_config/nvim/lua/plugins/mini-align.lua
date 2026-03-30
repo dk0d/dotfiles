@@ -1,5 +1,5 @@
 return {
-  "echasnovski/mini.align",
+  "nvim-mini/mini.align",
   version = "*",
   event = "VeryLazy",
   config = function()

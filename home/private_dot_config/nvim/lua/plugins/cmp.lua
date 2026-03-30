@@ -32,7 +32,7 @@ local kind_icons = {
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
   },
   event = "InsertEnter",
   lazy = true,

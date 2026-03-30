@@ -5,7 +5,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
   },
   {
-    "echasnovski/mini.indentscope",
+    "nvim-mini/mini.indentscope",
     enabled = false,
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "VeryLazy",

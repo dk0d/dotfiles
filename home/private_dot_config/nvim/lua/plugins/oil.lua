@@ -29,7 +29,7 @@ return {
     require("oil").setup(opts)
   end,
   -- Optional dependencies
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   keys = {
     {
       "<leader>o",

@@ -1,1 +1,1 @@
-return { "echasnovski/mini.splitjoin", version = "*" }
+return { "nvim-mini/mini.splitjoin", version = "*" }
