@@ -50,7 +50,6 @@ return {
       "sourcekit",
     },
     -- customize language server configuration options passed to `lspconfig`
-    ---@diagnostic disable: missing-fields
     config = {
       -- pyright = require("lsp.pyright"),
       ruff_lsp = require("lsp.ruff_lsp"),
@@ -58,7 +57,7 @@ return {
       texlab = require("lsp.texlab"),
       clangd = require("lsp.clangd"),
       denols = require("lsp.denols"),
-      ts_ls = require("lsp.ts_ls"),
+      typescript_language_server = require("lsp.ts_ls"),
       biome = require("lsp.biome"),
       ty = require("lsp.ty"),
       oxlint = require("lsp.oxlint"),

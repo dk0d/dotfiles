@@ -12,7 +12,7 @@ command = [
   "sesh list -z --icons",
 ]
 ansi = true
-output = "{strip_ansi|split: :1..|join: }"
+output = "{strip_ansi}"
 
 [preview]
 command = "sesh preview '{strip_ansi|split: :1..|join: }'"
@@ -23,7 +23,7 @@ ctrl-d = ["actions:kill_session", "reload_source"]
 
 [actions.connect]
 description = "Connect to selected session"
-command = "sesh connect '{strip_ansi|split: :1..|join: }'"
+command = "sesh connect '{strip_ansi}'"
 mode = "execute"
 
 [actions.kill_session]
