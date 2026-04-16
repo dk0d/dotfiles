@@ -46,6 +46,8 @@ brews = [
   "zoxide",                                                # cd
   "yazi",                                                  # cli fileexplorer
   "poppler",                                               # pdf preview
+  "sesh",
+  "television",
   "age",                                                   # file encryption
   "termshark",                                             # CLI wrapper for tshark (wireshark)
   "zplug",                                                 # zsh plugin manager
