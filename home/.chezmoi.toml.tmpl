@@ -36,6 +36,9 @@
 
 {{- $install_rustup := promptBool "Install Rustup" -}}
 
+
+{{- $install_mamba := promptBool "Install Mamba" -}}
+
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computer_name = output "scutil" "--get" "ComputerName" | trim -}}
 {{- else -}}
@@ -67,6 +70,7 @@ pager = 'delta'
   install_packages = {{ $install_packages }}
   install_omz = {{ $install_omz }}
   install_rustup = {{ $install_rustup }}
+  install_mamba = {{ $install_mamba }}
   set_ssh = {{ $set_ssh | quote }}
   has_op = {{ $has_op }}
   vault_name = {{ $vault_name | quote }}
