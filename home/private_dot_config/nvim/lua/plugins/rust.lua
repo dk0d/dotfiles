@@ -1,6 +1,6 @@
 return {
   "mrcjkb/rustaceanvim",
-  version = "^7", -- Recommended
+  version = "^9", -- Recommended
   ft = { "rust" },
   event = { "BufReadPre *.rs", "BufNewFile *.rs" },
   config = function()
