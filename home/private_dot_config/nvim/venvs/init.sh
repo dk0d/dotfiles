@@ -3,4 +3,5 @@ if [ ! -d "$HOME/.config/nvim/venvs/base" ]; then
   uv venv base --python 3.14
   source base/bin/activate
   uv python install --default
+  uv pip install pynvim neovim
 fi
