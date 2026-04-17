@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+runs="${1:-10}"
+warmup="${2:-3}"
+tmpdir="$(mktemp -d)"
+
+cleanup() {
+  rm -rf "$tmpdir"
+}
+
+trap cleanup EXIT
+
+if ! command -v hyperfine >/dev/null 2>&1; then
+  printf 'hyperfine is required but was not found in PATH\n' >&2
+  exit 1
+fi
+
+if [[ ! -f "$HOME/.zshrc" ]]; then
+  printf '~/.zshrc was not found\n' >&2
+  exit 1
+fi
+
+{
+  printf '%s\n' 'zmodload zsh/zprof'
+  cat "$HOME/.zshrc"
+  printf '%s\n' 'zprof'
+} > "$tmpdir/.zshrc"
+
+printf 'Benchmarking zsh startup with %s runs and %s warmups\n\n' "$runs" "$warmup"
+hyperfine --warmup "$warmup" --runs "$runs" --shell=none \
+  "env ZDOTDIR=$tmpdir HOME=$HOME zsh -i -c exit"
+
+printf '\nProfile breakdown from zprof:\n\n'
+env ZDOTDIR="$tmpdir" HOME="$HOME" zsh -i -c exit
