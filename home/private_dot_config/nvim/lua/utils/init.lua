@@ -31,6 +31,8 @@ M.get_provider_python = function()
       return M.get_python()
     end
     return os.getenv("CONDA_PYTHON_EXE")
+  elseif M.path_exists(os.getenv("HOME") .. "/.config/nvim/venvs/base/bin/python") then
+    return os.getenv("HOME") .. "/.config/nvim/venvs/base/bin/python"
   elseif not M.is_empty(os.getenv("VIRTUAL_ENV")) then
     return os.getenv("VIRTUAL_ENV") .. "/bin/python"
   else
