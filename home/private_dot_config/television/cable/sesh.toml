@@ -5,7 +5,7 @@ requirements = ["sesh", "fd"]
 
 [source]
 command = [
-  "sesh list --icons | rg --no-filename --no-line-number --color=never -e '.*|~/projects.*'",
+  "sesh list --icons  | rg --no-filename --no-line-number --color=never -e '.*|~/projects.*' | sort --reverse",
   "fd -H -d 1 -t d -E .Trash . ~/projects",
   # "sesh list -z --icons | rg --no-filename --no-line-number --color=never -e '~/projects.*'",
   # "sesh list -c --icons",
