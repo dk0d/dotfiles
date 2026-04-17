@@ -28,48 +28,15 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
-conda_command=""
 
-get_conda_command() {
-
-	# get conda env name and command
-	if [ -d "$selected/.venv" ]; then
-		conda_command="tmux-windowizer $selected_name conda activate $selected/.venv"
-	elif [ "$selected_name" != "" ]; then
-		if command -v rg &>/dev/null; then
-			selected_env="$(conda env list | grep -U "/$selected_name\$" | awk '{print $2}' | xargs)"
-		else
-			selected_env="$(conda env list | grep -G "$selected_name" | awk '{print $2}' | xargs)"
-		fi
-		if [ ! -z "$selected_env" ]; then
-			conda_command="tmux-windowizer $selected_name conda activate $selected_env"
-		fi
-	fi
-	# conda_command="$conda" # trim whitespace
-}
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	if command -v conda &>/dev/null; then
-		get_conda_command
-	fi 
-	if [[ -z $conda_command ]] || [[ "$conda_command" == "" ]]; then
-		tmux new-session -s $selected_name -c $selected
-	else
-		tmux new-session -s $selected_name -c $selected "$conda_command"
-	fi
+	tmux new-session -s $selected_name -c $selected
 	exit 0
 fi
 
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
-	if command -v conda &>/dev/null; then
-		get_conda_command
-	fi 
-	# create new session and run conda command if exists
-	if [[ -z $conda_command ]] || [[ "$conda_command" == "" ]]; then
-		tmux new-session -ds $selected_name -c $selected
-	else
-		tmux new-session -ds $selected_name -c $selected "$conda_command"
-	fi
+	tmux new-session -ds $selected_name -c $selected
 fi
 
 if [[ -z $TMUX ]]; then
