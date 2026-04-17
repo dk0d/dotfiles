@@ -41,7 +41,11 @@ hs.hotkey.bind(hyper2, "f10", function()
 end)
 
 hs.hotkey.bind(hyper2, "f11", function()
-	hs.application.launchOrFocus("Teams")
+	hs.application.launchOrFocus("Microsoft Teams")
+end)
+
+hs.hotkey.bind(hyper2, "f12", function()
+	hs.application.launchOrFocus("Discord")
 end)
 
 local alertStyle = {
