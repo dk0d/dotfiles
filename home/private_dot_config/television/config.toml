@@ -71,11 +71,11 @@ border_type = "rounded" # https://docs.rs/ratatui/latest/ratatui/widgets/block/e
 
 [ui.status_bar]
 # Status bar separators (bubble):
-#separator_open = ""
-#separator_close = ""
+separator_open = ""
+separator_close = ""
 # Status bar separators (box):
-separator_open = ""
-separator_close = ""
+# separator_open = ""
+# separator_close = ""
 hidden = false
 
 [ui.results_panel]
