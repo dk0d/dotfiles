@@ -7,7 +7,7 @@ init_nvm() {
 }
 
 init_fnm() {
-	eval "$(fnm env --use-on-cd --shell zsh)"
+	eval "$(fnm env --shell zsh)"
 }
 
 init_volta() {
