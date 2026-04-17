@@ -61,6 +61,7 @@ return {
       biome = require("lsp.biome"),
       ty = require("lsp.ty"),
       oxlint = require("lsp.oxlint"),
+      oxfmt = require("lsp.oxfmt"),
     },
 
     -- customize how language servers are attached

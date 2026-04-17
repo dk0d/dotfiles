@@ -5,6 +5,9 @@ local Has = {
   oxlint = function(cwd)
     return require("null-ls.utils").root_pattern(".oxlintrc.json")(cwd) ~= nil
   end,
+  oxfmt = function(cwd)
+    return require("null-ls.utils").root_pattern(".oxfmtrc.json")(cwd) ~= nil
+  end,
   oxlintfmt = function(cwd)
     return require("null-ls.utils").root_pattern(".oxfmtrc.json")(cwd) ~= nil
   end,
@@ -15,6 +18,10 @@ local Has = {
     return require("null-ls.utils").root_pattern(".prettierrc", ".prettierrc.yaml", ".prettierrc.yml")(cwd) ~= nil
   end,
 }
+
+function getCwd()
+  return (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+end
 
 -- Example customization of Null-LS sources
 ---@type LazySpec
@@ -50,21 +57,22 @@ return {
         ensure_installed = {},
         handlers = {
           oxlint = function(source, methods)
-            local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+            local cwd = getCwd()
             local has_oxlint = Has.oxlint(cwd)
             if has_oxlint then
               require("mason-null-ls").default_setup(source, methods)
             end
           end,
           biome = function(source, methods)
-            local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+            local cwd = getCwd()
             local has_biome = Has.biome(cwd)
             if has_biome then
+              vim.notify("biome formatter activated" .. source, vim.log.levels.INFO, { title = "mason-null-ls.nvim" })
               require("mason-null-ls").default_setup(source, methods)
             end
           end,
           prettierd = function(source, methods)
-            local cwd = (vim.loop and vim.loop.cwd and vim.loop.cwd()) or vim.fn.getcwd()
+            local cwd = getCwd()
             local has_prettier = (Has.package(cwd) or Has.prettier(cwd))
               and (not Has.biome(cwd) and not Has.oxlintfmt(cwd))
             if has_prettier then
