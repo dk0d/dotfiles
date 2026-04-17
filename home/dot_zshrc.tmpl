@@ -5,11 +5,19 @@ ZSH_THEME=""
 HYPHEN_INSENSITIVE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
+
+fpath=("$HOME/.zfunc" "${fpath[@]}")
+
+if command -v op &>/dev/null; then
+	mkdir -p "$HOME/.zfunc"
+	if [[ ! -f "$HOME/.zfunc/_op" ]] || [[ "$(command -v op)" -nt "$HOME/.zfunc/_op" ]]; then
+		op completion zsh > "$HOME/.zfunc/_op"
+	fi
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 ############### User configuration ####################
-
-fpath=("$HOME/.zfunc" "${fpath[@]}")
 
 {{ template "shell-env.sh" . }}
 
@@ -39,17 +47,12 @@ if command -v fzf &>/dev/null; then
 fi 
 
 {{ end -}}
-
-if command -v starship &>/dev/null; then
-	eval "$(starship init zsh)"
-fi
  
 {{ template "shell-aliases.sh" . }}
 
 {{ template "shell-functions.sh" . }}
 
 {{ template "shell-starship.sh" . }}
-
 
 # zsh-autosuggestions
 if [[ -d $HOME/.zsh/zsh-autosuggestions ]]; then
@@ -60,10 +63,6 @@ fi
 if [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
 	source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-
-if command -v op &>/dev/null; then
-	eval "$(op completion zsh)"; compdef _op op
-fi 
 
 if [[ -f $HOME/.config/op/plugins.sh ]]; then
 	source $HOME/.config/op/plugins.sh
