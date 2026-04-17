@@ -67,7 +67,6 @@ return {
             local cwd = getCwd()
             local has_biome = Has.biome(cwd)
             if has_biome then
-              vim.notify("biome formatter activated" .. source, vim.log.levels.INFO, { title = "mason-null-ls.nvim" })
               require("mason-null-ls").default_setup(source, methods)
             end
           end,
