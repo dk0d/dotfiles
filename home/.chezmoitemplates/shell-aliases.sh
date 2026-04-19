@@ -170,3 +170,4 @@ if command -v lazydocker &>/dev/null; then
 fi
 
 
+alias penv='source .venv/bin/activate'
