@@ -9,6 +9,7 @@ vim.filetype.add({
     -- MDX
     mdx = "mdx",
     handlebars = "handlebars",
+    fga = "fga",
   },
   pattern = {
     -- .env.* files
@@ -16,6 +17,7 @@ vim.filetype.add({
   },
 })
 
+vim.treesitter.language.register("fga", "fga")
 vim.treesitter.language.register("css", "pcss")
 vim.treesitter.language.register("markdown", "mdx")
 vim.treesitter.language.register("bash", "dotenv")
