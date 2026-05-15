@@ -37,7 +37,7 @@ return {
       languages = {
         fga = {
           install_info = {
-            url = "https://github.com/matoous/tree-sitter-fga/",
+            url = "https://github.com/dk0d/tree-sitter-fga/",
             branch = "main",
             use_repo_queries = true,
           },
