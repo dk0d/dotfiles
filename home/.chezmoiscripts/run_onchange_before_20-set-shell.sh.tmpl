@@ -5,7 +5,7 @@
 if [[ -f "/opt/homebrew/bin/fish" ]]; then
   # non standard shell
   echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
-  sudo chsh -s /opt/homebrew/bin/fish $USER
+  sudo chsh -s "$(command -v fish)" $USER
 elif [[ -f "/bin/fish" ]]; then
   sudo chsh -s /bin/fish $USER
 fi

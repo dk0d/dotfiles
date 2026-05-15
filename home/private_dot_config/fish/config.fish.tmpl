@@ -1,7 +1,21 @@
-# ENV
+#!/usr/bin/env fish
 
-# set PATH ~/.local/scripts/fish $PATH
-set PATH ~/.local/scripts $PATH
+# ENV
+set -g fish_greeting # hide welcome
+
+set -gx EDITOR nvim
+
+if test -d /usr/local/sbin
+    fish_add_path /usr/local/sbin
+end
+
+fish_add_path ~/.local/bin ~/.local/scripts
+
+set -gx JJ_CONFIG "$HOME/.config/jj"
+
+if status is-interactive
+    fish_vi_key_bindings
+end
  
 if test -e /opt/homebrew/bin/brew
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -10,52 +24,31 @@ else if test -e /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # pnpm
-# if command -q pnpm
-# 	set -gx PNPM_HOME "$HOME/.pnpm-global"
-# 	switch ":$PATH:" 
-# 	case $PNPM_HOME
-#   	echo ""
-#   case "*"
-#   	set PATH $PNPM_HOME $PATH 
-# 	end
-# 	pnpm config set pnpm-prefix "$PNPM_HOME"
-# end
-# pnpm end
+if command -q pnpm
+    set -gx PNPM_HOME "$HOME/.pnpm-global"
+    fish_add_path $PNPM_HOME
+end
 
-# NVM
-# USE Fisher
-# if ! type -q fisher
-# 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-# 	fisher install jorgebucaran/nvm.fish
-# end
-# if command -q brew; and test -e "$(brew --prefix nvm)"
-# 	set brewnvm "$(brew --prefix nvm)"
-# 	set -gx NVM_DIR "$brewnvm"
-# 	# if test -e $brewnvm/nvm.sh
-# 	# 	source $brewnvm/nvm.sh
-# 	# end
-# 	# if test -e $brewnvm/etc/bash_completion.d/nvm
-# 	# 	source $brewnvm/etc/bash_completion.d/nvm
-# 	# end
-# else if test -e "$HOME/.nvm"
-# 	set -gx NVM_DIR "$HOME/.nvm"
-# 	if test -e /opt/homebrew/opt/nvm/nvm.sh
-# 		source /opt/homebrew/opt/nvm/nvm.sh
-# 	end
-# 	if test -e /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
-# 		source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
-# 	end
-# end
-# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+function init_mamba
+    if test -x "$HOME/.miniforge/bin/mamba"
+        set -gx MAMBA_EXE "$HOME/.miniforge/bin/mamba"
+        set -gx MAMBA_ROOT_PREFIX "$HOME/.miniforge"
+        $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+    end
+end
 
-## MAMBA
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-set -gx MAMBA_EXE "$HOME/.miniforge/bin/mamba"
-set -gx MAMBA_ROOT_PREFIX "$HOME/.local/share/chezmoi/home/fish"
-$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<
+function init_fnm
+    if command -q fnm
+        fnm env --shell fish | source
+    end
+end
+
+function init_volta
+    if test -d "$HOME/.volta"
+        set -gx VOLTA_HOME "$HOME/.volta"
+        fish_add_path $VOLTA_HOME/bin
+    end
+end
 
 # Cargo
 if test -f "$HOME/.cargo/env.fish"
@@ -74,9 +67,26 @@ if command -q fzf
 	fzf --fish | source
 end
 
+if command -q op
+    op completion fish | source
+end
+
+if test -d "$HOME/.modular"
+    set -gx MODULAR_HOME "$HOME/.modular"
+    fish_add_path "$HOME/.modular/pkg/packages.modular.com_mojo/bin"
+end
+
+{{ if eq .chezmoi.os "darwin" }}
+set -gx LDFLAGS "-L/opt/homebrew/opt/libomp/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/libomp/include"
+{{ end -}}
+
 # ALIASES
 alias cmoi='chezmoi'
-alias dotfiles='tmux-sessionizer $(chezmoi source-path)'
+
+function dotfiles
+	tmux-sessionizer (chezmoi source-path)
+end
 
 {{ if eq .chezmoi.os "linux" }}
 alias linux_info='uname -m && cat /etc/*release'
@@ -85,7 +95,6 @@ alias linux_info='uname -m && cat /etc/*release'
 if not command -q eza 
 	### Colored ls
 	if test -e /usr/bin/dircolors 
-		eval "$(dircolors -b)"
 		alias l='ls -lGah'
 		alias ls='ls --color=auto -lGah'
 		alias la='ls -lGAh'
@@ -167,8 +176,32 @@ if command -q gh
 	alias oissue='gh issue develop -c'
 end
 
+if command -q pdm
+	alias pdmact='pdm venv activate in-project'
+	alias pdma='eval (pdm venv activate in-project)'
+end
+
+if command -q pnpm
+	alias pnp='pnpm'
+end
+
+if command -q squeue
+	alias slq='squeue -A woodard'
+	alias slqm='squeuemine'
+	alias sacctw='sacct -S 0501 -o JobIDRaw,JobName,User,NCPUS,AllocCPUS,MaxRSS,Reqtres,Elapsed -a -A woodard'
+end
+
+if command -q nvidia-smi
+	alias wgpu='watch -d -n 1 nvidia-smi'
+end
+
+if command -q srun
+	alias icpu='srun --partition=hpg-dev --mem=124gb --ntasks=1 --cpus-per-task=8 --time=04:00:00 --pty bash -i'
+end
+
 if command -q zoxide 
 		zoxide init fish | source
+		alias cd='z'
 end
 
 alias ..='cd ..'
@@ -181,4 +214,175 @@ alias cd..='cd ..'
 # alias vi='nvim'
 alias nv='nvim'
 
+{{ if eq .chezmoi.os "darwin" }}
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder'
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder'
+alias ofd='open .'
+{{ end -}}
 
+alias astroinit="nvim --headless -c 'autocmd User LazyDone quitall'"
+alias jqt_start='jupyter qtconsole --style=monokai --JupyterWidget.include_other_output=True'
+alias jconsole='jupyter console --style=monokai --JupyterWidget.include_other_output=True'
+alias ipykernel='ipython kernel --ip=0.0.0.0'
+
+if command -q lazydocker
+	alias lad='lazydocker'
+end
+
+function penv
+	if test -f .venv/bin/activate.fish
+		source .venv/bin/activate.fish
+	else if test -f .venv/bin/activate
+		echo "fish prefers .venv/bin/activate.fish, but only .venv/bin/activate exists"
+	end
+end
+
+function watcher
+	watch -n $argv[3] "tail -c 1000 $argv[1] | tr '\r' '\n' | tail -n $argv[2]"
+end
+
+function pyproc
+	ps aux | rg '[p]ython\s'
+end
+
+function charmproc
+	ps aux | rg '[p]ython\s.*pycharm'
+end
+
+function nvims
+	set -l config (printf "%s\n" default lazyvim | fzf --prompt=" Neovim Config " --height=~50% --layout=reverse --border --exit-0)
+	if test -z "$config"
+		echo "Nothing selected"
+		return 0
+	else if test "$config" = default
+		nvim $argv
+	else
+		env NVIM_APPNAME="$config" nvim $argv
+	end
+end
+
+function ghostty-infocmp
+	infocmp -x | ssh $argv -- tic -x -
+end
+
+function most_recent_file
+	ls -Artls $argv[1] | tail -n 1
+end
+
+function most_recent_kernel_file
+	ls -Artls ~/.jupyter/kernels | tail -n 1 | awk '{print $10}'
+end
+
+function jqt_get_kernels
+	rsync -avPz $argv[1]:~/.local/share/jupyter/runtime/ ~/.jupyter/kernels/
+end
+
+function jqt_connect
+	jupyter qtconsole \
+		--style=monokai \
+		--JupyterWidget.include_other_output=True \
+		--ssh=$argv[1] \
+		--existing=~/.jupyter/kernels/kernel_$argv[2].json
+end
+
+function printtermcolors
+	for x in 0 1 2
+		for i in (seq 30 37)
+			for a in (seq 40 47)
+				printf '\e[%s;%s;%sm\\e[%s;%s;%sm\e[0;37;40m ' $x $i $a $x $i $a
+			end
+			printf '\n'
+		end
+	end
+	printf '\n'
+end
+
+if command -q jira
+	function jira_max_branch_name
+		set -l max_len 32
+		if set -q JIRA_MAX_BRANCH_LENGTH
+			set max_len $JIRA_MAX_BRANCH_LENGTH
+		end
+
+		set -l input $argv[1]
+		if test -z "$input"
+			set input (string collect)
+		end
+
+		string sub -s 1 -l $max_len -- (string trim -r --chars '\n' -- $input)
+	end
+
+	function jime
+		jira issue list -a(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by updated --reverse $argv
+	end
+
+	function jissue
+		jira issue view --raw $argv[1] | jq -r '"\(.key) \(.fields.summary)"'
+	end
+
+	function jissuebranch
+		set -l branch (jissue $argv[1] | string lower | string replace -ra '\s+' '-' | string replace -ra '[^[:alnum:]-]' '' | jira_max_branch_name)
+		echo $branch
+	end
+
+	function jibranch
+		git checkout -b (jissuebranch $argv[1])
+	end
+end
+
+if command -q srun
+	function igpu
+		set -l count 1
+		set -l mem 128gb
+		set -l gpu geforce
+		set -l tasks 5
+		if test (count $argv) -ge 1
+			set count $argv[1]
+		end
+		if test (count $argv) -ge 2
+			set mem $argv[2]
+		end
+		if test (count $argv) -ge 3
+			set gpu $argv[3]
+		end
+		if test (count $argv) -ge 4
+			set tasks $argv[4]
+		end
+		srun --gres=gpu:$gpu:$count --mem=$mem --tasks=$tasks --nodes=1 --time=08:00:00 --cpus-per-task=6 --partition=gpu --qos=woodard --pty -u bash -i
+	end
+end
+
+{{ if eq .chezmoi.os "darwin" }}
+function rmdsstore
+	set -l targets $argv
+	if test (count $targets) -eq 0
+		set targets .
+	end
+	find $targets -type f -name .DS_Store -delete
+end
+
+function dockshowtime
+	set -l delay 0.0
+	set -l modifier 0
+	if test (count $argv) -gt 0
+		set delay $argv[1]
+		set modifier $argv[1]
+	end
+	defaults write com.apple.dock autohide-delay -float "$delay"
+	defaults write com.apple.dock autohide-time-modifier -int "$modifier"
+	killall Dock
+end
+
+function dockshowhidden
+	set -l value true
+	if test (count $argv) -gt 0
+		set value $argv[1]
+	end
+	defaults write com.apple.Dock showhidden -bool "$value"
+	killall Dock
+end
+{{ end -}}
+
+if test -f "$HOME/.config/fish/config.local.fish"
+	source "$HOME/.config/fish/config.local.fish"
+end
