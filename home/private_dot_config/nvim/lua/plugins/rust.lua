@@ -11,7 +11,8 @@ return {
       local this_os = vim.loop.os_uname().sysname
       liblldb_path = liblldb_path .. (this_os == "Darwin" and ".dylib" or ".so")
       local cfg = require("rustaceanvim.config")
-      return {
+      ---@type rustaceanvim.Opts
+      local config = {
         dap = {
           adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
         },
@@ -40,6 +41,7 @@ return {
           end,
         },
       }
+      return config
     end
   end,
 }
