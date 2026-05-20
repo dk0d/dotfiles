@@ -47,22 +47,10 @@ disabled = true
 format = ' [[$time]($style)]($style) '
 
 [character]
-# success_symbol="[󰕏](green)"
-# success_symbol = "[ ](blue)"
-# success_symbol = "[ ](blue)"
-# error_symbol = "[ ](bold red)"
-# success_symbol = "[ ](blue)"
-# error_symbol = "[ ](bold red)"
-# success_symbol = "[](blue)"
-# error_symbol = "[](red)"
-# success_symbol = "[󰘳](bold blue)"
-# error_symbol = "[󰘳](bold red)"
-success_symbol = "[;](bold bright-black)"
-# success_symbol = "[](blue)"
-# error_symbol = "[;](bold red)"
-# success_symbol = "[](green)"
-error_symbol = "[](bold red)"
-vimcmd_symbol = "[ ](bold yellow)"
+#    󰘳
+success_symbol = "[;](bright-black)"
+error_symbol = "[;](red)"
+vimcmd_symbol = "[ ](yellow)"
 
 [line_break]
 disabled = false
