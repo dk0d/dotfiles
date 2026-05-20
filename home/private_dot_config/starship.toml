@@ -16,6 +16,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$aws\
 $cmd_duration\
 $line_break\
 $python\
@@ -150,7 +151,9 @@ disabled = true
 ########### Nerd-Font Symbols
 
 [aws]
-symbol = "  "
+format = " [$symbol($profile )]($style)"
+style = "bold bright-black"
+symbol = " "
 
 [buf]
 symbol = " "
