@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+
 # original script from: https://github.com/ThePrimeagen/.dotfiles
 
 if [[ $# -eq 1 ]]; then
@@ -14,8 +14,21 @@ else
 			existing+=($path)
 		fi
 	done
+	if command -v sesh &>/dev/null; then 
+  	selected=$({ sesh list -t --icons; fd -H -d 1 -t d -E .Trash . ${existing[@]}; } | fzf --margin=30%,20%,30%,20% --border=rounded \
+    	--no-sort --ansi --border-label ' sesh ' --prompt '⚡  ' \
+    	--footer '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
+    	--layout reverse \
+    	--bind 'tab:down,btab:up' \
+    	--bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)' \
+    	--bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)' \
+    	--bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c --icons)' \
+    	--bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z --icons)' \
+    	--bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+  		--bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)'
+			)
 	# https://thevaluable.dev/practical-guide-fzf-example/
-	if command -v fd &>/dev/null; then
+	elif command -v fd &>/dev/null; then
 		selected=$(fd . -p -H -L -d 1 -t d ${existing[@]} | fzf --layout reverse --multi --margin=30%,20%,30%,20% --info=inline --prompt="󰼇 " --pointer="󰳟" --border=rounded)	
 	else
 		selected=$(find -L ${existing[@]} -mindepth 1 -maxdepth 1 -type d | fzf --layout reverse --multi --margin=30%,20%,30%,20% --info=inline --prompt="󰼇 " --pointer="󰳟" --border=rounded)
@@ -25,6 +38,11 @@ fi
 if [[ -z $selected ]]; then
 	exit 0
 fi
+
+if command -v sesh &>/dev/null; then 
+	sesh connect $selected
+	exit 0
+fi 
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
