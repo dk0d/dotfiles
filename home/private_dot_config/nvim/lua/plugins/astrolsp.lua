@@ -62,6 +62,7 @@ return {
       ty = require("lsp.ty"),
       oxlint = require("lsp.oxlint"),
       oxfmt = require("lsp.oxfmt"),
+      postgres_lsp = require("lsp.sql"),
     },
 
     -- customize how language servers are attached
