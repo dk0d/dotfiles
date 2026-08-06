@@ -7,13 +7,13 @@ fi
 
 # Make fish shell default
 {{ if eq .shell "fish" }}
-if [[ command -v fish ]]; then
+if command -v fish ; then
   # non standard shell
   command -v fish | sudo tee -a /etc/shells
   sudo chsh -s "$(command -v fish)" $USER
 fi
 {{ else if eq .shell "zsh"}}
-if [[ command -v zsh ]]; then
+if  command -v zsh ; then
   sudo chsh -s "$(command -v zsh)" $USER
 fi
 {{ end }}
