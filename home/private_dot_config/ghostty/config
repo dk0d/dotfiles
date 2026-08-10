@@ -1,7 +1,7 @@
 theme = Catppuccin Mocha
 cursor-invert-fg-bg = true
 
-custom-shader = ./shaders/cursor_blaze.glsl
+custom-shader = ./shaders/cursor_sweep.glsl
 
 background = #000000
 background-opacity = 1
