@@ -15,7 +15,7 @@ else
 		fi
 	done
 	if command -v sesh &>/dev/null; then 
-  	selected=$({ sesh list -t --icons; fd -H -d 1 -t d -E .Trash . ${existing[@]}; } | fzf --margin=30%,20%,30%,20% --border=rounded \
+  	selected=$({ sesh list -t --icons; fd -H -d 1 -t d -E .Trash . ${existing[@]}; } | fzf --border=rounded \
     	--no-sort --ansi --border-label ' sesh ' --prompt '⚡  ' \
     	--footer '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
     	--layout reverse \
