@@ -5,18 +5,18 @@ return {
     opts = {
       spec = {
         { "<leader>b", group = "buffers", icon = "󰓩" },
-        { "<leader>d", group = "debug", icon = "" },
+        { "<leader>d", group = "debug", icon = "" },
         { "<leader>D", group = "docstrings", icon = "󰈙" },
         { "<leader>f", group = "find", icon = "󰍉" },
         { "<leader>g", group = "git", icon = "󰊢" },
-        { "<leader>j", group = "jupyter", icon = "" },
+        { "<leader>j", group = "jupyter", icon = "" },
         { "<leader>k", group = "harpoon", icon = "󱡅" },
-        { "<leader>l", group = "lsp", icon = "" },
+        { "<leader>l", group = "lsp", icon = "" },
         { "<leader>M", group = "markdown", icon = "󰽛" },
         { "<leader>p", group = "packages / ipython", icon = "󰏖" },
         { "<leader>s", group = "search", icon = "󰍉" },
         { "<leader>S", group = "session", icon = "󱂬" },
-        { "<leader>t", group = "terminal / test", icon = "" },
+        { "<leader>t", group = "terminal / test", icon = "" },
         { "<leader>u", group = "toggles", icon = "󰙵" },
         { "<leader>v", group = "vimtex / select", icon = "󰙩" },
         { "<leader>x", group = "trouble", icon = "󱍼" },
@@ -110,7 +110,7 @@ return {
     opts = {
       cmdline = {
         view = "cmdline",
-        format = { search_down = { view = "cmdline" }, search_up = { view = "cmdline" }, cmdline = { icon = "  " } },
+        format = { search_down = { view = "cmdline" }, search_up = { view = "cmdline" }, cmdline = { icon = " " } },
       },
       lsp = {
         hover = { enabled = false },

@@ -12,6 +12,10 @@ au("TextYankPost", {
 
 au({ "FocusGained", "TermClose", "TermLeave" }, { group = aug("checktime"), command = "checktime" })
 
+-- nvim 0.12 shows "[Process exited N]" as virtual text in terminal buffers; snacks can't strip it (it scans
+-- buffer lines), so it lingers in dashboard terminal sections. Neovim's documented off switch (:h terminal-config).
+vim.api.nvim_clear_autocmds({ group = "nvim.terminal", event = "TermClose" })
+
 au("FileType", {
   group = aug("q_close"),
   pattern = { "help", "qf", "man", "checkhealth", "notify", "lspinfo", "startuptime" },

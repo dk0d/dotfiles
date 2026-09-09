@@ -25,6 +25,12 @@ return {
     dashboard = {
       enabled = true,
       preset = {
+        header = [[
+ ▐ ▄ ▄▄▄ .       ▌ ▐·▪  • ▌ ▄ ·.
+•█▌▐█▀▄.▀·▪     ▪█·█▌██ ·██ ▐███▪
+▐█▐▐▌▐▀▀▪▄ ▄█▀▄ ▐█▐█•▐█·▐█ ▌▐▌▐█·
+██▐█▌▐█▄▄▌▐█▌.▐▌ ███ ▐█▌██ ██▌▐█▌
+▀▀ █▪ ▀▀▀  ▀█▄▀▪. ▀  ▀▀▀▀▀  █▪▀▀▀]],
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
@@ -49,8 +55,9 @@ return {
         },
       },
       sections = {
+        -- left pane: header, keys, startup
+        { section = "header" },
         { section = "keys", gap = 1, padding = 1 },
-        { section = "startup" },
         {
           icon = " ",
           desc = "Browse Repo",
@@ -59,6 +66,44 @@ return {
           action = function()
             Snacks.gitbrowse()
           end,
+        },
+        { section = "startup" },
+        -- right pane: logo, recent files, git status (collapses under the left pane on narrow windows)
+        -- {
+        --   pane = 2,
+        --   section = "terminal",
+        --   enabled = function()
+        --     return vim.fn.executable("chafa") == 1
+        --   end,
+        --   cmd = "chafa "
+        --     .. vim.fn.stdpath("config")
+        --     .. "/assets/d3c.png --format symbols --symbols vhalf --size 18x9 --stretch; sleep .1",
+        --   height = 18,
+        --   padding = 1,
+        -- },
+        {
+          pane = 2,
+          icon = " ",
+          title = "Recent Files",
+          section = "recent_files",
+          cwd = true,
+          limit = 8,
+          indent = 2,
+          padding = 1,
+        },
+        {
+          pane = 2,
+          icon = " ",
+          title = "Git Status",
+          section = "terminal",
+          enabled = function()
+            return Snacks.git.get_root() ~= nil
+          end,
+          cmd = "git status --short --branch --renames",
+          height = 8,
+          padding = 1,
+          ttl = 5 * 60,
+          indent = 3,
         },
       },
     },
