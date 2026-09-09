@@ -26,7 +26,7 @@ local function recording()
 end
 
 local function scrollbar()
-  local chars = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
+  local chars = { "█", "▇", "▆", "▅", "▄", "▃", "▂", "▁" } -- full at top of file, empty at bottom
   local cur, total = vim.api.nvim_win_get_cursor(0)[1], vim.api.nvim_buf_line_count(0)
   local i = math.floor((cur - 1) / total * #chars) + 1
   return chars[i]:rep(2)
