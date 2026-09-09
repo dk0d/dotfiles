@@ -20,12 +20,10 @@
 
 {{- $ssh_choices := list "both" "keys" "config" "none" -}}
 {{- $set_ssh := promptChoice "SSH Setup" $ssh_choices -}}
-{{- $has_op := false -}}
-{{- if ne $set_ssh "none" -}}
-{{-   if lookPath "op" -}}
-{{-     $has_op = true -}}
-{{-     $vault_name = promptString "vault_name:" -}}
-{{-   end -}}
+{{- /* 1Password is optional: default to whether `op` is on PATH, but let it be declined (e.g. installed but no account) */ -}}
+{{- $has_op = promptBool "Use 1Password" (ne (lookPath "op") "") -}}
+{{- if $has_op -}}
+{{-   $vault_name = promptString "vault_name:" -}}
 {{- end -}}
 
 {{- $install_brew := promptBool "Install Brew" -}}
