@@ -1,21 +1,31 @@
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
 vim.loader.enable()
 
-local lazypath = vim.env.LAZY or vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.env.LAZY or vim.uv.fs_stat(lazypath)) then
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+-- order matters: options before plugins (leader), lsp after plugins (mason puts servers on PATH)
+require("options")
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
-if not pcall(require, "lazy") then
-  -- stylua: ignore
-  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
-  vim.fn.getchar()
-  vim.cmd.quit()
-end
+require("lazy").setup("plugins", {
+  install = { colorscheme = { "catppuccin-mocha" } },
+  ui = { backdrop = 100 },
+  checker = { enabled = false },
+  change_detection = { notify = false },
+  performance = {
+    rtp = { disabled_plugins = { "gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin" } },
+  },
+})
 
-require("lazy_setup")
-require("config.autocmds")
-require("polish")
+require("keymaps")
+require("autocmds")
+require("lsp")

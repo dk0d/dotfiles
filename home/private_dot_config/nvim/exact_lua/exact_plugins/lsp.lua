@@ -8,10 +8,7 @@ return {
   {
     "mason-org/mason.nvim",
     lazy = false, -- must run before the first LspAttach so its bin dir is on PATH
-    opts = {
-      -- NOTE: share installs with ~/.config/nvim while both configs coexist; drop once nvim-new is the only one
-      install_root_dir = vim.fn.expand("~/.local/share/nvim/mason"),
-    },
+    opts = {},
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -36,6 +33,13 @@ return {
         "deno",
         "svelte-language-server",
         "prettierd",
+        "tree-sitter-cli", -- parser builds for tree-sitter-manager
+        "marksman",
+        "tinymist",
+        "postgres-language-server",
+        "oxfmt",
+        "astro-language-server",
+        "terraform-ls",
       },
     },
   },

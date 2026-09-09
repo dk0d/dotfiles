@@ -1,6 +1,6 @@
 return {
   {
-    "romus204/tree-sitter-manager.nvim", -- tree-sitter CLI must be installed system-wide
+    "romus204/tree-sitter-manager.nvim", -- needs the tree-sitter CLI (mason: tree-sitter-cli)
     lazy = false,
     opts = {
       highlight = true,
