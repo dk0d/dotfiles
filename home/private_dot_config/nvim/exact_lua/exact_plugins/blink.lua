@@ -31,6 +31,9 @@ return {
     },
     completion = {
       documentation = { auto_show = true },
+      -- auto_insert makes <Tab> past the last item deselect everything, so <CR> then inserts a newline
+      -- instead of completing. Keep the highlight sticky; <C-e> cancels when you really want a newline.
+      list = { selection = { preselect = true, auto_insert = false } },
       menu = {
         draw = {
           components = {
