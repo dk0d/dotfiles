@@ -2,9 +2,6 @@
 README.md
 install.sh
 .gitmodules
-.config/skhd/**
-.config/yabai/**
-.local/scripts/fish
 
 {{- if .has_op }}
 
@@ -24,15 +21,12 @@ install.sh
 {{ if not .personal -}}
 .config/.gitconfig-gitlab.id  
 .config/.gitconfig-github.id  
-.ideavimrc
-.config/zellij/zellij.yml
 {{- end -}}
 
 {{- if ne .chezmoi.os "darwin" -}}
 .chezmoiscripts/darwin/**
 .hammerspoon
 .config/fish
-.config/nushell
 {{- end -}}
 
 {{- if ne .chezmoi.os "linux" }}
@@ -50,10 +44,6 @@ install.sh
 .fzf.zsh
 {{ end -}}
 
-{{- if ne .shell "bash" }}
-.fzf.bash
-.bashrc.local
-{{ end -}}
 
 
 

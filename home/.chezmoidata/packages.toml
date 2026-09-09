@@ -42,7 +42,6 @@ brews = [
   "topgrade",   # update everything
   "wget",       # download
   "yarn",       # node package manager
-  "zellij",     # terminal multiplexer
   "zoxide",     # cd
   "yazi",       # cli fileexplorer
   "poppler",    # pdf preview
@@ -51,8 +50,8 @@ brews = [
   "age",        # file encryption
   "termshark",  # CLI wrapper for tshark (wireshark)
   # "zplug",                         # zsh plugin manager
-  'uv',                            # Better python jazz
-  "jesseduffield/lazygit/lazygit", # git tui
+  'uv',      # Better python jazz
+  "lazygit", # git tui
   # "lazydocker",                                            # docker tui
   # "thezoraiz/ascii-image-converter/ascii-image-converter", # ascii image converter
 ]

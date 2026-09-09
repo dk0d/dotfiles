@@ -47,10 +47,6 @@ if command -v bat &>/dev/null; then
 	alias cat='bat'
 fi
 
-if command -v zellij &>/dev/null; then
-	alias zj='zellij'
-fi
-
 if command -v rg &>/dev/null; then
 	alias grep='rg'
 else

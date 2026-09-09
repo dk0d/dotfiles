@@ -148,17 +148,6 @@ defaults write com.apple.Terminal "Startup Window Settings" -string Pro
 # Profile: default Pro profile:
 defaults write com.apple.Terminal "Default Window Settings" -string Pro
 
-#################################################
-# NuShell config
-#################################################
-if [[ ! -d "${HOME}/.config/nushell" ]]; then
-  mkdir -p "${HOME}/.config/nushell"
-fi
-if [[ -d "${HOME}/Library/Application Support/nushell" ]]; then
-  rm -rf "${HOME}/Library/Application Support/nushell"
-fi
-ln -s "${HOME}/.config/nushell" "${HOME}/Library/Application Support/nushell"
-#################################################
 
 
 if [[ ! -d "${HOME}/Developer" ]]; then
