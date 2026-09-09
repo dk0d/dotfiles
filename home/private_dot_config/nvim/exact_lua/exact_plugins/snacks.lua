@@ -140,7 +140,7 @@ return {
       },
       sections = {
         -- { section = "terminal", cmd = "neofetch -L", height = 50, width = 50, padding = 2, gap = 1 },
-        { section = "keys",   gap = 1, padding = 1 },
+        { section = "keys", gap = 1, padding = 1 },
         { section = "startup" },
         {
           pane = 2,

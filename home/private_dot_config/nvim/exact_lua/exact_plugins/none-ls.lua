@@ -76,8 +76,7 @@ return {
           end,
           prettierd = function(source, methods)
             local cwd = getCwd()
-            local has_prettier = (Has.package(cwd) or Has.prettier(cwd))
-              and (not Has.biome(cwd) and not Has.oxfmt(cwd))
+            local has_prettier = (Has.package(cwd) or Has.prettier(cwd)) and (not Has.biome(cwd) and not Has.oxfmt(cwd))
             if has_prettier then
               require("mason-null-ls").default_setup(source, methods)
             end

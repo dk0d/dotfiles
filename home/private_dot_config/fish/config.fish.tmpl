@@ -254,7 +254,7 @@ function charmproc
 end
 
 function nvims
-	set -l config (printf "%s\n" default lazyvim | fzf --prompt=" Neovim Config " --height=~50% --layout=reverse --border --exit-0)
+	set -l config (printf "%s\n" default nvim-new | fzf --prompt=" Neovim Config " --height=~50% --layout=reverse --border --exit-0)
 	if test -z "$config"
 		echo "Nothing selected"
 		return 0
