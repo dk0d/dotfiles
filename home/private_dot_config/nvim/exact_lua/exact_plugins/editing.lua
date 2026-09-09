@@ -19,7 +19,19 @@ return {
   },
   { "nvim-mini/mini.align", event = "VeryLazy", opts = { mappings = { start = "gm", start_with_preview = "gM" } } },
   { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
-  { "max397574/better-escape.nvim", event = "InsertEnter", opts = {} }, -- jk / jj to escape without timeoutlen lag
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    -- jk / jj to escape without timeoutlen lag; off in terminal mode so lazygit/shells never eat a fast "jk"
+    opts = {
+      default_mappings = false, -- the defaults include terminal mode; a mode table can't be disabled once present
+      mappings = {
+        i = { j = { k = "<Esc>", j = "<Esc>" } },
+        v = { j = { k = "<Esc>" } },
+        s = { j = { k = "<Esc>" } },
+      },
+    },
+  },
   { "NMAC427/guess-indent.nvim", event = { "BufReadPost", "BufNewFile" }, opts = {} },
   { "mg979/vim-visual-multi", event = "VeryLazy" },
   { "yorickpeterse/nvim-pqf", event = "VeryLazy", opts = {} },
