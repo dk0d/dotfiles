@@ -56,6 +56,13 @@ return {
       opts = {
         ensure_installed = {},
         handlers = {
+          oxfmt = function(source, methods)
+            local cwd = getCwd()
+            local has_oxfmt = Has.oxfmt(cwd)
+            if has_oxfmt then
+              require("mason-null-ls").default_setup(source, methods)
+            end
+          end,
           oxlint = function(source, methods)
             local cwd = getCwd()
             local has_oxlint = Has.oxlint(cwd)

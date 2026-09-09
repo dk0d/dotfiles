@@ -58,6 +58,7 @@ return {
           alt = { "NOTE" },
           -- signs = false,
         },
+        ponytail = { icon = " ", color = "warning", alt = { "PONYTAIL" } },
         TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
       },
 
