@@ -27,12 +27,7 @@ return {
   {
     "nvim-mini/mini.icons",
     lazy = true,
-    opts = {
-      extension = {
-        ["docker-compose.yml"] = { glyph = "  ", hl = "MiniIconsBlue" },
-        ["docker-compose.yaml"] = { glyph = "  ", hl = "MiniIconsBlue" },
-      },
-    },
+    opts = {},
     init = function()
       package.preload["nvim-web-devicons"] = function()
         require("mini.icons").mock_nvim_web_devicons()
