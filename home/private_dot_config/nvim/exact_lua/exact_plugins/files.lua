@@ -62,6 +62,56 @@ return {
         find_in_directory_grep = function(state)
           Snacks.picker.grep({ dirs = { state.tree:get_node():get_id() } })
         end,
+        system_open = function(state)
+          vim.ui.open(state.tree:get_node():get_id())
+        end,
+        parent_or_close = function(state)
+          local node = state.tree:get_node()
+          if node:has_children() and node:is_expanded() then
+            state.commands.toggle_node(state)
+          else
+            require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+          end
+        end,
+        child_or_open = function(state)
+          local node = state.tree:get_node()
+          if not node:has_children() then
+            state.commands.open(state)
+          elseif node:is_expanded() then
+            require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+          else
+            state.commands.toggle_node(state)
+          end
+        end,
+        copy_selector = function(state) -- Y: pick which form of the path to copy
+          local node = state.tree:get_node()
+          local filepath, filename = node:get_id(), node.name
+          local modify = vim.fn.fnamemodify
+          local vals = {
+            ["BASENAME"] = modify(filename, ":r"),
+            ["EXTENSION"] = modify(filename, ":e"),
+            ["FILENAME"] = filename,
+            ["PATH (CWD)"] = modify(filepath, ":."),
+            ["PATH (HOME)"] = modify(filepath, ":~"),
+            ["PATH"] = filepath,
+            ["URI"] = vim.uri_from_fname(filepath),
+          }
+          local options = vim.tbl_filter(function(k)
+            return vals[k] ~= ""
+          end, vim.tbl_keys(vals))
+          table.sort(options)
+          vim.ui.select(options, {
+            prompt = "Copy to clipboard:",
+            format_item = function(k)
+              return ("%s: %s"):format(k, vals[k])
+            end,
+          }, function(choice)
+            if choice and vals[choice] then
+              vim.fn.setreg("+", vals[choice])
+              vim.notify(("Copied: `%s`"):format(vals[choice]))
+            end
+          end)
+        end,
       },
       window = {
         position = "right",
@@ -69,6 +119,10 @@ return {
         width = 40,
         mappings = {
           o = "open",
+          O = "system_open",
+          Y = "copy_selector",
+          h = "parent_or_close",
+          l = "child_or_open",
           ["{"] = "prev_source",
           ["}"] = "next_source",
           Z = "expand_all_nodes",
