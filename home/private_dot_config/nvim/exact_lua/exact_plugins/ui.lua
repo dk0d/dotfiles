@@ -20,6 +20,7 @@ return {
         { "<leader>u", group = "toggles", icon = "󰙵" },
         { "<leader>v", group = "vimtex / select", icon = "󰙩" },
         { "<leader>x", group = "trouble", icon = "󱍼" },
+        { "s", group = "surround", mode = { "n", "x" } },
         { "<leader>z", group = "zen", icon = "󰚀" },
       },
     },

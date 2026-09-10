@@ -4,16 +4,16 @@ return {
     "nvim-mini/mini.surround",
     event = "VeryLazy",
     opts = {
+      n_lines = 50, -- search radius for the pair; 20 misses multi-line calls
+      search_method = "cover_or_next", -- cursor may sit before the pair on the line, not only inside it
       mappings = {
-        add = "ma",
-        delete = "md",
-        find = "mf",
-        find_left = "mF",
-        highlight = "mh",
-        replace = "mr",
-        update_n_lines = "mn",
-        suffix_last = "l",
-        suffix_next = "n",
+        add = "sa",
+        delete = "sd",
+        find = "sf",
+        find_left = "sF",
+        highlight = "sh",
+        replace = "sr",
+        update_n_lines = "",
       },
     },
   },
