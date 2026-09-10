@@ -1,11 +1,11 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
-git:
-  pagers:
-    - colorArg: always
-      pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-# catpuccin
+os:
+  edit: "floaterm"
+keybinding:
+  universal:
+    return: "<esc>"
 gui:
   border: rounded
+  nerdFontsVersion: '3'
   theme:
     activeBorderColor:
       - "#74c7ec"
@@ -26,3 +26,14 @@ gui:
       - "#fab387"
     defaultFgColor:
       - "#ffffff"
+git:
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+# customCommands:
+#   - key: "E"
+#     command: "git cz c"
+#     description: "commit with commitizen"
+#     context: "files"
+#     loadingText: "opening commitizen commit tool"
+#     output: terminal
