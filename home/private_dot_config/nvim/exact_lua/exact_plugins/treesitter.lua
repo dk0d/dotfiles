@@ -32,6 +32,7 @@ return {
         "yaml",
         "dockerfile",
         "fga",
+        "regex", -- snacks picker highlighting
       },
       languages = {
         fga = {

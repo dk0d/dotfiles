@@ -25,6 +25,35 @@ au("FileType", {
   end,
 })
 
+au("BufReadPost", {
+  group = aug("last_loc"),
+  callback = function(ev)
+    local mark = vim.api.nvim_buf_get_mark(ev.buf, '"')
+    if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(ev.buf) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+au("VimResized", {
+  group = aug("resize"),
+  callback = function()
+    local tab = vim.fn.tabpagenr()
+    vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. tab)
+  end,
+})
+
+au("BufWritePre", {
+  group = aug("mkdir"),
+  callback = function(ev)
+    if ev.match:match("^%w%w+:[\\/][\\/]") then
+      return
+    end
+    vim.fn.mkdir(vim.fn.fnamemodify(ev.match, ":p:h"), "p")
+  end,
+})
+
 -- filetypes / treesitter aliases
 vim.filetype.add({
   extension = { pcss = "pcss", mdx = "mdx", handlebars = "handlebars", fga = "fga" },

@@ -113,6 +113,9 @@ return {
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { settings = { save_on_toggle = true } },
+    config = function(_, opts)
+      require("harpoon"):setup(opts) -- harpoon2 setup is a method; lazy's default call drops the opts
+    end,
     keys = {
       {
         "<leader>ka",
@@ -216,9 +219,9 @@ return {
     keys = {
       { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
       { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics" },
-      { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols" },
+      { "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols" },
       {
-        "<leader>cl",
+        "<leader>xr",
         "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
         desc = "LSP references/definitions",
       },

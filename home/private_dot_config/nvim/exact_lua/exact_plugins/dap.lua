@@ -105,13 +105,6 @@ return {
         desc = "Terminate",
       },
       {
-        "<leader>st",
-        function()
-          require("dap").terminate()
-        end,
-        desc = "Terminate debug",
-      },
-      {
         "<leader>dD",
         function()
           require("dap").disconnect()

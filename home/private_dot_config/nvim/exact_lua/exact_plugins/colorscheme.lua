@@ -5,6 +5,7 @@ return {
   priority = 1000,
   opts = {
     flavour = "mocha",
+    auto_integrations = false, -- the list below is authoritative; skips a plugin scan at startup
     transparent_background = true,
     term_colors = false,
     float = { transparent = true, solid = false },

@@ -3,8 +3,8 @@ local map = vim.keymap.set
 
 -- files / quit
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-map("n", "<leader>q", "<cmd>confirm q<cr>", { desc = "Quit window" })
-map("n", "<leader>Q", "<cmd>confirm qall<cr>", { desc = "Quit all" })
+map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit window" })
+map("n", "<leader>Q", "<cmd>qall<cr>", { desc = "Quit all" })
 map("n", "<C-q>", "<cmd>xall<cr>", { desc = "Save and quit all" })
 map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force save" })
 map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })

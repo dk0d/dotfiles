@@ -51,7 +51,16 @@ for _, name in ipairs(servers) do
 end
 
 local function format(bufnr)
-  vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 1000 })
+  -- when none-ls is attached (prettierd/biome/oxfmt/stylua for this project) it owns formatting, so the
+  -- language server's formatter doesn't run a second pass
+  local has_null = #vim.lsp.get_clients({ bufnr = bufnr, name = "null-ls" }) > 0
+  vim.lsp.buf.format({
+    bufnr = bufnr,
+    timeout_ms = 1000,
+    filter = function(c)
+      return not has_null or c.name == "null-ls"
+    end,
+  })
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -85,18 +94,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if client:supports_method("textDocument/inlayHint") then
       vim.lsp.inlay_hint.enable(true, { bufnr = buf })
-    end
-
-    if client:supports_method("textDocument/documentHighlight") then
-      local grp = vim.api.nvim_create_augroup("user_lsp_highlight_" .. buf, { clear = true })
-      vim.api.nvim_create_autocmd(
-        { "CursorHold", "CursorHoldI" },
-        { group = grp, buffer = buf, callback = vim.lsp.buf.document_highlight }
-      )
-      vim.api.nvim_create_autocmd(
-        { "CursorMoved", "CursorMovedI", "BufLeave" },
-        { group = grp, buffer = buf, callback = vim.lsp.buf.clear_references }
-      )
     end
 
     if client:supports_method("textDocument/formatting") then

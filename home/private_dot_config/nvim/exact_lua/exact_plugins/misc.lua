@@ -12,5 +12,5 @@ return {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  { "zadirion/Unreal.nvim", lazy = true, dependencies = { "tpope/vim-dispatch" } },
+  { "zadirion/Unreal.nvim", ft = "cpp", dependencies = { "tpope/vim-dispatch" } },
 }

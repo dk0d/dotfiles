@@ -7,6 +7,7 @@ return {
     quickfile = { enabled = true },
     input = { enabled = true }, -- vim.ui.input
     image = { enabled = true },
+    words = { enabled = true }, -- LSP reference highlight + ]] [[ jumps
     notifier = { enabled = true, top_down = false, margin = { top = 2, right = 2, bottom = 0 } },
     picker = {
       ui_select = true, -- vim.ui.select
@@ -586,6 +587,22 @@ return {
       desc = "Colorschemes",
     },
     -- lsp
+    {
+      "]]",
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      desc = "Next reference",
+      mode = { "n", "t" },
+    },
+    {
+      "[[",
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      desc = "Previous reference",
+      mode = { "n", "t" },
+    },
     {
       "gd",
       function()
