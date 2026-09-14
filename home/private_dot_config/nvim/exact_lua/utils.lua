@@ -22,7 +22,10 @@ end
 -- python for the neovim provider (pynvim); the base venv is shared with ~/.config/nvim
 M.get_provider_python = function()
   local base = vim.fn.expand("~/.config/nvim/venvs/base/bin/python")
-  if not M.is_empty(vim.env.CONDA_PYTHON_EXE) then
+  local uv_pynvim = vim.fn.expand("~/.local/share/uv/tools/pynvim/bin/python")
+  if M.path_exists(uv_pynvim) then
+    return uv_pynvim
+  elseif not M.is_empty(vim.env.CONDA_PYTHON_EXE) then
     if vim.startswith(vim.env.CONDA_PYTHON_EXE, "/apps") then
       return M.get_python()
     end
