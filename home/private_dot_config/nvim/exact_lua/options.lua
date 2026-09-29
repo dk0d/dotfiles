@@ -48,3 +48,5 @@ o.spell = false
 o.conceallevel = 1
 o.fillchars = "eob: "
 o.shortmess = o.shortmess .. "sI"
+-- helps with filewatchers (bacon)
+o.writebackup = false
