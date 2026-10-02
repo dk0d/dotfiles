@@ -49,7 +49,44 @@ return {
     main = "null-ls",
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim", "jay-babu/mason-null-ls.nvim" },
-    opts = { sources = {} },
+    opts = function()
+      local null_ls = require("null-ls")
+      local helpers = require("null-ls.helpers")
+      local root = require("null-ls.utils").root_pattern
+      local oxfmt_root = root(".oxfmtrc.json", ".oxfmtrc.jsonc", "oxfmt.config.ts")
+      return {
+        sources = {
+          -- none-ls has no oxfmt builtin; keep Markdown formatting on the same client.
+          helpers.make_builtin({
+            name = "oxfmt",
+            method = null_ls.methods.FORMATTING,
+            filetypes = { "markdown" },
+            runtime_condition = function(params)
+              return oxfmt_root(params.bufname) ~= nil
+            end,
+            generator_opts = {
+              command = "oxfmt",
+              args = { "--stdin-filepath", "$FILENAME" },
+              to_stdin = true,
+              dynamic_command = require("null-ls.helpers.command_resolver").from_node_modules(),
+            },
+            factory = helpers.formatter_factory,
+          }),
+          null_ls.builtins.formatting.prettierd.with({
+            runtime_condition = function(params)
+              local path = params.bufname
+              return (
+                root("package.json", "tsconfig.json", "jsconfig.json")(path)
+                or root(".prettierrc", ".prettierrc.yaml", ".prettierrc.yml")(path)
+              )
+                  ~= nil
+                and root("biome.json", "biome.jsonc")(path) == nil
+                and oxfmt_root(path) == nil
+            end,
+          }),
+        },
+      }
+    end,
     keys = { { "<leader>lI", "<cmd>NullLsInfo<cr>", desc = "None-ls info" } },
   },
   {
@@ -63,11 +100,8 @@ return {
         end
       end
       local has = {
-        package = root("package.json", "tsconfig.json", "jsconfig.json"),
         oxlint = root(".oxlintrc.json"),
-        oxfmt = root(".oxfmtrc.json"),
         biome = root("biome.json", "biome.jsonc"),
-        prettier = root(".prettierrc", ".prettierrc.yaml", ".prettierrc.yml"),
       }
       local when = function(pred)
         return function(source, methods)
@@ -78,12 +112,9 @@ return {
       end
       return {
         handlers = {
-          oxfmt = when(has.oxfmt),
           oxlint = when(has.oxlint),
           biome = when(has.biome),
-          prettierd = when(function()
-            return (has.package() or has.prettier()) and not has.biome() and not has.oxfmt()
-          end),
+          prettierd = function() end, -- registered above with per-buffer selection
         },
       }
     end,
