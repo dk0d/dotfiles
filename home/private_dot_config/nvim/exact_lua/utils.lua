@@ -9,6 +9,36 @@ M.is_empty = function(s)
   return s == nil or s == ""
 end
 
+-- Shared by Neo-tree and Snacks Explorer.
+M.copy_path = function(filepath)
+  local modify = vim.fn.fnamemodify
+  local filename = modify(filepath, ":t")
+  local vals = {
+    ["BASENAME"] = modify(filename, ":r"),
+    ["EXTENSION"] = modify(filename, ":e"),
+    ["FILENAME"] = filename,
+    ["PATH (CWD)"] = modify(filepath, ":."),
+    ["PATH (HOME)"] = modify(filepath, ":~"),
+    ["PATH"] = filepath,
+    ["URI"] = vim.uri_from_fname(filepath),
+  }
+  local options = vim.tbl_filter(function(k)
+    return vals[k] ~= ""
+  end, vim.tbl_keys(vals))
+  table.sort(options)
+  vim.ui.select(options, {
+    prompt = "Copy to clipboard:",
+    format_item = function(k)
+      return ("%s: %s"):format(k, vals[k])
+    end,
+  }, function(choice)
+    if choice and vals[choice] then
+      vim.fn.setreg("+", vals[choice])
+      vim.notify(("Copied: `%s`"):format(vals[choice]))
+    end
+  end)
+end
+
 -- python for the *project* (venv/conda), used by dap and neotest
 M.get_python = function()
   if not M.is_empty(vim.env.VIRTUAL_ENV) then

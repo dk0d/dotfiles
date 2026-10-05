@@ -7,11 +7,85 @@ return {
     quickfile = { enabled = true },
     input = { enabled = true }, -- vim.ui.input
     image = { enabled = true },
+    explorer = { replace_netrw = false }, -- Oil handles opening directories
     words = { enabled = true }, -- LSP reference highlight + ]] [[ jumps
     notifier = { enabled = true, top_down = false, margin = { top = 2, right = 2, bottom = 0 } },
     picker = {
       ui_select = true, -- vim.ui.select
       matcher = { frecency = true },
+      sources = {
+        explorer = {
+          layout = { preset = "sidebar", layout = { position = "left", width = 40 } },
+          hidden = true,
+          ignored = true,
+          exclude = { ".DS_Store" },
+          diagnostics = false,
+          follow_file = true,
+          actions = {
+            copy_selector = function(_, item)
+              if item then
+                require("utils").copy_path(item.file)
+              end
+            end,
+            child_or_open = function(picker, item)
+              if item and item.dir and item.open and not picker.input.filter.meta.searching then
+                local child = picker.list:get(picker.list.cursor + 1)
+                if child and child.parent == item then
+                  picker.list:move(1)
+                end
+              else
+                picker:action("confirm")
+              end
+            end,
+            toggle_filtered = function(picker)
+              local visible = not picker.opts.hidden
+              picker.opts.hidden, picker.opts.ignored = visible, visible
+              picker.list:set_target()
+              picker:find()
+            end,
+            expand_all = function(picker)
+              local tree = require("snacks.explorer.tree")
+              local root = tree:find(picker:cwd())
+              local visible = tree:filter(picker.opts)
+              local seen = {}
+              -- NOTE: synchronous tree walk; use an async action if huge trees make Z slow.
+              tree:walk(root, function(node)
+                if node ~= root and not visible(node) then
+                  return false
+                end
+                if node.dir then
+                  local real = vim.uv.fs_realpath(node.path)
+                  node.open = real ~= nil and not seen[real] -- avoid symlink cycles
+                  if not node.open then
+                    return false
+                  end
+                  seen[real] = true
+                  tree:expand(node)
+                end
+              end, { all = true })
+              require("snacks.explorer.actions").update(picker, { refresh = true })
+            end,
+          },
+          win = {
+            list = {
+              keys = {
+                o = "confirm",
+                O = "explorer_open",
+                Y = "copy_selector",
+                F = "picker_grep",
+                h = "toggle_filtered", -- matches Neo-tree's filesystem override
+                H = "toggle_filtered",
+                l = "child_or_open",
+                ["<Left>"] = "explorer_close",
+                ["<Right>"] = "child_or_open",
+                Z = "expand_all",
+                z = "explorer_close_all",
+                R = "explorer_update",
+              },
+            },
+          },
+        },
+      },
       win = {
         input = {
           keys = {
