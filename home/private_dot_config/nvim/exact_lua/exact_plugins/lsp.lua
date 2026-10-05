@@ -51,28 +51,13 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "jay-babu/mason-null-ls.nvim" },
     opts = function()
       local null_ls = require("null-ls")
-      local helpers = require("null-ls.helpers")
       local root = require("null-ls.utils").root_pattern
-      local oxfmt_root = root(".oxfmtrc.json", ".oxfmtrc.jsonc", "oxfmt.config.ts")
       return {
         sources = {
-          -- none-ls has no oxfmt builtin; keep Markdown formatting on the same client.
-          helpers.make_builtin({
-            name = "oxfmt",
-            method = null_ls.methods.FORMATTING,
-            filetypes = { "markdown" },
-            runtime_condition = function(params)
-              return oxfmt_root(params.bufname) ~= nil
-            end,
-            generator_opts = {
-              command = "oxfmt",
-              args = { "--stdin-filepath", "$FILENAME" },
-              to_stdin = true,
-              dynamic_command = require("null-ls.helpers.command_resolver").from_node_modules(),
-            },
-            factory = helpers.formatter_factory,
-          }),
           null_ls.builtins.formatting.prettierd.with({
+            -- Markdown belongs to the oxfmt LSP (after/lsp/oxfmt.lua); claiming it here would
+            -- attach null-ls and `format()` would then filter the oxfmt client out.
+            disabled_filetypes = { "markdown", "markdown.mdx" },
             runtime_condition = function(params)
               local path = params.bufname
               return (
@@ -81,7 +66,7 @@ return {
               )
                   ~= nil
                 and root("biome.json", "biome.jsonc")(path) == nil
-                and oxfmt_root(path) == nil
+                and root(".oxfmtrc.json", ".oxfmtrc.jsonc", "oxfmt.config.ts")(path) == nil
             end,
           }),
         },

@@ -20,6 +20,7 @@ local servers = {
   "oxfmt",
   "postgres_lsp",
   "marksman",
+  -- "markdown_oxide",
   "tinymist",
   "terraformls",
 }
@@ -51,7 +52,7 @@ for _, name in ipairs(servers) do
 end
 
 local function format(bufnr)
-  -- when none-ls is attached (prettierd/biome/oxfmt/stylua for this project) it owns formatting, so the
+  -- when none-ls is attached (prettierd/stylua for this project) it owns formatting, so the
   -- language server's formatter doesn't run a second pass
   local has_null = #vim.lsp.get_clients({ bufnr = bufnr, name = "null-ls" }) > 0
   vim.lsp.buf.format({
