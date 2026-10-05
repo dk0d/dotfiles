@@ -189,12 +189,6 @@ if command -q pnpm
 	alias pnp='pnpm'
 end
 
-if command -q squeue
-	alias slq='squeue -A woodard'
-	alias slqm='squeuemine'
-	alias sacctw='sacct -S 0501 -o JobIDRaw,JobName,User,NCPUS,AllocCPUS,MaxRSS,Reqtres,Elapsed -a -A woodard'
-end
-
 if command -q nvidia-smi
 	alias wgpu='watch -d -n 1 nvidia-smi'
 end
@@ -317,7 +311,7 @@ if command -q jira
 	end
 
 	function jime
-		jira issue list -a(jira me) -s~'Dev Complete' -s~Done -s~Closed --order-by updated --reverse $argv
+		jira issue list -a(jira me) -s~Done -s~Closed --order-by updated --reverse $argv
 	end
 
 	function jissue
@@ -331,28 +325,6 @@ if command -q jira
 
 	function jibranch
 		git checkout -b (jissuebranch $argv[1])
-	end
-end
-
-if command -q srun
-	function igpu
-		set -l count 1
-		set -l mem 128gb
-		set -l gpu geforce
-		set -l tasks 5
-		if test (count $argv) -ge 1
-			set count $argv[1]
-		end
-		if test (count $argv) -ge 2
-			set mem $argv[2]
-		end
-		if test (count $argv) -ge 3
-			set gpu $argv[3]
-		end
-		if test (count $argv) -ge 4
-			set tasks $argv[4]
-		end
-		srun --gres=gpu:$gpu:$count --mem=$mem --tasks=$tasks --nodes=1 --time=08:00:00 --cpus-per-task=6 --partition=gpu --qos=woodard --pty -u bash -i
 	end
 end
 
