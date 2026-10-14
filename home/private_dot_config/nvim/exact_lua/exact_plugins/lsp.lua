@@ -58,15 +58,15 @@ return {
             -- Markdown belongs to the oxfmt LSP (after/lsp/oxfmt.lua); claiming it here would
             -- attach null-ls and `format()` would then filter the oxfmt client out.
             disabled_filetypes = { "markdown", "markdown.mdx" },
+            -- prettier only if the buffer has a prettier-ish root. biome/oxfmt projects are
+            -- handled by their LSPs, which outrank null-ls in `format()`'s priority list, so
+            -- we don't need to detect them here.
             runtime_condition = function(params)
               local path = params.bufname
               return (
                 root("package.json", "tsconfig.json", "jsconfig.json")(path)
                 or root(".prettierrc", ".prettierrc.yaml", ".prettierrc.yml")(path)
-              )
-                  ~= nil
-                and root("biome.json", "biome.jsonc")(path) == nil
-                and root(".oxfmtrc.json", ".oxfmtrc.jsonc", "oxfmt.config.ts")(path) == nil
+              ) ~= nil
             end,
           }),
         },
@@ -77,31 +77,15 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     lazy = true, -- pulled in by none-ls
-    opts = function()
-      local root = function(...)
-        local p = require("null-ls.utils").root_pattern(...)
-        return function()
-          return p(vim.uv.cwd()) ~= nil
-        end
-      end
-      local has = {
-        oxlint = root(".oxlintrc.json"),
-        biome = root("biome.json", "biome.jsonc"),
-      }
-      local when = function(pred)
-        return function(source, methods)
-          if pred() then
-            require("mason-null-ls").default_setup(source, methods)
-          end
-        end
-      end
-      return {
-        handlers = {
-          oxlint = when(has.oxlint),
-          biome = when(has.biome),
-          prettierd = function() end, -- registered above with per-buffer selection
-        },
-      }
-    end,
+    -- everything else installed via mason gets auto-registered (stylua, selene, ...).
+    -- these three are opted out: biome/oxlint ship LSPs that outrank null-ls in
+    -- `format()`, and prettierd is registered above with its own runtime_condition.
+    opts = {
+      handlers = {
+        biome = function() end,
+        oxlint = function() end,
+        prettierd = function() end,
+      },
+    },
   },
 }

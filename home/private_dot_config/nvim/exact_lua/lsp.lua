@@ -51,15 +51,28 @@ for _, name in ipairs(servers) do
   end
 end
 
+-- exactly one formatter per buffer, highest-priority attached client wins.
+-- null-ls sits in the middle: it beats language servers whose formatter we don't want
+-- (lua_ls, ts_ls, jsonls) but loses to the dedicated formatters above it.
+local format_priority = { "biome", "oxfmt", "denols", "null-ls" }
+
 local function format(bufnr)
-  -- when none-ls is attached (prettierd/stylua for this project) it owns formatting, so the
-  -- language server's formatter doesn't run a second pass
-  local has_null = #vim.lsp.get_clients({ bufnr = bufnr, name = "null-ls" }) > 0
+  local attached = {}
+  for _, c in ipairs(vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/formatting" })) do
+    attached[c.name] = true
+  end
+  local winner
+  for _, name in ipairs(format_priority) do
+    if attached[name] then
+      winner = name
+      break
+    end
+  end
   vim.lsp.buf.format({
     bufnr = bufnr,
     timeout_ms = 1000,
     filter = function(c)
-      return not has_null or c.name == "null-ls"
+      return winner == nil or c.name == winner
     end,
   })
 end
