@@ -1,0 +1,39 @@
+# Copper and ink: edit here, then run chezmoi diff / chezmoi apply and reload apps.
+[theme]
+background = "#000000"
+text = "#e8D8C8"
+heading = "#F6F7EC"
+accent = "#E5A072"
+accent_highlight = "#F2C5A4"
+on_accent = "#241B14"
+selection = "#45362A"
+
+# Catppuccin palette roles shared by Neovim and tmux.
+pink = "#DF99B8"
+# Keep mauve purple so OpenCode's system theme distinguishes Build and Plan.
+mauve = "#C5A3CF"
+red = "#E66C60"
+maroon = "#D0633D"
+yellow = "#DDB054"
+green = "#91BC67"
+teal = "#639565"
+sky = "#80CDE6"
+sapphire = "#59A8BE"
+blue = "#3F96AC"
+lavender = "#D6B3CC"
+subtext1 = "#D4BDA5"
+subtext0 = "#C2B09B"
+overlay2 = "#B5A48F"
+overlay1 = "#A99A89"
+overlay0 = "#948675"
+surface2 = "#766754"
+surface1 = "#54483B"
+surface0 = "#292520"
+mantle = "#211D19"
+
+# Additional bright ANSI colors; the remaining slots reuse the roles above.
+bright_red = "#FF645A"
+bright_green = "#A3CE62"
+bright_yellow = "#D2CA7A"
+bright_mauve = "#DEC0E8"
+bright_teal = "#9BDB9E"

@@ -16,6 +16,16 @@ $ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin" init dk0d --verb
 
 ---
 
+## Theme
+
+Edit `home/.chezmoidata/theme.toml` to change the shared copper-and-ink palette.
+Ghostty, Neovim, tmux, Lazygit, Television, Starship, and Delta read it through
+chezmoi templates. Incline and Lualine inherit Neovim's palette; OpenCode's
+`system` theme inherits Ghostty's terminal colors.
+
+Run `chezmoi diff`, then `chezmoi apply`, and reload the affected apps.
+Edit the palette in the source directory, rather than the generated config files.
+
 TODO
 
 - [ ] better setup for `nvm` in `fish` shell (via `fisher`)

@@ -121,7 +121,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](#E5A072) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)]({{ .theme.accent }}) ($ahead_behind$stashed)]($style)"
 conflicted = "≠"
 modified = "!${count}"
 untracked = "?${count}"
