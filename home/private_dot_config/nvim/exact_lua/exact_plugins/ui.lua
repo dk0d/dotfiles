@@ -138,32 +138,35 @@ return {
   {
     "b0o/incline.nvim", -- floating filename per window (sveltekit routes shown relative to routes/)
     event = "VeryLazy",
-    opts = {
-      highlight = {
-        groups = {
-          InclineNormal = { guibg = "#45475a", guifg = "#bac2de" },
-          InclineNormalNC = { guibg = "none", guifg = "#bac2de" },
+    opts = function()
+      local C = require("catppuccin.palettes").get_palette("mocha")
+      return {
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = C.surface0, guifg = C.text },
+            InclineNormalNC = { guibg = "none", guifg = C.subtext0 },
+          },
         },
-      },
-      window = { margin = { vertical = 0, horizontal = 1 } },
-      hide = { cursorline = true, only_win = true },
-      render = function(props)
-        local full = vim.api.nvim_buf_get_name(props.buf)
-        local name = vim.fn.fnamemodify(full, ":t")
-        local cwd = vim.fn.getcwd()
-        if vim.uv.fs_stat(cwd .. "/svelte.config.ts") or vim.uv.fs_stat(cwd .. "/svelte.config.js") then
-          local i = full:find("routes")
-          if i then
-            name = full:sub(i + #"routes" + 1)
+        window = { margin = { vertical = 0, horizontal = 1 } },
+        hide = { cursorline = true, only_win = true },
+        render = function(props)
+          local full = vim.api.nvim_buf_get_name(props.buf)
+          local name = vim.fn.fnamemodify(full, ":t")
+          local cwd = vim.fn.getcwd()
+          if vim.uv.fs_stat(cwd .. "/svelte.config.ts") or vim.uv.fs_stat(cwd .. "/svelte.config.js") then
+            local i = full:find("routes")
+            if i then
+              name = full:sub(i + #"routes" + 1)
+            end
           end
-        end
-        if vim.bo[props.buf].modified then
-          name = "[*]" .. name
-        end
-        local icon, color = require("nvim-web-devicons").get_icon_color(name)
-        return { { icon, guifg = color }, { " " }, { name } }
-      end,
-    },
+          if vim.bo[props.buf].modified then
+            name = "[*]" .. name
+          end
+          local icon, color = require("nvim-web-devicons").get_icon_color(name)
+          return { { icon, guifg = color }, { " " }, { name } }
+        end,
+      }
+    end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
