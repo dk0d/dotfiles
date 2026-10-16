@@ -9,7 +9,54 @@ return {
     transparent_background = true,
     term_colors = false,
     float = { transparent = true, solid = false },
-    custom_highlights = { TreesitterContextBottom = { style = {} } }, -- no underline under the pinned scope
+    -- Earthsong-inspired warmth and saturation, with copper accents over pure black.
+    color_overrides = {
+      mocha = {
+        rosewater = "#F6F7EC",
+        flamingo = "#F2C5A4",
+        pink = "#DF99B8",
+        mauve = "#C5A3CF",
+        red = "#E66C60",
+        maroon = "#D0633D",
+        peach = "#E5A072",
+        yellow = "#DDB054",
+        green = "#91BC67",
+        teal = "#639565",
+        sky = "#80CDE6",
+        sapphire = "#59A8BE",
+        blue = "#3F96AC",
+        lavender = "#D6B3CC",
+        text = "#E5C7A9",
+        subtext1 = "#D4BDA5",
+        subtext0 = "#C2B09B",
+        overlay2 = "#B5A48F",
+        overlay1 = "#A99A89",
+        overlay0 = "#948675",
+        surface2 = "#766754",
+        surface1 = "#54483B",
+        surface0 = "#292520",
+        base = "#000000",
+        mantle = "#211D19",
+        crust = "#000000",
+      },
+    },
+    custom_highlights = function(C)
+      return {
+        TreesitterContextBottom = { style = {} }, -- no underline under the pinned scope
+        Title = { fg = C.rosewater, style = { "bold" } },
+        FloatBorder = { fg = C.surface2, bg = "NONE" },
+        WinSeparator = { fg = C.surface2 },
+        FloatTitle = { fg = C.rosewater, bg = "NONE", style = { "bold" } },
+        CursorLineNr = { fg = C.peach },
+        LineNr = { fg = C.overlay0 },
+        Search = { fg = C.flamingo, bg = "#45362A" },
+        IncSearch = { fg = "#241B14", bg = C.flamingo },
+        CurSearch = { fg = "#241B14", bg = C.peach, style = { "bold" } },
+        Visual = { bg = "#45362A", style = { "bold" } },
+        PmenuSel = { fg = C.text, bg = "#45362A", style = { "bold" } },
+        BlinkCmpMenuSelection = { link = "PmenuSel" },
+      }
+    end,
     integrations = {
       blink_cmp = true,
       dadbod_ui = true,
@@ -24,7 +71,6 @@ return {
       markdown = true,
       mason = true,
       mini = { enabled = true },
-      lualine = true,
       native_lsp = {
         enabled = true,
         virtual_text = {

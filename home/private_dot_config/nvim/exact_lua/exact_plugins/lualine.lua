@@ -44,7 +44,6 @@ return {
     local C = require("catppuccin.palettes").get_palette("mocha")
     return {
       options = {
-        theme = "catppuccin-nvim",
         globalstatus = true,
         section_separators = "",
         component_separators = "",

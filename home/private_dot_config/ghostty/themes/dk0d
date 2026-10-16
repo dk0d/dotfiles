@@ -1,0 +1,26 @@
+# Matches the Catppuccin overrides in Neovim and tmux.
+# Earthsong-inspired warmth and saturation, with copper accents over pure black.
+background = #000000
+foreground = #E5C7A9
+cursor-color = #E5A072
+cursor-text = #241B14
+selection-background = #45362A
+selection-foreground = #F6F7EC
+
+palette = 0=#292520
+palette = 1=#E66C60
+palette = 2=#91BC67
+palette = 3=#DDB054
+palette = 4=#3F96AC
+# Keep magenta in the purple family so OpenCode's system agent colors stay distinct.
+palette = 5=#C5A3CF
+palette = 6=#639565
+palette = 7=#E5C7A9
+palette = 8=#948675
+palette = 9=#FF645A
+palette = 10=#A3CE62
+palette = 11=#D2CA7A
+palette = 12=#80CDE6
+palette = 13=#DEC0E8
+palette = 14=#9BDB9E
+palette = 15=#F6F7EC
