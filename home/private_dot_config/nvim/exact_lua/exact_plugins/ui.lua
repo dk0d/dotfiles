@@ -37,9 +37,15 @@ return {
     end,
   },
   {
-    "mrjones2014/smart-splits.nvim", -- tmux-aware window navigation/resizing
-    event = "VeryLazy",
-    opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
+    "smart-splits-nvim/smart-splits.nvim",
+    version = "^3.0.0",
+    lazy = false, -- mark the tmux pane before tmux starts routing navigation keys
+    dependencies = { { "smart-splits-nvim/backend-tmux", main = "smart-splits-backend-tmux" } },
+    opts = {
+      ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" },
+      ignored_buftypes = { "nofile" },
+      mux = { backend = "smart-splits-backend-tmux" },
+    },
     keys = {
       {
         "<C-h>",
