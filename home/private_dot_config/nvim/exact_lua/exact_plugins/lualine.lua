@@ -8,7 +8,7 @@ local function lsp_clients()
       names[#names + 1] = c.name
     end
   end
-  return #names > 0 and (" " .. table.concat(names, " ")) or ""
+  return #names > 0 and ("  " .. table.concat(names, " ")) or ""
 end
 
 local function venv()
@@ -44,11 +44,16 @@ return {
     local C = require("catppuccin.palettes").get_palette("mocha")
     return {
       options = {
-        theme = "catppuccin-mocha",
+        theme = "catppuccin-nvim",
         globalstatus = true,
         section_separators = "",
         component_separators = "",
         disabled_filetypes = { statusline = { "snacks_dashboard" } },
+      },
+      extensions = {
+        "mason",
+        "lazy",
+        "oil",
       },
       sections = {
         lualine_a = {
