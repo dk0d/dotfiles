@@ -4,12 +4,12 @@ cursor-invert-fg-bg = true
 custom-shader = ./shaders/cursor_sweep.glsl
 
 background-opacity = 1
-background-blur-radius = 0
+background-blur-radius = 20
 
 macos-window-buttons = hidden
-# window-decoration = false
+window-decoration = true
 # Available values are: "native", "transparent", "tabs", and "hidden".
-# macos-titlebar-style = hidden
+macos-titlebar-style = hidden
 macos-window-shadow = false
 macos-icon = glass
 macos-titlebar-proxy-icon = hidden
@@ -24,8 +24,8 @@ font-family = Fira Code
 font-size = 12
 font-thicken = true
 confirm-close-surface = false
-window-padding-x = 0
-window-padding-y = 0
+window-padding-x = 8
+window-padding-y = 8
 window-padding-balance = true
 window-title-font-family = Fira Code
 window-inherit-working-directory = true
