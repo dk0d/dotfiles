@@ -25,12 +25,13 @@ brews = [
   "git-delta", # git diff
   "gitleaks",  # git secrets
   # "git-gui",                       # git gui
-  "glab",   # gitlab cli
-  "hatch",  # python venv
-  "jq",     # json parser
-  "less",   # pager
-  "mosh",   # mobile shell
-  "neovim", # vim
+  "glab",        # gitlab cli
+  "hatch",       # python venv
+  "imagemagick", # image conversion, for nvim inline images
+  "jq",          # json parser
+  "less",        # pager
+  "mosh",        # mobile shell
+  "neovim",      # vim
   # "nvm",                           # node version manager
   "nmap",       # network scanner
   "nushell",    # shell
@@ -46,6 +47,7 @@ brews = [
   "yazi",       # cli fileexplorer
   "poppler",    # pdf preview
   "sesh",
+  "superfile",  # https://superfile.dev/
   "television",
   "age",        # file encryption
   "termshark",  # CLI wrapper for tshark (wireshark)
