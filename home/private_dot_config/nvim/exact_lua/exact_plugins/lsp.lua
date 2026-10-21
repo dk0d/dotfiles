@@ -34,7 +34,7 @@ return {
         "svelte-language-server",
         "prettierd",
         "tree-sitter-cli", -- parser builds for tree-sitter-manager
-        "marksman",
+        "markdown-oxide",
         "tinymist",
         "postgres-language-server",
         "oxfmt",

@@ -19,8 +19,7 @@ local servers = {
   "oxlint",
   "oxfmt",
   "postgres_lsp",
-  "marksman",
-  -- "markdown_oxide",
+  "markdown_oxide",
   "tinymist",
   "terraformls",
 }

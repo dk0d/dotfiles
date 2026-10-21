@@ -26,12 +26,12 @@ return {
       { options = { "-X", "--synctex", "--keep-logs", "--keep-intermediates", "--outdir build" } }
   end,
   keys = {
-    { "<leader>vc", "<cmd>update<cr><cmd>VimtexCompile<cr>", desc = "Vimtex compile (continuous)" },
-    { "<leader>vs", "<cmd>update<cr><cmd>VimtexCompileSS<cr>", desc = "Vimtex compile (single shot)" },
-    { "<leader>vx", latexmk("-xelatex"), desc = "Compiler: xelatex" },
-    { "<leader>vl", latexmk("-pdf"), desc = "Compiler: pdflatex" },
+    { "<leader>Vc", "<cmd>update<cr><cmd>VimtexCompile<cr>", desc = "Vimtex compile (continuous)" },
+    { "<leader>Vs", "<cmd>update<cr><cmd>VimtexCompileSS<cr>", desc = "Vimtex compile (single shot)" },
+    { "<leader>Vx", latexmk("-xelatex"), desc = "Compiler: xelatex" },
+    { "<leader>Vl", latexmk("-pdf"), desc = "Compiler: pdflatex" },
     {
-      "<leader>vt",
+      "<leader>Vt",
       function()
         vim.notify("Vimtex compiler: " .. vim.g.vimtex_compiler_method)
       end,

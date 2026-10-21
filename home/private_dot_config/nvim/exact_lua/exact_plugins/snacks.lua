@@ -110,6 +110,18 @@ return {
           { icon = "󰾹 ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
           {
+            icon = "󰃭 ",
+            key = "d",
+            desc = "Daily Note",
+            enabled = function()
+              local ok, vault = pcall(require, "vault")
+              return ok and vault.root() ~= nil
+            end,
+            action = function()
+              require("vault.daily").today(require("vault").root())
+            end,
+          },
+          {
             icon = " ",
             key = "c",
             desc = "Config",
