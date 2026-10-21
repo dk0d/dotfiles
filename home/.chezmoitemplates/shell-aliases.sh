@@ -73,23 +73,8 @@ alias ipy='ipython'
 alias duh='du -h -d 1 .'
 alias duh_='du -h -d 1 . > foldersizes.txt &'
 
-# Hipergator
-if command -v squeue &>/dev/null; then
-	alias slq='squeue -A woodard'
-	alias slqm='squeuemine'
-	alias sacctw='sacct -S 0501 -o JobIDRaw,JobName,User,NCPUS,AllocCPUS,MaxRSS,Reqtres,Elapsed -a -A woodard'
-fi
 if command -v nvidia-smi &>/dev/null; then
 	alias wgpu='watch -d -n 1 nvidia-smi'
-fi
-if command -v srun &>/dev/null; then
-	alias icpu="srun --partition=hpg-dev --mem=124gb --ntasks=1 --cpus-per-task=8 --time=04:00:00 --pty bash -i"
-	function igpu() {
-		local gres="gpu:${3:-geforce}:${1:-1}"
-		local mem="${2:-128gb}"
-		local tasks="${4:-5}"
-		srun --gres=$gres --mem=$mem --tasks=$tasks --nodes=1 --time=08:00:00 --cpus-per-task=6 --partition=gpu --qos=woodard --pty -u bash -i
-	}
 fi
 
 if command -v tectonic &>/dev/null; then
