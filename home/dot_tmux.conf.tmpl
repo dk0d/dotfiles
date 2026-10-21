@@ -24,6 +24,9 @@ set -s escape-time 0                     # faster command sequences
 set -sg repeat-time 600                   # increase repeat timeout
 set -s focus-events on
 
+# let nvim draw images (kitty graphics protocol) through tmux
+set -g allow-passthrough on
+
 # vim-like pane switching
 bind -r ^ last-window
 bind -r k select-pane -U
