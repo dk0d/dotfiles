@@ -23,7 +23,7 @@ return {
     vim.g.vimtex_log_ignore = { "Underfull", "Overfull", "specifier changed to", "Token not allowed in a PDF string" }
     vim.g.vimtex_compiler_method = "tectonic"
     vim.g.vimtex_compiler_tectonic =
-      { options = { "-X", "--synctex", "--keep-logs", "--keep-intermediates", "--outdir build" } }
+      { options = { "-X", "--synctex", "--keep-logs", "--keep-intermediates", "--out_dir build" } }
   end,
   keys = {
     { "<leader>Vc", "<cmd>update<cr><cmd>VimtexCompile<cr>", desc = "Vimtex compile (continuous)" },
