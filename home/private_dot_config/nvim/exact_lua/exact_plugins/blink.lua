@@ -25,6 +25,8 @@ return {
     },
     keymap = {
       preset = "enter",
+      -- Enter accepts the highlighted item; a plain Enter inserts a newline.
+      ["<CR>"] = { "accept", "fallback" },
       ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       ["<C-j>"] = { "select_next", "fallback" },
@@ -32,8 +34,6 @@ return {
     },
     completion = {
       documentation = { auto_show = true },
-      -- auto_insert makes <Tab> past the last item deselect everything, so <CR> then inserts a newline
-      -- instead of completing. Keep the highlight sticky; <C-e> cancels when you really want a newline.
       list = { selection = { preselect = true, auto_insert = false } },
       menu = {
         draw = {

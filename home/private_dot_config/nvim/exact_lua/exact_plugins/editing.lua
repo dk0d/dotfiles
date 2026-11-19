@@ -34,7 +34,24 @@ return {
     },
   },
   { "NMAC427/guess-indent.nvim", event = { "BufReadPost", "BufNewFile" }, opts = {} },
-  { "mg979/vim-visual-multi", event = "VeryLazy" },
+  {
+    "mg979/vim-visual-multi",
+    event = "VeryLazy",
+    init = function()
+      vim.g.VM_maps = {
+        ["Find Under"] = "<leader>mm",
+        ["Find Subword Under"] = "<leader>mm",
+        ["Find Next"] = "<leader>mn",
+        ["Find Prev"] = "<leader>mp",
+        ["Skip Region"] = "<C-x>",
+        ["Remove Region"] = "<C-S-x>",
+        ["Add Cursor Down"] = "<leader>md",
+        ["Add Cursor Up"] = "<leader>mu",
+        ["Select All"] = "<leader>mA",
+        ["Add Cursor At Pos"] = "<leader>ma",
+      }
+    end,
+  },
   { "yorickpeterse/nvim-pqf", event = "VeryLazy", opts = {} },
   {
     "Wansmer/treesj",

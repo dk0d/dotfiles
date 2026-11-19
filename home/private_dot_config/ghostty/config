@@ -19,10 +19,10 @@ macos-icon-screen-color = 000000
 macos-option-as-alt = true
 link-url = true
 
-font-family = Fira Code
-# font-family = JetBrains Mono
+# font-family = Fira Code
+font-family = JetBrains Mono
 font-size = 12
-font-thicken = true
+font-thicken = false
 confirm-close-surface = false
 window-padding-x = 8
 window-padding-y = 8

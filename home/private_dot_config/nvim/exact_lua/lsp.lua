@@ -53,9 +53,26 @@ end
 -- exactly one formatter per buffer, highest-priority attached client wins.
 -- null-ls sits in the middle: it beats language servers whose formatter we don't want
 -- (lua_ls, ts_ls, jsonls) but loses to the dedicated formatters above it.
-local format_priority = { "biome", "oxfmt", "denols", "null-ls" }
+local format_priority = { "biome", "oxfmt", "denols", "badness", "null-ls" }
+
+local function format_markdown(bufnr)
+  local name = vim.api.nvim_buf_get_name(bufnr)
+  local input = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), "\n")
+  local result = vim.system({ "oxfmt", "--stdin-filepath", name }, { stdin = input }):wait(1000)
+  if result.code ~= 0 then
+    vim.notify(result.stderr ~= "" and result.stderr or "oxfmt failed", vim.log.levels.ERROR)
+    return true
+  end
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(result.stdout, "\n", { plain = true }))
+  return true
+end
 
 local function format(bufnr)
+  if vim.bo[bufnr].filetype == "markdown" or vim.bo[bufnr].filetype == "markdown.mdx" then
+    format_markdown(bufnr)
+    return
+  end
+
   local attached = {}
   for _, c in ipairs(vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/formatting" })) do
     attached[c.name] = true
